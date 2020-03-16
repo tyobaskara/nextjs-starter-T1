@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import Head from 'next/head';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import MainLayout from '../components/_layouts/MainLayout';
@@ -23,6 +23,9 @@ const showModal = () => {
 
 const App = () => (
   <MainLayout>
+    <Head>
+      <title>Home Title</title>
+    </Head>
     <Home showModal={showModal} />
   </MainLayout>
 );

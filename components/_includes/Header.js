@@ -1,11 +1,23 @@
-import React, { PureComponent } from 'react'
+import { PureComponent } from 'react';
+import Link from 'next/link';
 
 class Header extends PureComponent {
   render() {
     return (
       <header>
         <div className="container">
-          header
+        <ul>
+          <li>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about">
+              <a>About Us</a>
+            </Link>
+          </li>
+        </ul>
         </div>
       </header>
     )
