@@ -1,0 +1,36 @@
+{
+  "name": "nextjs-starter-T1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/app.js",
+  "scripts": {
+    "dev": "nodemon server/app.js --watch server",
+    "build": "next build",
+    "start": "NODE_ENV=production node server/app.js"
+  },
+  "author": "Tyo Baskara",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.19.2",
+    "compression": "^1.7.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "isomorphic-unfetch": "^3.0.0",
+    "lodash": "^4.17.15",
+    "next": "^9.1.6",
+    "next-compose-plugins": "^2.2.0",
+    "node-sass": "^4.13.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-recaptcha": "^2.3.10",
+    "react-scroll": "^1.7.15",
+    "react-slick": "^0.25.2",
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^9.6.0",
+    "sweetalert2-react-content": "^2.0.2",
+    "validator": "^12.1.0"
+  }
+}

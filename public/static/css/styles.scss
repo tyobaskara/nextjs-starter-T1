@@ -1,0 +1,98 @@
+@import './common/slick.scss';
+@import './common/slick_theme.scss';
+@import './common/fontface.scss';
+@import './common/mixin.scss';
+@import './common/color.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica';
+  color: $ebony-clay;
+}
+
+:focus {
+  outline: none;
+}
+
+button {
+  border: 0;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+a:hover {
+  color: $marigold;
+  text-decoration: none;
+}
+
+h2 {
+  font-family: Helvetica;
+  font-size: 34px;
+  color: $blue-zodiac;
+  @include breakpoint(maxtablet) {
+    font-size: 28px;
+  }
+  @include breakpoint(mobileonly) {
+    font-size: 25px;
+  }
+}
+
+h3 {
+  font-family: Helvetica;
+  font-size: 20px;
+  color: $blue-zodiac;
+  @include breakpoint(maxtablet) {
+    font-size: 16px;
+  }
+}
+
+p {
+  font-family: Helvetica;
+  font-size: 14px;
+  color: $ebony-clay;
+  @include breakpoint(smallmobileonly) {
+    font-size: 13px;
+  }
+}
+
+.slick-initialized {
+  overflow: hidden;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  li {
+    button {
+      &:before {
+        color: $alto;
+        font-size: 15px;
+        opacity: 1;
+      }
+      &:hover:before {
+        color: $marigold;
+      }
+    }
+    &.slick-active {
+      button {
+        &:before {
+          color: $marigold;
+        }
+      }
+    }
+  }
+}
+
+img {
+  width: 100%;
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@now/next" },
+    { "src": "/server/app.js", "use": "@now/node-server" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/server/app.js" }
+  ]
+}
