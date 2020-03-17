@@ -18,7 +18,7 @@ class DashboardContainer extends PureComponent {
   render() {
     return (
       <div className="container">
-        <h1>Dashboard</h1>
+        <h1>Dashboard Page</h1>
 
         <Button className="btn btn-danger" onClick={this.props.onLogOut}>logout</Button>
       </div>

@@ -26,7 +26,7 @@ class LoginContainer extends PureComponent {
     return (
       <div>
         <div className="container">
-          <h1>Login Form</h1>
+          <h1>Login Page</h1>
 
           <Button className="btn btn-primary" onClick={this._onLogin}>Login</Button>
         </div>
