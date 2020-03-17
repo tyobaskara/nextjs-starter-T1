@@ -8,26 +8,62 @@ const withToken = props => WrappedComponent => {
       super();
 
       this.state = {
-        token: Cookies.get(props.name)
+        token: Cookies.get(props.tokenName)
       }
     }
 
     componentDidMount() {
-      if (!this.state.token) {
-        this.props.router.push('/cms/signin');
+      const { redirectTo, isLoginPage } = props;
+
+      if (!this.state.token && !isLoginPage) {
+        this.props.router.push(redirectTo);
+      } 
+      else if (this.state.token && isLoginPage) {
+        this.props.router.push(redirectTo);
       }
     }
 
+    _getActionProps = () => {
+      const { isLoginPage } = props;
+
+      return isLoginPage
+      ? this._getLoginPageActionProps()
+      : this._getNotLoginPageActionProps()
+    }
+
+    _getLoginPageActionProps = () => {
+      return {
+        onLogin: this._onLogin
+      };
+    }
+
+    _getNotLoginPageActionProps = () => {
+      return {
+        onLogOut: this._onLogOut
+      };
+    }
+
     _onLogOut = () => {
-      Cookies.set('loggedInToken', '');
-      this.props.router.push('/cms/signin');
+      const { redirectTo, tokenName } = props;
+      
+      Cookies.set(tokenName, '');
+      this.props.router.push(redirectTo);
+    };
+
+    _onLogin = value => {
+      const { tokenName, redirectTo } = props;
+  
+      Cookies.set(tokenName, value);
+      this.props.router.push(redirectTo);
     };
 
     render() {
-      return !!this.state.token && (
+      const { token } = this.state;
+
+      return (
         <WrappedComponent 
-          token={this.state.token} 
-          onLogOut={this._onLogOut}   
+          token={token} 
+          {...this._getActionProps()}
         />
       );
     }

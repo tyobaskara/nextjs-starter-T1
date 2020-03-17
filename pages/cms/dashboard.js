@@ -1,4 +1,5 @@
 import { PureComponent } from 'react';
+import Constants from '../../public/static/js/constants';
 
 // HOC
 import WithToken from '../../hoc/WithToken';
@@ -12,6 +13,7 @@ export class dashboard extends PureComponent {
       <AdminLayout>
         <div className="container">
           <h1>Dashboard</h1>
+
           <button className="btn btn-danger" onClick={this.props.onLogOut}>logout</button>
         </div>
       </AdminLayout>
@@ -20,5 +22,7 @@ export class dashboard extends PureComponent {
 }
 
 export default WithToken({
-  name: 'loggedInToken'
+  isLoginPage: false,
+  redirectTo: '/cms/signin',
+  tokenName: Constants.loginToken
 })(dashboard);

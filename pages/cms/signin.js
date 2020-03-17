@@ -1,17 +1,18 @@
 import { PureComponent } from 'react';
-import Router from 'next/router';
-import Cookies from 'js-cookie';
+import Constants from '../../public/static/js/constants';
+
+// HOC
+import WithToken from '../../hoc/WithToken';
 
 // Component
 import AdminLayout from '../../components/_layouts/AdminLayout';
 
 export class signin extends PureComponent {
   _onSignIn = () => {
-    const loggedInToken = 'token123';
+    const { onLogin } = this.props;
+    const tokenValue = 'token123';
 
-    Cookies.set('loggedInToken', loggedInToken);
-
-    Router.push('/cms/dashboard');
+    onLogin(tokenValue);
   };
 
   render() {
@@ -19,6 +20,7 @@ export class signin extends PureComponent {
       <AdminLayout>
         <div className="container">
           <h1>Sign In Form</h1>
+
           <button className="btn btn-primary" onClick={this._onSignIn}>Sign In</button>
         </div>
       </AdminLayout>
@@ -26,4 +28,8 @@ export class signin extends PureComponent {
   }
 }
 
-export default signin
+export default WithToken({
+  isLoginPage: true,
+  redirectTo: '/cms/dashboard',
+  tokenName: Constants.loginToken
+})(signin);
