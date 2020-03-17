@@ -23,6 +23,6 @@ export class dashboard extends PureComponent {
 
 export default WithToken({
   isLoginPage: false,
-  redirectTo: '/cms/login',
+  redirectRoute: '/cms/login',
   tokenName: Constants.loginToken
 })(dashboard);

@@ -30,6 +30,6 @@ export class login extends PureComponent {
 
 export default WithToken({
   isLoginPage: true,
-  redirectTo: '/cms/dashboard',
+  redirectRoute: '/cms/dashboard',
   tokenName: Constants.loginToken
 })(login);

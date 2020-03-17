@@ -13,13 +13,13 @@ const withToken = props => WrappedComponent => {
     }
 
     componentDidMount() {
-      const { redirectTo, isLoginPage } = props;
+      const { redirectRoute, isLoginPage } = props;
 
       if (!this.state.token && !isLoginPage) {
-        this.props.router.push(redirectTo);
+        this.props.router.push(redirectRoute);
       } 
       else if (this.state.token && isLoginPage) {
-        this.props.router.push(redirectTo);
+        this.props.router.push(redirectRoute);
       }
     }
 
@@ -44,17 +44,17 @@ const withToken = props => WrappedComponent => {
     }
 
     _onLogOut = () => {
-      const { redirectTo, tokenName } = props;
+      const { redirectRoute, tokenName } = props;
       
       Cookies.set(tokenName, '');
-      this.props.router.push(redirectTo);
+      this.props.router.push(redirectRoute);
     };
 
     _onLogin = value => {
-      const { tokenName, redirectTo } = props;
+      const { tokenName, redirectRoute } = props;
   
       Cookies.set(tokenName, value);
-      this.props.router.push(redirectTo);
+      this.props.router.push(redirectRoute);
     };
 
     render() {
