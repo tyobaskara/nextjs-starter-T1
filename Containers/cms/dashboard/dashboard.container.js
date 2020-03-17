@@ -5,7 +5,7 @@ import Constants from '../../../public/static/js/constants';
 import WithToken from '../../../hoc/WithToken';
 
 // Components
-import Button from '../../../components/button/button.component';
+// import Button from '../../../components/button/button.component';
 
 const { 
   cms: {
@@ -20,7 +20,7 @@ class DashboardContainer extends PureComponent {
       <div className="container">
         <h1>Dashboard Pagee</h1>
 
-        <Button className="btn btn-danger" onClick={this.props.onLogOut}>logout</Button>
+        <button className="btn btn-danger" onClick={this.props.onLogOut}>logout</button>
       </div>
     )
   }
