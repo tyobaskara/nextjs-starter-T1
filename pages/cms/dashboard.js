@@ -7,7 +7,7 @@ import AdminLayout from '../../components/_layouts/AdminLayout';
 // HOC
 import WithToken from '../../hoc/WithToken';
 
-Components
+// Components
 import Button from '../../components/button/button.component';
 
 const { 
