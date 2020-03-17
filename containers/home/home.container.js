@@ -21,12 +21,10 @@ class HomeContainer extends PureComponent {
 
   render() {
     return (
-      <section>
-        <div className="container">
-          <h1>Home</h1>
-          <button onClick={this._showModal} className="btn btn-info">Show Modal</button>
-        </div>
-      </section>
+      <div className="container">
+        <h1>Home</h1>
+        <button onClick={this._showModal} className="btn btn-info">Show Modal</button>
+      </div>
     )
   }
 }

@@ -9,6 +9,7 @@ const HomePage = () => (
     <Head>
       <title>Home Title</title>
     </Head>
+    
     <HomeContainer />
   </MainLayout>
 );
