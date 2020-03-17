@@ -4,14 +4,14 @@ import MainLayout from '../components/_layouts/main.layout';
 // Container
 import AboutContainer from '../containers/about/about.container';
 
-const AboutPage = () => (
-  <MainLayout>
-    <Head>
-      <title>About Us Title</title>
-    </Head>
+export default function AboutPage() {
+  return (
+    <MainLayout>
+      <Head>
+        <title>About Us Title</title>
+      </Head>
 
-    <AboutContainer />
-  </MainLayout>
-);
-
-export default AboutPage;
+      <AboutContainer />
+    </MainLayout>
+  );
+}

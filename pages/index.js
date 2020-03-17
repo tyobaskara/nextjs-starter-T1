@@ -4,14 +4,14 @@ import MainLayout from '../components/_layouts/main.layout';
 // Containers
 import HomeContainer from '../containers/home/home.container';
 
-const HomePage = () => (
-  <MainLayout>
-    <Head>
-      <title>Home Title</title>
-    </Head>
-    
-    <HomeContainer />
-  </MainLayout>
-);
+export default function HomePage() {
+  return (
+    <MainLayout>
+      <Head>
+        <title>Home Title</title>
+      </Head>
 
-export default HomePage;
+      <HomeContainer />
+    </MainLayout>
+  );
+}
