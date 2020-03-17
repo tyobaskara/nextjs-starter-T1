@@ -1,4 +1,3 @@
-import { PureComponent } from 'react';
 import Constants from '../../public/static/js/constants';
 
 // HOC
@@ -14,16 +13,14 @@ const {
   }
 } = Constants;
 
-class CmsDashboardContainer extends PureComponent {
-  render() {
-    return (
-      <div className="container">
-        <h1>Dashboard Page</h1>
+const CmsDashboardContainer = props => {
+  return (
+    <div className="container">
+      <h1>Dashboard Page</h1>
 
-        <ButtonDanger onClick={this.props.onLogOut}>logout</ButtonDanger>
-      </div>
-    )
-  }
+      <ButtonDanger onClick={props.onLogOut}>logout</ButtonDanger>
+    </div>
+  );
 }
 
 export default WithToken({
