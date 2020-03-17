@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import Constants from '../../public/static/js/constants';
 
 // Layout
-import AdminLayout from '../../components/_layouts/AdminLayout';
+import AdminLayout from '../../components/_layouts/admin.layout';
 
 // HOC
 import WithToken from '../../hoc/WithToken';

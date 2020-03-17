@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import MainLayout from '../components/_layouts/MainLayout';
+import MainLayout from '../components/_layouts/main.layout';
 
 // Container
 import AboutContainer from '../containers/about/about.container';
