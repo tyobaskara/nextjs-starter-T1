@@ -7,6 +7,15 @@ import WithToken from '../../hoc/WithToken';
 // Component
 import AdminLayout from '../../components/_layouts/AdminLayout';
 
+const { 
+  cms: {
+    route: {
+      dashboardPage
+    },
+    loginTokenName
+  }
+} = Constants;
+
 export class login extends PureComponent {
   _onLogin = () => {
     const { onLogin } = this.props;
@@ -30,6 +39,6 @@ export class login extends PureComponent {
 
 export default WithToken({
   isLoginPage: true,
-  redirectRoute: '/cms/dashboard',
-  tokenName: Constants.loginToken
+  redirectRoute: dashboardPage,
+  tokenName: loginTokenName
 })(login);

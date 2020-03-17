@@ -1,3 +1,9 @@
 export default {
-  loginToken: 'loginToken'
+  cms: {
+    route: {
+      dashboardPage: '/cms/dashboard',
+      loginPage: '/cms/login',
+    },
+    loginTokenName: 'loginToken'
+  }
 }
