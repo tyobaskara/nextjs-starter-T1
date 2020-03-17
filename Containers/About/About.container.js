@@ -10,4 +10,4 @@ class AboutContainer extends PureComponent {
   }
 }
 
-export default  AboutContainer;
+export default AboutContainer;
