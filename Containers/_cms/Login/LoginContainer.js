@@ -5,7 +5,7 @@ import Constants from '../../../public/static/js/constants';
 import WithToken from '../../../HOC/WithToken';
 
 // Components
-import Button from '../../../Components/Button.component';
+import Button from '../../../Components/Button';
 
 const { 
   cms: {
