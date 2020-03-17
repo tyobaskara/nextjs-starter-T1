@@ -2,7 +2,7 @@ import Head from 'next/head';
 import MainLayout from '../components/_layouts/MainLayout';
 
 // Container
-import AboutContainer from '../containers/about';
+import AboutContainer from '../containers/about.container';
 
 const AboutPage = () => (
   <MainLayout>
