@@ -1,15 +1,19 @@
 import Head from 'next/head';
-import MainLayout from '../components/_layouts/MainLayout';
+import MainLayout from '../Containers/_layouts/MainLayout';
 
-const About = () => (
-  <MainLayout>
-    <Head>
-      <title>About Us Title</title>
-    </Head>
-    <div className="container">
-      <h1>About Us</h1>
-    </div>
-  </MainLayout>
-);
+// Container
+import AboutContainer from '../Containers/About/About.container';
 
-export default About;
+function AboutPage() {
+  return (
+    <MainLayout>
+      <Head>
+        <title>About Us Title</title>
+      </Head>
+
+      <AboutContainer />
+    </MainLayout>
+  );
+}
+
+export default AboutPage;

@@ -1,33 +1,18 @@
 import Head from 'next/head';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import MainLayout from '../components/_layouts/MainLayout';
+import MainLayout from '../Containers/_layouts/MainLayout';
 
 // Containers
-import Home from '../containers/Home';
+import HomeContainer from '../Containers/Home/Home.container';
 
-const MySwal = withReactContent(Swal);
+function HomePage() {
+  return (
+    <MainLayout>
+      <Head>
+        <title>Home Title</title>
+      </Head>
+      <HomeContainer />
+    </MainLayout>
+  );
+}
 
-const showModal = () => {
-  MySwal.fire({
-    icon: 'success',
-    customClass: {
-      title: 'Swal-Custom-Class'
-    },
-    title: 'Swal Title',
-    text: 'Swal Text',
-    showConfirmButton: false
-  });
-  setTimeout(() => MySwal.close(), 5000);
-};
-
-const App = () => (
-  <MainLayout>
-    <Head>
-      <title>Home Title</title>
-    </Head>
-    <Home showModal={showModal} />
-  </MainLayout>
-);
-
-export default App;
+export default HomePage;

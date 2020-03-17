@@ -1,44 +1,13 @@
-import { PureComponent } from 'react';
-import Constants from '../../public/static/js/constants';
+// Containers
+import AdminLayout from '../../Containers/_layouts/AdminLayout';
+import LoginContainer from '../../Containers/_cms/Login/Login.container';
 
-// HOC
-import WithToken from '../../hoc/WithToken';
-
-// Component
-import AdminLayout from '../../components/_layouts/AdminLayout';
-
-const { 
-  cms: {
-    route: {
-      dashboardPage
-    },
-    loginTokenName
-  }
-} = Constants;
-
-export class login extends PureComponent {
-  _onLogin = () => {
-    const { onLogin } = this.props;
-    const tokenValue = 'token123';
-
-    onLogin(tokenValue);
-  };
-
-  render() {
-    return (
-      <AdminLayout>
-        <div className="container">
-          <h1>Login Form</h1>
-
-          <button className="btn btn-primary" onClick={this._onLogin}>Login</button>
-        </div>
-      </AdminLayout>
-    )
-  }
+function LoginPage() {
+  return (
+    <AdminLayout>
+      <LoginContainer />
+    </AdminLayout>
+  )
 }
 
-export default WithToken({
-  isLoginPage: true,
-  redirectRoute: dashboardPage,
-  tokenName: loginTokenName
-})(login);
+export default LoginPage;

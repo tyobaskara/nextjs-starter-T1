@@ -13,6 +13,8 @@ const AdminLayout = props => (
         rel='stylesheet'
       />
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <meta name="robots" content="nofollow"></meta>
+      <meta name="googlebot" content="noindex"></meta>
     </Head>
 
     {props.children}
