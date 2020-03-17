@@ -27,8 +27,8 @@ const withToken = props => WrappedComponent => {
       const { isLoginPage } = props;
 
       return isLoginPage
-      ? this._getLoginPageActionProps()
-      : this._getNotLoginPageActionProps()
+        ? this._getLoginPageActionProps()
+        : this._getNotLoginPageActionProps();
     }
 
     _getLoginPageActionProps = () => {
@@ -58,11 +58,9 @@ const withToken = props => WrappedComponent => {
     };
 
     render() {
-      const { token } = this.state;
-
       return (
         <WrappedComponent 
-          token={token} 
+          token={this.state.token} 
           {...this._getActionProps()}
         />
       );

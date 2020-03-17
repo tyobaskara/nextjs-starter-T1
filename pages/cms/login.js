@@ -7,8 +7,8 @@ import WithToken from '../../hoc/WithToken';
 // Component
 import AdminLayout from '../../components/_layouts/AdminLayout';
 
-export class signin extends PureComponent {
-  _onSignIn = () => {
+export class login extends PureComponent {
+  _onLogin = () => {
     const { onLogin } = this.props;
     const tokenValue = 'token123';
 
@@ -19,9 +19,9 @@ export class signin extends PureComponent {
     return (
       <AdminLayout>
         <div className="container">
-          <h1>Sign In Form</h1>
+          <h1>Login Form</h1>
 
-          <button className="btn btn-primary" onClick={this._onSignIn}>Sign In</button>
+          <button className="btn btn-primary" onClick={this._onLogin}>Login</button>
         </div>
       </AdminLayout>
     )
@@ -32,4 +32,4 @@ export default WithToken({
   isLoginPage: true,
   redirectTo: '/cms/dashboard',
   tokenName: Constants.loginToken
-})(signin);
+})(login);
