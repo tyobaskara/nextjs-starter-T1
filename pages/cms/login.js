@@ -1,6 +1,6 @@
 // Containers
-import AdminLayout from '../../Containers/_layouts/AdminLayout';
-import LoginContainer from '../../Containers/_cms/Login/LoginContainer';
+import AdminLayout from '../../containers/_layouts/AdminLayout';
+import LoginContainer from '../../containers/_cms/login/login.container';
 
 const LoginPage = () => (
   <AdminLayout>

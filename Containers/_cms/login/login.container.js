@@ -2,10 +2,10 @@ import { PureComponent } from 'react';
 import Constants from '../../../public/static/js/constants';
 
 // HOC
-import WithToken from '../../../HOC/WithToken';
+import WithToken from '../../../hoc/WithToken';
 
 // Components
-import Button from '../../../Components/Button';
+import Button from '../../../components/button/button.component';
 
 const { 
   cms: {
@@ -17,7 +17,7 @@ const {
 class LoginContainer extends PureComponent {
   _onLogin = () => {
     const { onLogin } = this.props;
-    const tokenValue = 'token123';
+    const tokenValue = 'token1234';
 
     onLogin(tokenValue);
   };

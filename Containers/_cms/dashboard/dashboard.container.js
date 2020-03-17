@@ -2,10 +2,10 @@ import { PureComponent } from 'react';
 import Constants from '../../../public/static/js/constants';
 
 // HOC
-import WithToken from '../../../HOC/WithToken';
+import WithToken from '../../../hoc/WithToken';
 
 // Components
-import Button from '../../../Components/Button';
+import Button from '../../../components/button/button.component';
 
 const { 
   cms: {
@@ -18,7 +18,7 @@ class DashboardContainer extends PureComponent {
   render() {
     return (
       <div className="container">
-        <h1>Dashboard Page</h1>
+        <h1>Dashboard Pagee</h1>
 
         <Button className="btn btn-danger" onClick={this.props.onLogOut}>logout</Button>
       </div>

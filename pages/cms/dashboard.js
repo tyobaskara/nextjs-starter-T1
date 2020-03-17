@@ -1,6 +1,6 @@
 // Containers
-import AdminLayout from '../../Containers/_layouts/AdminLayout';
-import DashboardContainer from '../../Containers/_cms/Dashboard/DashboardContainer';
+import AdminLayout from '../../containers/_layouts/AdminLayout';
+import DashboardContainer from '../../containers/_cms/dashboard/dashboard.container';
 
 const DashboardPage = () => (
   <AdminLayout>
