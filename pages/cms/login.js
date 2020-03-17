@@ -7,9 +7,6 @@ import AdminLayout from '../../components/_layouts/AdminLayout';
 // HOC
 import WithToken from '../../hoc/WithToken';
 
-// Components
-// import Button from '../../components/button/button.component';
-
 const { 
   cms: {
     route: { dashboardPage },

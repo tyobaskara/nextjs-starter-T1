@@ -8,7 +8,7 @@ import AdminLayout from '../../components/_layouts/AdminLayout';
 import WithToken from '../../hoc/WithToken';
 
 // Components
-import Button from '../../components/button/button.component';
+import ButtonDanger from '../../components/buttonDanger/buttonDanger.component';
 
 const { 
   cms: {
@@ -24,7 +24,7 @@ class DashboardPage extends PureComponent {
           <div className="container">
             <h1>Dashboard Pagee</h1>
 
-            <Button className="btn btn-danger" onClick={this.props.onLogOut}>logout</Button>
+            <ButtonDanger onClick={this.props.onLogOut}>logout</ButtonDanger>
           </div>
       </AdminLayout>
     )
