@@ -1,11 +1,38 @@
-// Containers
+import { PureComponent } from 'react';
+import Constants from '../../public/static/js/constants';
+
+// Layout
 import AdminLayout from '../../components/_layouts/AdminLayout';
-import DashboardContainer from '../../containers/cms/dashboard/dashboard.container';
 
-const DashboardPage = () => (
-  <AdminLayout>
-    <DashboardContainer />
-  </AdminLayout>
-);
+// HOC
+import WithToken from '../../hoc/WithToken';
 
-export default DashboardPage;
+// Components
+// import Button from '../../components/button/button.component';
+
+const { 
+  cms: {
+    route: { loginPage },
+    loginTokenName
+  }
+} = Constants;
+
+class DashboardPage extends PureComponent {
+  render() {
+    return (
+      <AdminLayout>
+          <div className="container">
+            <h1>Dashboard Pagee</h1>
+
+            <button className="btn btn-danger" onClick={this.props.onLogOut}>logout</button>
+          </div>
+      </AdminLayout>
+    )
+  }
+}
+
+export default WithToken({
+  isLoginPage: false,
+  redirectRoute: loginPage,
+  tokenName: loginTokenName
+})(DashboardPage);
