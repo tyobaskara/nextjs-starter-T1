@@ -2,24 +2,35 @@
 
 Frontend Development and CMS using Next.js Framework
 
+## Step to Create New Page
+
+- /pages/cms/user-setting.js
+- /containers/cmsUserSetting/cmsUserSetting.container.js
+- /containers/cmsUserSetting/cmsUserSetting.component.js
+
+### CMS layout
+
+- /components/_layouts/cms.layout.js
+- /public/static/css/components/_layouts/cms.layout.scss
+
 ## Redux
 
 > Redux Setup:
 
-- /dhealth-culturo/redux/actions/cmsDrawerActions.js
-- /dhealth-culturo/redux/reducers/cmsDrawerReducer.js
-- /dhealth-culturo/redux/reducers/rootReducer.js
-- /dhealth-culturo/redux/store.js
-- /dhealth-culturo/pages/_app.js
+- /redux/actions/cmsDrawerActions.js
+- /redux/reducers/cmsDrawerReducer.js
+- /redux/reducers/rootReducer.js
+- /redux/store.js
+- /pages/_app.js
 
 ### Pages Using Redux:
 
 > CMS Dashboard Layout for Drawer Hamburger to Toggle On/Off onClick Event (connect Redux on withToken HOC)
 
-- /dhealth-culturo/hoc/WithToken.js
-- /dhealth-culturo/containers/cmsDashboard/cmsDashboard.container.js
-- /dhealth-culturo/containers/cmsDashboard/cmsDashboard.component.js
-- /dhealth-culturo/components/_layouts/cms.layout.js
+- /hoc/WithToken.js
+- /containers/cmsDashboard/cmsDashboard.container.js
+- /containers/cmsDashboard/cmsDashboard.component.js
+- /components/_layouts/cms.layout.js
 
 ### Redux Dependency
 
