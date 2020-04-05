@@ -19,7 +19,7 @@ Frontend Development and CMS using Next.js Framework
 - /dhealth-culturo/hoc/WithToken.js
 - /dhealth-culturo/containers/cmsDashboard/cmsDashboard.container.js
 - /dhealth-culturo/containers/cmsDashboard/cmsDashboard.component.js
-- /dhealth-culturo/components/_layouts/dashboard.layout.js
+- /dhealth-culturo/components/_layouts/cms.layout.js
 
 ### Redux Dependency
 
