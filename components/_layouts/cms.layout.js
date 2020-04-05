@@ -103,19 +103,26 @@ export default class CmsDashboard extends PureComponent {
     )
   };
 
+  _onMenuBtnClick = item => () => {
+    const { router, toggleCmsDrawer } = this.props;
+    const { route } = item;
+    
+    toggleCmsDrawer(false);
+    router.push(route);
+  };
+
   _renderDrawerMenuItem = () => drawerMenu.map(item => {
-    const { name, iconClassName, route } = item;
-    const { activeMenu, router } = this.props;
+    const { name, iconClassName } = item;
+    const { activeMenu } = this.props;
     const isActiveMenu = activeMenu === name;
 
     return (
       <MenuBtn 
         key={name}
         name={name}
-        route={route}
-        router={router}
         iconClassName={iconClassName}
         isActiveMenu={isActiveMenu}
+        onMenuBtnClick={this._onMenuBtnClick(item)}
       />
     );
   });
