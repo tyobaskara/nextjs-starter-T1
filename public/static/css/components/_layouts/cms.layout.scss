@@ -15,6 +15,9 @@ $drawerWidth: 250px;
     padding: 5px 0;
     transition: color .2s ease-in;
     width: 100%;
+    &.active {
+      color: rgba(255,255,255,1);
+    }
     @include breakpoint(underLaptop) {
       text-align: left;
     }
