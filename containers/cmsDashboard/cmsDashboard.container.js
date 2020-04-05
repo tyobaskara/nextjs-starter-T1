@@ -4,7 +4,10 @@ import Constants from '../../public/static/js/constants';
 import WithToken from '../../hoc/WithToken';
 
 // Components
-import ButtonDanger from '../../components/buttonDanger/buttonDanger.component';
+import CmsDashboardComponent from './cmsDashboard.component';
+
+// Redux Actions
+import { toggleCmsDrawer } from '../../redux/actions/cmsDrawerActions';
 
 const { 
   cms: {
@@ -13,17 +16,18 @@ const {
   }
 } = Constants;
 
-const CmsDashboardContainer = props => {
-  return (
-    <div className="container">
-      <h1>Dashboard Page</h1>
+const CmsDashboardContainer = props => <CmsDashboardComponent {...props} />;
 
-      <ButtonDanger onClick={props.onLogOut}>logout</ButtonDanger>
-    </div>
-  );
-}
+const mapStateToProps = state => ({
+  cmsDrawer: state.cmsDrawer
+});
+
+const mapDispatchToProps = {
+  toggleCmsDrawer
+};
 
 export default WithToken({
+  connect: { mapStateToProps, mapDispatchToProps },
   isLoginPage: false,
   redirectRoute: loginPage,
   tokenName: loginTokenName

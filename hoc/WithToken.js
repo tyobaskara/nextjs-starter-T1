@@ -1,8 +1,22 @@
-import { PureComponent } from 'react'
+import { PureComponent } from 'react';
+import {connect} from 'react-redux';
 import { withRouter } from 'next/router';
 import Cookies from 'js-cookie';
+import { compose } from 'recompose';
+import isObject from 'lodash/isObject';
 
 const withToken = props => WrappedComponent => {
+  const {
+    connect: connectOpts = null
+  } = props;
+
+  const enhancers = [];
+
+  if (isObject(connectOpts)) {
+    const { mapStateToProps = null, mapDispatchToProps = null } = connectOpts;
+    enhancers.push(connect(mapStateToProps, mapDispatchToProps));
+  };
+
   class withToken extends PureComponent {
     constructor() {
       super();
@@ -60,6 +74,7 @@ const withToken = props => WrappedComponent => {
     render() {
       return (
         <WrappedComponent 
+          {...this.props}
           token={this.state.token} 
           {...this._getActionProps()}
         />
@@ -67,7 +82,9 @@ const withToken = props => WrappedComponent => {
     }
   }
 
-  return withRouter(withToken);
+  enhancers.push(withRouter);
+
+  return compose(...enhancers)(withToken);
 };
 
 export default withToken;

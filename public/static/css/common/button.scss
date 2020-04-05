@@ -35,15 +35,3 @@
     transition: color .35s ease-in-out, box-shadow .35s ease-in-out;
   }
 }
-
-.btn-gold {
-  background-color: $marigold;
-  color: $white;
-  @include border-radius(25px);
-  @include btn-text();
-  &:hover, &:active {
-    @include box-shadow(1px, 1px, 5px, rgba(0,0,0,0.2));
-    color: darken($white, 5%);
-    transition: color .35s ease-in-out, box-shadow .35s ease-in-out;
-  }
-}

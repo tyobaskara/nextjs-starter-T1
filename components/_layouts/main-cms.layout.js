@@ -1,7 +1,8 @@
+import { Fragment } from 'react';
 import Head from 'next/head';
 
 const AdminLayout = props => (
-  <div className='mainLayout_container'>
+  <Fragment>
     <Head>
       <link rel="icon" href="/static/images/favicon.ico" />
       <link
@@ -18,7 +19,7 @@ const AdminLayout = props => (
     </Head>
 
     {props.children}
-  </div>
+  </Fragment>
 );
 
 export default AdminLayout;

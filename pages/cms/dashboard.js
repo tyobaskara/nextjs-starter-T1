@@ -1,13 +1,13 @@
 // Layout
-import AdminLayout from '../../components/_layouts/admin.layout';
+import MainCMSLayout from '../../components/_layouts/main-cms.layout';
 
 // Container
 import CmsDashboardContainer from '../../containers/cmsDashboard/cmsDashboard.container';
 
 export default function DashboardPage() {
   return (
-    <AdminLayout>
+    <MainCMSLayout>
       <CmsDashboardContainer />
-    </AdminLayout>
+    </MainCMSLayout>
   );
 }

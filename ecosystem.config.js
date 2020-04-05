@@ -1,7 +1,7 @@
 module.exports = {
   apps : [
       {
-        name: "changeYourappNameHere",
+        name: "dHealth",
         script: "./server/app.js",
         watch: true,
         env: {

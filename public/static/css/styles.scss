@@ -11,8 +11,7 @@
 }
 
 body {
-  font-family: 'Helvetica';
-  color: $ebony-clay;
+  font-family: 'Roboto';
 }
 
 :focus {
@@ -20,6 +19,7 @@ body {
 }
 
 button {
+  background: none;
   border: 0;
 }
 
@@ -29,37 +29,18 @@ button:focus {
 }
 
 a:hover {
-  color: $marigold;
   text-decoration: none;
 }
 
-h2 {
-  font-family: Helvetica;
-  font-size: 34px;
-  color: $blue-zodiac;
-  @include breakpoint(maxtablet) {
-    font-size: 28px;
-  }
-  @include breakpoint(mobileonly) {
-    font-size: 25px;
-  }
+h1, h2, h3 {
+  font-size: 24px;
+  font-family: 'Roboto-Medium';
 }
 
-h3 {
-  font-family: Helvetica;
-  font-size: 20px;
-  color: $blue-zodiac;
-  @include breakpoint(maxtablet) {
-    font-size: 16px;
-  }
-}
-
-p {
-  font-family: Helvetica;
-  font-size: 14px;
-  color: $ebony-clay;
+p, span, li, label, input {
+  font-size: 16px;
   @include breakpoint(smallmobileonly) {
-    font-size: 13px;
+    font-size: 14px;
   }
 }
 
@@ -75,18 +56,18 @@ p {
   li {
     button {
       &:before {
-        color: $alto;
+        color: $black1;
         font-size: 15px;
         opacity: 1;
       }
       &:hover:before {
-        color: $marigold;
+        color: $black2;
       }
     }
     &.slick-active {
       button {
         &:before {
-          color: $marigold;
+          color: $black2;
         }
       }
     }
@@ -96,3 +77,23 @@ p {
 img {
   width: 100%;
 }
+
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(155,155,155, .25);
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+  }
+}
+
+@import './containers/cmsLogin.scss';
+@import './components/_layouts/cms.layout.scss';

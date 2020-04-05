@@ -1,5 +1,5 @@
 {
-  "name": "starter",
+  "name": "d-health",
   "version": "1.0.0",
   "description": "",
   "main": "server/app.js",
@@ -23,16 +23,21 @@
     "lodash": "^4.17.15",
     "next": "^9.1.6",
     "next-compose-plugins": "^2.2.0",
+    "next-redux-wrapper": "^5.0.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-recaptcha": "^2.3.10",
+    "react-redux": "^7.2.0",
     "react-scroll": "^1.7.15",
     "react-slick": "^0.25.2",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^9.6.0",
     "sweetalert2-react-content": "^2.0.2",
     "validator": "^12.1.0"
   },
-  "repository": "https://github.com/tyobaskara/nextjs-starter-T1.git"
+  "repository": "https://dHealth-culturo@bitbucket.org/dHealth-culturo/dhealth-culturo.git"
 }
