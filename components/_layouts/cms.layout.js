@@ -1,8 +1,18 @@
 import { PureComponent } from 'react';
 import axios from 'axios';
 
+// Constants
+import Constants from '../../public/static/js/constants';
+
 // Component
 import Loader from '../../components/loader/loader.component';
+import MenuBtn from '../../components/cmsDrawerMenuBtn/cmsDrawerMenuBtn.component';
+
+const { 
+  cms: {
+    drawerMenu
+  }
+} = Constants;
 
 export default class CmsDashboard extends PureComponent {
   constructor(props) {
@@ -87,20 +97,32 @@ export default class CmsDashboard extends PureComponent {
     return (
       <div className='cmsDrawerMenuWrapper'>
         <div className='cmsDrawerMenu'>
-          {this._renderUserMenu()}
+          {this._renderDrawerMenuItem()}
         </div>
       </div>
     )
   };
 
-  _renderUserMenu = () => (
-    <div className='menuSetting'>
-      <button className='cmsDrawer__btn'>
-        <i className="fas fa-users"></i>
-        <span>User Setting</span>
-      </button>
-    </div>
-  );
+  _renderDrawerMenuItem = () => drawerMenu.map(item => {
+    const { name, iconClassName, route } = item;
+    const { activeMenu, router } = this.props;
+    const isActiveMenu = activeMenu === name;
+
+    return (
+      <MenuBtn 
+        key={name}
+        name={name}
+        route={route}
+        router={router}
+        iconClassName={iconClassName}
+        isActiveMenu={isActiveMenu}
+      />
+    );
+  });
+
+  linkTo = route => () => {
+    this.props.router.push(route);
+  };
 
   _renderMobileHeader = () => (
     <div className='cmsHeaderMobile'>
@@ -111,7 +133,7 @@ export default class CmsDashboard extends PureComponent {
         <i className="fas fa-bars"></i>
       </button>
     </div>
-  )
+  );
 
   /**
    * cmsDrawer.isCmsDrawerOpen initialState -> cmsDrawerReducer.js
@@ -130,7 +152,7 @@ export default class CmsDashboard extends PureComponent {
         {isLoading ? <Loader /> : null}
       </div>
     )
-  }
+  };
 
   render() {
     return this.state.token ? this._renderLayout() : null;

@@ -13,11 +13,11 @@ export default class CmsDashboard extends PureComponent {
     return (
       <CmsLayout 
         {...this.props}
-        activeMenu='Dashboard'
+        activeMenu='UserSetting'
       >
         <div className='cms-wrapper'>
           <div className='cms-container'>
-            <h1>Dashboard Page</h1>
+            <h1>User Setting Page</h1>
           </div>
         </div>
       </CmsLayout>
