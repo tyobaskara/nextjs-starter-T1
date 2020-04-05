@@ -12,10 +12,14 @@ export default {
         iconClassName: 'fas fa-home'
       },
       {
-        name: 'UserSetting',
+        name: 'User Setting',
         route: '/cms/user-setting',
         iconClassName: 'fas fa-users'
       }
-    ]
+    ],
+    drawerActiveMenu: {
+      dashboard: 'Dashboard',
+      userSetting: 'User Setting'
+    }
   }
 }

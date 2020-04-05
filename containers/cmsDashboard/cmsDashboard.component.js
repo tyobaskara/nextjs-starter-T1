@@ -13,6 +13,16 @@ import CmsLayout from '../../components/_layouts/cms.layout';
 // Component
 import Loader from '../../components/loader/loader.component';
 
+import Constants from '../../public/static/js/constants.js';
+
+const {
+  cms: {
+    drawerActiveMenu: {
+      dashboard
+    }
+  }
+} = Constants;
+
 export default class CmsDashboard extends PureComponent {
   state = {
     user: '',
@@ -74,7 +84,7 @@ export default class CmsDashboard extends PureComponent {
     return (
       <CmsLayout 
         {...this.props}
-        activeMenu='Dashboard'
+        activeMenu={dashboard}
       >
         {this._renderContent()}
       </CmsLayout>

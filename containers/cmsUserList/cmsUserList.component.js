@@ -9,6 +9,16 @@ import Link from 'next/link';
 // layout
 import CmsLayout from '../../components/_layouts/cms.layout';
 
+import Constants from '../../public/static/js/constants.js';
+
+const {
+  cms: {
+    drawerActiveMenu: {
+      userSetting
+    }
+  }
+} = Constants;
+
 export default class CmsUserList extends PureComponent {
   _renderBreadCrumb = () => (
     <nav>
@@ -31,7 +41,7 @@ export default class CmsUserList extends PureComponent {
     return (
       <CmsLayout 
         {...this.props}
-        activeMenu='UserSetting'
+        activeMenu={userSetting}
       >
         <div className='cms-wrapper'>
           <div className='cms-container'>
