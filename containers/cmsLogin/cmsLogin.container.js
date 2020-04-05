@@ -13,10 +13,10 @@ const {
   }
 } = Constants;
 
-const CmsLoginContainer = props => <CmsLoginComponent {...props} />
+const Container = props => <CmsLoginComponent {...props} />
 
 export default WithToken({
   isLoginPage: true,
   redirectRoute: dashboardPage,
   tokenName: loginTokenName
-})(CmsLoginContainer);
+})(Container);

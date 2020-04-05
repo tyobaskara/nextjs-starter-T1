@@ -7,7 +7,7 @@ $drawerWidth: 250px;
   top: 0;
   bottom: 0;
   background-color: $blue1;
-  z-index: 10;
+  z-index: 110;
   
   &__btn {
     background: none;
@@ -86,7 +86,7 @@ $drawerWidth: 250px;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 5;
+      z-index: 105;
 
       &__hamburger {
         background: none;
@@ -132,6 +132,10 @@ $drawerWidth: 250px;
   }
 
   @include breakpoint(minLaptop) {
+    .cmsHeaderMobile {
+      display: none;
+    }
+
     .cmsDrawer {
       width: 50px;
       &__hamburger {
@@ -195,10 +199,54 @@ $drawerWidth: 250px;
 }
 
 .cms-container {
+  .breadcrumb-item.active {
+    a {
+      font-family: 'Roboto-Medium';
+    }
+  }
+
   @include breakpoint(minLaptop) {
     padding: 0 25px;
+
+    h1 {
+      padding: 25px 0;
+      margin: 0;
+    }
+    .breadcrumb {
+      margin-top: 25px;
+    }
   }
+
   @include breakpoint(underLaptop) {
     padding: 0 15px;
+
+    h1 {
+      padding: 20px 0;
+      margin: 0;
+    }
+    .breadcrumb {
+      margin-top: 20px;
+    }
+  }
+}
+
+.welcomeMessageWrapper {
+  position: relative;
+
+  .welcomeMessage {
+    padding-top: 25px;
+  }
+}
+
+.list-group-cms {
+  &-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    &:last-child {
+      border: 0;
+    }
   }
 }

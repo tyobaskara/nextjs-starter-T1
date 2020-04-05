@@ -35,6 +35,9 @@ a:hover {
 h1, h2, h3 {
   font-size: 24px;
   font-family: 'Roboto-Medium';
+  @include breakpoint(underLaptop) {
+    font-size: 20px;
+  }
 }
 
 p, span, li, label, input {

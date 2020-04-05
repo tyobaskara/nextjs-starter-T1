@@ -16,7 +16,7 @@ const {
   }
 } = Constants;
 
-const CmsDashboardContainer = props => <CmsUserSettingComponent {...props} />;
+const Container = props => <CmsUserSettingComponent {...props} />;
 
 const mapStateToProps = state => ({
   cmsDrawer: state.cmsDrawer
@@ -31,4 +31,4 @@ export default WithToken({
   isLoginPage: false,
   redirectRoute: loginPage,
   tokenName: loginTokenName
-})(CmsDashboardContainer);
+})(Container);

@@ -9,37 +9,22 @@ import Link from 'next/link';
 // layout
 import CmsLayout from '../../components/_layouts/cms.layout';
 
-export default class CmsDashboard extends PureComponent {
+export default class CmsResetPassword extends PureComponent {
   _renderBreadCrumb = () => (
     <nav>
       <ol className="breadcrumb">
-        <li className="breadcrumb-item active">
+        <li className="breadcrumb-item">
           <Link href="/cms/user-setting">
             <a>User Setting</a>
           </Link>
         </li>
+        <li className="breadcrumb-item active">
+          <Link href="/cms/user-setting/reset-password">
+            <a>Reset Password</a>
+          </Link>
+        </li>
       </ol>
     </nav>
-  );
-
-  _renderActionList = () => (
-    <ul className="list-group-cms">
-      <li className="list-group-cms-item">
-        <Link href="/cms/user-setting/user-list">
-          <a>User list</a>
-        </Link>
-      </li>
-      <li className="list-group-cms-item">
-        <Link href="/cms/user-setting/change-password">
-          <a>Change Password</a>
-        </Link>
-      </li>
-      <li className="list-group-cms-item">
-        <Link href="/cms/user-setting/reset-password">
-          <a>Reset Password</a>
-        </Link>
-      </li>
-    </ul>
   );
 
   render() {
@@ -51,7 +36,6 @@ export default class CmsDashboard extends PureComponent {
         <div className='cms-wrapper'>
           <div className='cms-container'>
             {this._renderBreadCrumb()}
-            {this._renderActionList()}
           </div>
         </div>
       </CmsLayout>
