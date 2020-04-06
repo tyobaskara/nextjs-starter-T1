@@ -1,37 +1,14 @@
-@mixin btn-text() {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  line-height: 40px;
-  width: 145px;
-  height: 40px;
-  @include breakpoint(smallmobileonly) {
-    font-size: 11px;
-    line-height: 35px;
-    height: 35px;
-    width: 125px;
+.btn {
+  @include breakpoint(minLaptop) {
+    font-size: 16px;
+    span {
+      font-size: 16px;
+    }
   }
-  @include breakpoint(laptop) {
+  @include breakpoint(underLaptop) {
     font-size: 14px;
-    line-height: 50px;
-    width: 182px;
-    height: 50px;
-  }
-}
-
-.btn-white {
-  background-color: $white;
-  color: $marigold;
-  @include border-radius(25px);
-  @include btn-text();
-  &:hover, &:active {
-    @include box-shadow(1px, 1px, 5px, rgba(0,0,0,0.2));
-    color: lighten($marigold, 5%);
-    transition: color .35s ease-in-out, box-shadow .35s ease-in-out;
+    span {
+      font-size: 14px;
+    }
   }
 }

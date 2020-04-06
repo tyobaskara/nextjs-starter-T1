@@ -60,6 +60,7 @@ export default class CmsCreateUser extends PureComponent {
           className="form-control" 
           id="inputEmail" 
           onChange={event => this.onInputChange(event, 'email')} 
+          value={this.state.email}
           required  
         />
       </div>
@@ -70,6 +71,7 @@ export default class CmsCreateUser extends PureComponent {
           className="form-control" 
           id="inputPassword" 
           onChange={event => this.onInputChange(event, 'password')}
+          value={this.state.password}
           required  
         />
       </div>
@@ -125,7 +127,7 @@ export default class CmsCreateUser extends PureComponent {
 
     if (isSuccess) {
       setTimeout(() => {
-        this.setState({ isSuccess: false })
+        this.setState({ isSuccess: false, successMessage: '' });
       }, 2000);
     }
 

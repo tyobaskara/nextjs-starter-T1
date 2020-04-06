@@ -4,6 +4,7 @@
  */
 
 import { PureComponent } from 'react';
+import concat from 'lodash/concat';
 
 // Layout
 import CmsLayout from '../../components/_layouts/cms.layout';
@@ -22,22 +23,21 @@ const {
   }
 } = Constants;
 
-const actionList = [
-  {
-    route: '/cms/user-setting/create-user',
-    name: 'Create User'
-  },
+const superAdminMenuList = [
   {
     route: '/cms/user-setting/user-list',
     name: 'User list'
   },
   {
+    route: '/cms/user-setting/create-user',
+    name: 'Create User'
+  }
+];
+
+const adminMenuList = [
+  {
     route: '/cms/user-setting/change-password',
     name: 'Change Password'
-  },
-  {
-    route: '/cms/user-setting/reset-password',
-    name: 'Reset Password'
   }
 ];
 
@@ -53,9 +53,16 @@ export default class CmsUserSetting extends PureComponent {
     <BreadCrumb data={breadCrumbList} />
   );
 
-  _renderActionList = () => (
-    <ActionList data={actionList} />
-  );
+  _renderActionList = () => {
+    const isSuperAdmin = true;
+    const superAdminMenu = concat(superAdminMenuList, adminMenuList);
+
+    const actionListData = isSuperAdmin ? superAdminMenu : adminMenuList
+
+    return (
+      <ActionList data={actionListData} />
+    );
+  };
 
   render() {
     return (
