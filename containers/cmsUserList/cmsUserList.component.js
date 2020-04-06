@@ -126,7 +126,9 @@ export default class CmsUserList extends PureComponent {
 
   _closeResetPasswordUserModal = () => {
     this.setState({
-      isResetPasswordModal: false
+      isResetPasswordModal: false,
+      userId: '',
+      inputResetPassword: ''
     });
   };
 
