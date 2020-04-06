@@ -47,6 +47,10 @@ export default class CmsCreateUser extends PureComponent {
     isSuccess: false
   }
 
+  componentDidMount() {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`;
+  }
+
   _renderBreadCrumb = () => (
     <BreadCrumb data={breadCrumbList} />
   );
@@ -107,7 +111,6 @@ export default class CmsCreateUser extends PureComponent {
     const { email, password } = this.state;
 
     try {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`;
       const response = await axios.post('http://nonprod.dhealth.arinanda.com/api/v1/users', {
         email,
         defaultPassword: password

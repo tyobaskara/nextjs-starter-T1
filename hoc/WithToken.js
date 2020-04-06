@@ -74,8 +74,8 @@ const withToken = props => WrappedComponent => {
     render() {
       return (
         <WrappedComponent 
-          {...this.props}
           token={this.state.token} 
+          {...this.props}
           {...this._getActionProps()}
         />
       );
