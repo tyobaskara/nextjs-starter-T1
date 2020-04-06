@@ -30,9 +30,11 @@ const withToken = props => WrappedComponent => {
       const { redirectRoute, isLoginPage } = props;
 
       if (!this.state.token && !isLoginPage) {
+        // if have not logged in , will redirect to login page
         this.props.router.push(redirectRoute);
       } 
       else if (this.state.token && isLoginPage) {
+        // if already logged in , will redirect to dashboard on login page
         this.props.router.push(redirectRoute);
       }
     }
