@@ -2,7 +2,7 @@ import Head from 'next/head';
 import MainLayout from '../components/_layouts/main.layout';
 
 // Container
-import AboutContainer from '../containers/about/about.container';
+import About from '../containers/About/About.container';
 
 export default function AboutPage() {
   return (
@@ -11,7 +11,7 @@ export default function AboutPage() {
         <title>About Us Title</title>
       </Head>
 
-      <AboutContainer />
+      <About />
     </MainLayout>
   );
 }

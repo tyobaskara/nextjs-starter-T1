@@ -5,8 +5,8 @@ import axios from 'axios';
 import Constants from '../../public/static/js/constants';
 
 // Component
-import Loader from '../../components/loader/loader.component';
-import MenuBtn from '../../components/cmsDrawerMenuBtn/cmsDrawerMenuBtn.component';
+import Loader from '../../components/Loader/Loader.component';
+import MenuBtn from '../../components/CmsDrawerMenuBtn/CmsDrawerMenuBtn.component';
 
 const { 
   cms: {
@@ -14,7 +14,7 @@ const {
   }
 } = Constants;
 
-export default class CmsDashboard extends PureComponent {
+export default class CmsLayout extends PureComponent {
   constructor(props) {
     super(props);
 

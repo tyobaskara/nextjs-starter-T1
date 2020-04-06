@@ -2,12 +2,12 @@
 import MainCMSLayout from '../../../components/_layouts/main-cms.layout';
 
 // Container
-import CmsChangePasswordContainer from '../../../containers/cmsChangePassword/cmsChangePassword.container';
+import CmsChangePassword from '../../../containers/CmsChangePassword/CmsChangePassword.container';
 
-export default function ChangePasswordPage() {
+export default function CmsChangePasswordPage() {
   return (
     <MainCMSLayout>
-      <CmsChangePasswordContainer />
+      <CmsChangePassword />
     </MainCMSLayout>
   );
 }

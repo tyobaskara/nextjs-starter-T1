@@ -199,9 +199,24 @@ $drawerWidth: 250px;
 }
 
 .cms-container {
-  .breadcrumb-item.active {
+  .breadcrumb {
+    li:only-child {
+      a {
+        font-family: 'Roboto-Medium';
+      }
+    }
+  }
+  
+  .breadcrumb-item {
     a {
       font-family: 'Roboto-Medium';
+    }
+    &.active {
+      a {
+        cursor: default;
+        font-family: 'Roboto';
+        pointer-events: none;
+      }
     }
   }
 

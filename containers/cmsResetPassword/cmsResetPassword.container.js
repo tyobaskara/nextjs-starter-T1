@@ -4,7 +4,7 @@ import Constants from '../../public/static/js/constants';
 import WithToken from '../../hoc/WithToken';
 
 // Components
-import CmsResetPasswordComponent from './cmsResetPassword.component';
+import CmsResetPassword from './CmsResetPassword.component';
 
 // Redux Actions
 import { toggleCmsDrawer } from '../../redux/actions/cmsDrawerActions';
@@ -16,7 +16,7 @@ const {
   }
 } = Constants;
 
-const Container = props => <CmsResetPasswordComponent {...props} />;
+const Container = props => <CmsResetPassword {...props} />;
 
 const mapStateToProps = state => ({
   cmsDrawer: state.cmsDrawer

@@ -4,7 +4,7 @@ import withReactContent from 'sweetalert2-react-content';
 
 const MySwal = withReactContent(Swal);
 
-class HomeContainer extends PureComponent {
+class Container extends PureComponent {
   _showModal = () => {
     MySwal.fire({
       icon: 'success',
@@ -29,4 +29,4 @@ class HomeContainer extends PureComponent {
   }
 }
 
-export default HomeContainer;
+export default Container;

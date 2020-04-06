@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import get from 'lodash/get';
 
 const isRememberMeDefaultValue = true;
 
 // Component
-import Loader from '../../components/loader/loader.component';
+import Loader from '../../components/Loader/Loader.component';
 
 // Utils
 import { getErrorMessage } from '../../utils/fetch.utils';

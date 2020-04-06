@@ -2,7 +2,7 @@ import Head from 'next/head';
 import MainLayout from '../components/_layouts/main.layout';
 
 // Containers
-import HomeContainer from '../containers/home/home.container';
+import Home from '../containers/Home/Home.container';
 
 export default function HomePage() {
   return (
@@ -11,7 +11,7 @@ export default function HomePage() {
         <title>Home Title</title>
       </Head>
 
-      <HomeContainer />
+      <Home />
     </MainLayout>
   );
 }

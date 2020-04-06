@@ -4,10 +4,12 @@
  */
 
 import { PureComponent } from 'react';
-import Link from 'next/link';
 
 // layout
 import CmsLayout from '../../components/_layouts/cms.layout';
+
+// Component
+import BreadCrumb from '../../components/BreadCrumb/BreadCrumb.component';
 
 import Constants from '../../public/static/js/constants.js';
 
@@ -19,22 +21,20 @@ const {
   }
 } = Constants;
 
+const breadCrumbList = [
+  {
+    route: '/cms/user-setting',
+    name: 'User Setting'
+  },
+  {
+    route: '/cms/user-setting/change-password',
+    name: 'Change Password'
+  }
+];
+
 export default class CmsChangePassword extends PureComponent {
   _renderBreadCrumb = () => (
-    <nav>
-      <ol className="breadcrumb">
-        <li className="breadcrumb-item">
-          <Link href="/cms/user-setting">
-            <a>User Setting</a>
-          </Link>
-        </li>
-        <li className="breadcrumb-item active">
-          <Link href="/cms/user-setting/change-password">
-            <a>Change Password</a>
-          </Link>
-        </li>
-      </ol>
-    </nav>
+    <BreadCrumb data={breadCrumbList} />
   );
 
   render() {

@@ -2,12 +2,12 @@
 import MainCMSLayout from '../../../components/_layouts/main-cms.layout';
 
 // Container
-import CmsUserList from '../../../containers/CmsUserList/CmsUserList.container';
+import CmsCreateUser from '../../../containers/CmsCreateUser/CmsCreateUser.container';
 
-export default function CmsUserListPage() {
+export default function CmsCreateUserPage() {
   return (
     <MainCMSLayout>
-      <CmsUserList />
+      <CmsCreateUser />
     </MainCMSLayout>
   );
 }

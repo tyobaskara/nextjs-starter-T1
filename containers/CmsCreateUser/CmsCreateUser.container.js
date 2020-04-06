@@ -4,7 +4,7 @@ import Constants from '../../public/static/js/constants';
 import WithToken from '../../hoc/WithToken';
 
 // Components
-import CmsDashboard from './CmsDashboard.component';
+import CmsCreateUser from './CmsCreateUser.component';
 
 // Redux Actions
 import { toggleCmsDrawer } from '../../redux/actions/cmsDrawerActions';
@@ -16,7 +16,7 @@ const {
   }
 } = Constants;
 
-const Container = props => <CmsDashboard {...props} />;
+const Container = props => <CmsCreateUser {...props} />;
 
 const mapStateToProps = state => ({
   cmsDrawer: state.cmsDrawer

@@ -2,12 +2,12 @@
 import MainCMSLayout from '../../components/_layouts/main-cms.layout';
 
 // Container
-import CmsLoginContainer from '../../containers/cmsLogin/cmsLogin.container';
+import CmsLogin from '../../containers/CmsLogin/CmsLogin.container';
 
-export default function LoginPage() {
+export default function CmsLoginPage() {
   return (
     <MainCMSLayout>
-      <CmsLoginContainer />
+      <CmsLogin />
     </MainCMSLayout>
   );
 }

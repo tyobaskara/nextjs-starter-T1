@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
 // Components
-import Header from '../_includes/header.component';
-import Footer from '../_includes/footer.component';
+import Header from '../_includes/Header.component';
+import Footer from '../_includes/Footer.component';
 
 const MainLayout = props => (
   <>

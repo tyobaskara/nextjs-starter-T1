@@ -11,7 +11,7 @@ import Link from 'next/link';
 import CmsLayout from '../../components/_layouts/cms.layout';
 
 // Component
-import Loader from '../../components/loader/loader.component';
+import Loader from '../../components/Loader/Loader.component';
 
 import Constants from '../../public/static/js/constants.js';
 

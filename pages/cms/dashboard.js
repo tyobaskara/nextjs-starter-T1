@@ -2,12 +2,12 @@
 import MainCMSLayout from '../../components/_layouts/main-cms.layout';
 
 // Container
-import CmsDashboardContainer from '../../containers/cmsDashboard/cmsDashboard.container';
+import CmsDashboard from '../../containers/CmsDashboard/CmsDashboard.container';
 
-export default function DashboardPage() {
+export default function CmsDashboardPage() {
   return (
     <MainCMSLayout>
-      <CmsDashboardContainer />
+      <CmsDashboard />
     </MainCMSLayout>
   );
 }

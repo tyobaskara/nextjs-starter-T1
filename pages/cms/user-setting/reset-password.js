@@ -2,12 +2,12 @@
 import MainCMSLayout from '../../../components/_layouts/main-cms.layout';
 
 // Container
-import CmsResetPasswordContainer from '../../../containers/cmsResetPassword/cmsResetPassword.container';
+import CmsResetPassword from '../../../containers/CmsResetPassword/CmsResetPassword.container';
 
-export default function ChangePasswordPage() {
+export default function CmsResetPasswordPage() {
   return (
     <MainCMSLayout>
-      <CmsResetPasswordContainer />
+      <CmsResetPassword />
     </MainCMSLayout>
   );
 }

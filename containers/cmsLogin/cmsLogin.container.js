@@ -4,7 +4,7 @@ import Constants from '../../public/static/js/constants';
 import WithToken from '../../hoc/WithToken';
 
 // Component
-import CmsLoginComponent from './cmsLogin.component';
+import CmsLogin from './CmsLogin.component';
 
 const { 
   cms: {
@@ -13,7 +13,7 @@ const {
   }
 } = Constants;
 
-const Container = props => <CmsLoginComponent {...props} />
+const Container = props => <CmsLogin {...props} />
 
 export default WithToken({
   isLoginPage: true,
