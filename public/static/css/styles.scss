@@ -103,6 +103,7 @@ img {
   color: red;
   font-family: 'Roboto-Medium';
   text-align: center;
+  text-transform: capitalize;
 }
 
 @import './components/CustomModal.component.scss';

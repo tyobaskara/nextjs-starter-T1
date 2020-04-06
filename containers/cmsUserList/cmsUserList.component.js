@@ -206,7 +206,7 @@ export default class CmsUserList extends PureComponent {
     this.setState({
       [stateName]: value,
       isResetPasswordError: false
-    }, () => { console.log(this.state.inputResetPassword); });
+    });
   };
 
   _showRemoveUserConfirmModal = userId => () => {
