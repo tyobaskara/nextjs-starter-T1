@@ -199,6 +199,12 @@ $drawerWidth: 250px;
 }
 
 .cms-container {
+  position: relative;
+
+  nav {
+    padding-top: 20px;
+  }
+
   .breadcrumb {
     li:only-child {
       a {
@@ -227,9 +233,6 @@ $drawerWidth: 250px;
       padding: 25px 0;
       margin: 0;
     }
-    .breadcrumb {
-      margin-top: 25px;
-    }
   }
 
   @include breakpoint(underLaptop) {
@@ -239,10 +242,44 @@ $drawerWidth: 250px;
       padding: 20px 0;
       margin: 0;
     }
-    .breadcrumb {
-      margin-top: 20px;
-    }
   }
+}
+
+.snagbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: forestgreen;
+  z-index: 105;
+  text-align: center;
+  display: none;
+  &.show {
+    display: block;
+    animation: slide-down .3s ease-out;
+    -webkit-animation: slide-down .3s ease-out;
+    -moz-animation: slide-down .3s ease-out;
+  }
+
+  span {
+    color: whitesmoke;
+    display: inline-block;
+    padding: 10px;
+    text-transform: capitalize;
+  }
+}
+
+@keyframes slide-down {
+  0% { opacity: 0; transform: translateY(-100%); }   
+100% { opacity: 1; transform: translateY(0); }
+}
+@-webkit-keyframes slide-down {
+  0% { opacity: 0; -webkit-transform: translateY(-100%); }   
+100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+@-moz-keyframes slide-down {
+  0% { opacity: 0; -moz-transform: translateY(-100%); }   
+100% { opacity: 1; -moz-transform: translateY(0); }
 }
 
 .welcomeMessageWrapper {

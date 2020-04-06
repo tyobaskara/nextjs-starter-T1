@@ -98,5 +98,11 @@ img {
   }
 }
 
+.form-error {
+  color: red;
+  font-family: 'Roboto-Medium';
+  text-align: center;
+}
+
 @import './containers/cmsLogin.scss';
 @import './components/_layouts/cms.layout.scss';
