@@ -2,6 +2,13 @@
 
 Frontend Development and CMS using Next.js Framework
 
+## Run Local Development
+
+> $ Npm install
+> $ Yarn dev
+> or
+> $ npm run dev
+
 ## Step to Create New Page
 
 - /pages/cms/user-setting.js
