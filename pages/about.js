@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import MainLayout from '../components/_layouts/main.layout';
+import MainLayout from '~/components/_layouts/main.layout';
 
 // Container
-import About from '../containers/About/About.container';
+import About from '~/containers/About/About.container';
 
 export default function AboutPage() {
   return (

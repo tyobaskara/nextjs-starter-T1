@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import MainLayout from '../components/_layouts/main.layout';
+import MainLayout from '~/components/_layouts/main.layout';
 
 // Containers
-import Home from '../containers/Home/Home.container';
+import Home from '~/containers/Home/Home.container';
 
 export default function HomePage() {
   return (

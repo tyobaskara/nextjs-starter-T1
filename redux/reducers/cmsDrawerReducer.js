@@ -1,4 +1,4 @@
-import { TOGGLE_CMS_DRAWER } from '../actions/cmsDrawerActions';
+import { TOGGLE_CMS_DRAWER } from '~/redux/actions/cmsDrawerActions';
 
 const initialState = {
   isCmsDrawerOpen: false
