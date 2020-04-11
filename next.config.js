@@ -4,7 +4,7 @@ const cssConfig = { cssModules: false };
 const { parsed: localEnv } = require('dotenv').config();
 const webpack = require('webpack');
 const withPlugins = require('next-compose-plugins');
-var path = require('path');
+const path = require('path');
 
 const nextConfig = {
   webpack(config) {
