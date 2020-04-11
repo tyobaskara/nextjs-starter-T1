@@ -3,6 +3,7 @@ export default {
     route: {
       dashboardPage: '/cms/dashboard',
       loginPage: '/cms/login',
+      userSettingPage: '/cms/user-setting'
     },
     loginTokenName: 'loginToken',
     drawerMenu: [

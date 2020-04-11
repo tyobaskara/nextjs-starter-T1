@@ -3,7 +3,7 @@
  * /public/static/js/constants.js
  */
 
-import { PureComponent } from 'react';
+import { PureComponent, Fragment } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -21,7 +21,7 @@ import CustomModal from '../../components/CustomModal/CustomModal.component';
 // Utils
 import { getErrorMessage } from '../../utils/fetch.utils';
 
-import Constants from '../../public/static/js/constants.js';
+import Constants from '../../constants/constants';
 
 const {
   cms: {
@@ -45,6 +45,7 @@ const breadCrumbList = [
 export default class CmsUserList extends PureComponent {
   state = {
     isLoading: true,
+    isFetchUserListError: false,
     userListData: [],
     pageNumber: 1,
     totalPages: 1,
@@ -76,7 +77,8 @@ export default class CmsUserList extends PureComponent {
         totalPages: paging.totalPages
       });
     } catch(error) {
-      this.setState({ isLoading: false });
+      const errorMessage = getErrorMessage(error);
+      this.setState({ isLoading: false, isFetchUserListError: true, errorMessage });
     }
   };
 
@@ -84,20 +86,16 @@ export default class CmsUserList extends PureComponent {
     <BreadCrumb data={breadCrumbList} />
   );
 
-  _renderUserList = () => {
-    const { userListData } = this.state;
-
-    return (
-      <ul className='cmsUserList'>
-        {userListData.map(user => (
-          <li key={user.email} className='cmsUserList-item'>
-            <p>Email: {user.email}</p>
-            {this._renderUserListAction(user.id)}
-          </li>
-        ))}
-      </ul>
-    );
-  };
+  _renderUserList = () => (
+    <ul className='cmsUserList'>
+      {this.state.userListData.map(user => (
+        <li key={user.email} className='cmsUserList-item'>
+          <p>Email: {user.email}</p>
+          {this._renderUserListAction(user.id)}
+        </li>
+      ))}
+    </ul>
+  );
 
   _renderUserListAction = (userId) => (
     <div className='cmsUserList-action'>
@@ -287,6 +285,23 @@ export default class CmsUserList extends PureComponent {
     this.setState({ pageNumber, isLoading: true }, this.fetchUserList);
   };
 
+  _renderUserListAndPagination = () => {
+    const { isFetchUserListError, errorMessage } = this.state;
+
+    if (isFetchUserListError) {
+      return (
+        <div className='form-error'>{errorMessage}</div>
+      );
+    }
+
+    return (
+      <Fragment>
+        {this._renderUserList()}
+        {this._renderPagination()}
+      </Fragment>
+    );
+  };
+
   render() {
     return (
       <CmsLayout 
@@ -296,8 +311,7 @@ export default class CmsUserList extends PureComponent {
         <div className='cms-wrapper'>
           <div className='cms-container'>
             {this._renderBreadCrumb()}
-            {this._renderUserList()}
-            {this._renderPagination()}
+            {this._renderUserListAndPagination()}
             {this.state.isResetPasswordModal ? this._renderResetPasswordUserModal() : null}
             {this.state.isLoading ? <Loader /> : null}
           </div>

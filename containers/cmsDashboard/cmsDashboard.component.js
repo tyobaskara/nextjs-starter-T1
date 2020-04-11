@@ -13,7 +13,7 @@ import CmsLayout from '../../components/_layouts/cms.layout';
 // Component
 import Loader from '../../components/Loader/Loader.component';
 
-import Constants from '../../public/static/js/constants.js';
+import Constants from '../../constants/constants';
 
 const {
   cms: {

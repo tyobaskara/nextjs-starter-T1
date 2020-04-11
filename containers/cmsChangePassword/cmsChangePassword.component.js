@@ -17,12 +17,15 @@ import Snagbar from '../../components/Snagbar/Snagbar.component';
 // Utils
 import { getErrorMessage } from '../../utils/fetch.utils';
 
-import Constants from '../../public/static/js/constants.js';
+import Constants from '../../constants/constants';
 
 const {
   cms: {
     drawerActiveMenu: {
       userSetting
+    },
+    route: {
+      userSettingPage
     }
   }
 } = Constants;
@@ -117,12 +120,18 @@ export default class CmsChangePassword extends PureComponent {
       });
       const successMessage = response.data.message;
       
-      this.setState({ isLoading: false, isSuccess: true, successMessage, newPassword: '', confirmPassword: '' });
+      this.setState({ isLoading: false, isSuccess: true, successMessage, newPassword: '', confirmPassword: '' }, this._redirectAfterSuccess);
     } catch (error) {
       const errorMessage = getErrorMessage(error);
 
       this.setState({ isLoading: false, isError: true, errorMessage });
     }
+  };
+
+  _redirectAfterSuccess = () => {
+    setTimeout(() => {
+      this.props.router.push(userSettingPage);
+    }, 2500);
   };
 
   _renderSuccessInfo = () => {

@@ -1,4 +1,4 @@
-import Constants from '../../public/static/js/constants';
+import Constants from '../../constants/constants';
 
 // HOC
 import WithToken from '../../hoc/WithToken';

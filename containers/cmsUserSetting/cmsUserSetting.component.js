@@ -13,7 +13,7 @@ import CmsLayout from '../../components/_layouts/cms.layout';
 import BreadCrumb from '../../components/BreadCrumb/BreadCrumb.component';
 import ActionList from '../../components/ActionList/ActionList.component';
 
-import Constants from '../../public/static/js/constants.js';
+import Constants from '../../constants/constants';
 
 const {
   cms: {

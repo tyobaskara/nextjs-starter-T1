@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import axios from 'axios';
 
 // Constants
-import Constants from '../../public/static/js/constants';
+import Constants from '../../constants/constants';
 
 // Component
 import Loader from '../../components/Loader/Loader.component';

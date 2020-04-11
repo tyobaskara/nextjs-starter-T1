@@ -17,7 +17,7 @@ import Snagbar from '../../components/Snagbar/Snagbar.component';
 // Utils
 import { getErrorMessage } from '../../utils/fetch.utils';
 
-import Constants from '../../public/static/js/constants.js';
+import Constants from '../../constants/constants';
 
 const {
   cms: {
