@@ -1,8 +1,8 @@
 // Layout
-import MainCMSLayout from '../../../components/_layouts/main-cms.layout';
+import MainCMSLayout from '~/components/_layouts/main-cms.layout';
 
 // Container
-import CmsCreateUser from '../../../containers/CmsCreateUser/CmsCreateUser.container';
+import CmsCreateUser from '~/containers/CmsCreateUser/CmsCreateUser.container';
 
 export default function CmsCreateUserPage() {
   return (

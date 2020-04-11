@@ -1,13 +1,13 @@
-import Constants from '../../constants/constants';
+import Constants from '~/constants/constants';
 
 // HOC
-import WithToken from '../../hoc/WithToken';
+import WithToken from '~/hoc/WithToken';
 
 // Components
 import CmsDashboard from './CmsDashboard.component';
 
 // Redux Actions
-import { toggleCmsDrawer } from '../../redux/actions/cmsDrawerActions';
+import { toggleCmsDrawer } from '~/redux/actions/cmsDrawerActions';
 
 const { 
   cms: {

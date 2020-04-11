@@ -2,11 +2,11 @@ import { PureComponent } from 'react';
 import axios from 'axios';
 
 // Constants
-import Constants from '../../constants/constants';
+import Constants from '~/constants/constants';
 
 // Component
-import Loader from '../../components/Loader/Loader.component';
-import MenuBtn from '../../components/CmsDrawerMenuBtn/CmsDrawerMenuBtn.component';
+import Loader from '~/components/Loader/Loader.component';
+import MenuBtn from '~/components/CmsDrawerMenuBtn/CmsDrawerMenuBtn.component';
 
 const { 
   cms: {

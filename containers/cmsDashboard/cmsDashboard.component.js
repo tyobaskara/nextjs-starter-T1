@@ -8,12 +8,12 @@ import axios from 'axios';
 import Link from 'next/link';
 
 // layout
-import CmsLayout from '../../components/_layouts/cms.layout';
+import CmsLayout from '~/components/_layouts/cms.layout';
 
 // Component
-import Loader from '../../components/Loader/Loader.component';
+import Loader from '~/components/Loader/Loader.component';
 
-import Constants from '../../constants/constants';
+import Constants from '~/constants/constants';
 
 const {
   cms: {

@@ -7,17 +7,17 @@ import { PureComponent } from 'react';
 import axios from 'axios';
 
 // layout
-import CmsLayout from '../../components/_layouts/cms.layout';
+import CmsLayout from '~/components/_layouts/cms.layout';
 
 // Component
-import BreadCrumb from '../../components/BreadCrumb/BreadCrumb.component';
-import Loader from '../../components/Loader/Loader.component';
-import Snagbar from '../../components/Snagbar/Snagbar.component';
+import BreadCrumb from '~/components/BreadCrumb/BreadCrumb.component';
+import Loader from '~/components/Loader/Loader.component';
+import Snagbar from '~/components/Snagbar/Snagbar.component';
 
 // Utils
-import { getErrorMessage } from '../../utils/fetch.utils';
+import { getErrorMessage } from '~/utils/fetch.utils';
 
-import Constants from '../../constants/constants';
+import Constants from '~/constants/constants';
 
 const {
   cms: {

@@ -1,8 +1,8 @@
 // Layout
-import MainCMSLayout from '../../components/_layouts/main-cms.layout';
+import MainCMSLayout from '~/components/_layouts/main-cms.layout';
 
 // Container
-import CmsLogin from '../../containers/CmsLogin/CmsLogin.container';
+import CmsLogin from '~/containers/CmsLogin/CmsLogin.container';
 
 export default function CmsLoginPage() {
   return (

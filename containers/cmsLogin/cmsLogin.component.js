@@ -5,10 +5,10 @@ import axios from 'axios';
 const isRememberMeDefaultValue = true;
 
 // Component
-import Loader from '../../components/Loader/Loader.component';
+import Loader from '~/components/Loader/Loader.component';
 
 // Utils
-import { getErrorMessage } from '../../utils/fetch.utils';
+import { getErrorMessage } from '~/utils/fetch.utils';
 
 export default class cmsLoginComponent extends PureComponent {
   state = {

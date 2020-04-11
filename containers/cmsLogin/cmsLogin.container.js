@@ -1,7 +1,7 @@
-import Constants from '../../constants/constants';
+import Constants from '~/constants/constants';
 
 // HOC
-import WithToken from '../../hoc/WithToken';
+import WithToken from '~/hoc/WithToken';
 
 // Component
 import CmsLogin from './CmsLogin.component';

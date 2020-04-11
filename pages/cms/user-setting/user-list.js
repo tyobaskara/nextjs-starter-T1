@@ -1,8 +1,8 @@
 // Layout
-import MainCMSLayout from '../../../components/_layouts/main-cms.layout';
+import MainCMSLayout from '~/components/_layouts/main-cms.layout';
 
 // Container
-import CmsUserList from '../../../containers/CmsUserList/CmsUserList.container';
+import CmsUserList from '~/containers/CmsUserList/CmsUserList.container';
 
 export default function CmsUserListPage() {
   return (

@@ -7,13 +7,13 @@ import { PureComponent } from 'react';
 import concat from 'lodash/concat';
 
 // Layout
-import CmsLayout from '../../components/_layouts/cms.layout';
+import CmsLayout from '~/components/_layouts/cms.layout';
 
 // Component
-import BreadCrumb from '../../components/BreadCrumb/BreadCrumb.component';
-import ActionList from '../../components/ActionList/ActionList.component';
+import BreadCrumb from '~/components/BreadCrumb/BreadCrumb.component';
+import ActionList from '~/components/ActionList/ActionList.component';
 
-import Constants from '../../constants/constants';
+import Constants from '~/constants/constants';
 
 const {
   cms: {
