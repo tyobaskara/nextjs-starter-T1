@@ -1,9 +1,14 @@
 import { PureComponent } from 'react';
 import { withRouter } from 'next/router';
 import Link from 'next/link';
+import { withTranslation } from '~/i18n';
 import find from 'lodash/find';
 
+// Utils
+import { navigateTo } from '~/utils/navigation.utils';
+
 // Constants
+import navListData from '~/constants/navListData';
 import languageSelectList from '~/constants/languageSelectList';
 
 class Header extends PureComponent {
@@ -74,30 +79,33 @@ class Header extends PureComponent {
 
   _renderNavList = () => (
     <ul className='dhealthNav-list'>
-      {this.props.navList.map(item => this._renderNavListItem(item))}
+      {navListData.map(item => this._renderNavListItem(item))}
     </ul>
   );
 
-  _renderNavListItem = ({ name, route, list}) => {
+  _renderNavListItem = ({ route, list}) => {
     const { activeNav, language } = this.props;
-    const getListClassName = name === activeNav ? ' active' : '';
+    const title = this.props.t(`${route}-title`);
+    const getListClassName = title === activeNav ? ' active' : '';
 
     if (list.length > 0) {
       return (
-        <li key={name} className={`hoverExpandList${getListClassName}`}>
+        <li key={title} className={`hoverExpandList${getListClassName}`}>
           <div>
             <Link href='#'>
               <a>
-                <span>{name}</span>
+                <span>{title}</span>
                 <i className="fas fa-caret-down"></i>
               </a>
             </Link>
             <ul>
               {list.map(listItem => {
+                const listTitle = this.props.t(`${listItem.route}-title`);
+
                 return (
-                  <li key={listItem.name}>
-                    <Link href={`/${language}/${listItem.route}`}>
-                      <a>{listItem.name}</a>
+                  <li key={listTitle}>
+                    <Link href={navigateTo(listItem.route, language)}>
+                      <a>{listTitle}</a>
                     </Link>
                   </li>
                 )
@@ -109,9 +117,9 @@ class Header extends PureComponent {
     }
 
     return (
-      <li key={name} className={getListClassName}>
+      <li key={title} className={getListClassName}>
         <Link href={`/${language}/${route}`}>
-          <a>{name}</a>
+          <a>{title}</a>
         </Link>
       </li>
     );
@@ -171,4 +179,4 @@ class Header extends PureComponent {
   }
 }
 
-export default withRouter(Header);
+export default withRouter(withTranslation('pages')(Header));

@@ -1,7 +1,8 @@
 import { PureComponent } from 'react';
 import Link from 'next/link';
+import { withTranslation } from '~/i18n';
 
-export default class Footer extends PureComponent {
+class Footer extends PureComponent {
 
   _renderFooterLeft = () => {
     return (
@@ -27,32 +28,14 @@ export default class Footer extends PureComponent {
     const { language } = this.props;
     const AboutUsList = {
       id: [
-        {
-          name: 'Tentang Kami',
-          route: 'about-us'
-        },
-        {
-          name: 'Artikel dan Berita',
-          route: 'article-and-news'
-        },
-        {
-          name: 'Testimonial',
-          route: 'testimonial'
-        }
+        { route: 'about-us' },
+        { route: 'article-and-news' },
+        { route: 'testimonial' }
       ],
       en: [
-        {
-          name: 'About Us',
-          route: 'about-us'
-        },
-        {
-          name: 'Article and News',
-          route: 'article-and-news'
-        },
-        {
-          name: 'Testimonial',
-          route: 'testimonial'
-        }
+        { route: 'about-us' },
+        { route: 'article-and-news' },
+        { route: 'testimonial' }
       ]
     };
 
@@ -61,12 +44,12 @@ export default class Footer extends PureComponent {
         <p className='footer-title'>About</p>
         <ul>
           {AboutUsList[language].map(list => {
-            const { name, route } = list;
+            const { route } = list;
 
             return (
-              <li key={name}>
+              <li key={this.props.t(`${route}-title`)}>
                 <Link href={`/${language}/${route}`}>
-                  <a>{name}</a>
+                  <a>{this.props.t(`${route}-title`)}</a>
                 </Link>
               </li>
             );
@@ -80,48 +63,18 @@ export default class Footer extends PureComponent {
     const { language } = this.props;
     const ProductList = {
       id: [
-        {
-          name: 'Front Office',
-          route: 'front-office'
-        },
-        {
-          name: 'Back Office',
-          route: 'back-office'
-        },
-        {
-          name: 'Supporting 1',
-          route: 'supporting-1'
-        },
-        {
-          name: 'Supporting 2',
-          route: 'supporting-2'
-        },
-        {
-          name: 'Information',
-          route: 'information'
-        }
+        { route: 'front-office' },
+        { route: 'back-office' },
+        { route: 'supporting-1' },
+        { route: 'supporting-2' },
+        { route: 'information' }
       ],
       en: [
-        {
-          name: 'Front Office',
-          route: 'front-office'
-        },
-        {
-          name: 'Back Office',
-          route: 'back-office'
-        },
-        {
-          name: 'Supporting 1',
-          route: 'supporting-1'
-        },
-        {
-          name: 'Supporting 2',
-          route: 'supporting-2'
-        },
-        {
-          name: 'Information',
-          route: 'information'
-        }
+        { route: 'front-office' },
+        { route: 'back-office' },
+        { route: 'supporting-1' },
+        { route: 'supporting-2' },
+        { route: 'information' }
       ]
     };
     
@@ -130,12 +83,12 @@ export default class Footer extends PureComponent {
         <p className='footer-title'>Products</p>
         <ul>
           {ProductList[language].map(list => {
-            const { name, route } = list;
+            const { route } = list;
 
             return (
-              <li key={name}>
+              <li key={this.props.t(`${route}-title`)}>
                 <Link href={`/${language}/${route}`}>
-                  <a>{name}</a>
+                  <a>{this.props.t(`${route}-title`)}</a>
                 </Link>
               </li>
             );
@@ -235,3 +188,5 @@ export default class Footer extends PureComponent {
     )
   }
 }
+
+export default withTranslation('pages')(Footer);

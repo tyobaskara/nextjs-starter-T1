@@ -11,7 +11,7 @@ const nextConfig = {
     config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
     config.resolve.alias["~"] = path.join(__dirname);
 
-    return config
+    return config;
   }
 }
 

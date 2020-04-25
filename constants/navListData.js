@@ -1,110 +1,42 @@
-export default {
-  id: 
-  [
-    {
-      name: 'Beranda',
-      route: 'home',
-      list: []
-    },
-    {
-      name: 'Tentang Kami',
-      route: 'about-us',
-      list: []
-    },
-    {
-      name: 'Produk',
-      route: '',
-      list: [
-        {
-          name: 'Front Office',
-          route: ''
-        },
-        {
-          name: 'Back Office',
-          route: ''
-        },
-        {
-          name: 'Supporting 1',
-          route: ''
-        },
-        {
-          name: 'Supporting 2',
-          route: ''
-        },
-        {
-          name: 'Information',
-          route: ''
-        }
-      ]
-    },
-    {
-      name: 'Testimonial',
-      route: '',
-      list: []
-    },
-    {
-      name: 'Artikel & Berita',
-      route: '',
-      list: []
-    },
-    {
-      name: 'Kontak Kami',
-      route: '',
-      list: []
-    },
-  ],
-  en: [
-    {
-      name: 'Home',
-      route: 'home',
-      list: []
-    },
-    {
-      name: 'About Us',
-      route: 'about-us',
-      list: []
-    },
-    {
-      name: 'Product',
-      route: '',
-      list: [
-        {
-          name: 'Front Office',
-          route: ''
-        },
-        {
-          name: 'Back Office',
-          route: ''
-        },
-        {
-          name: 'Supporting 1',
-          route: ''
-        },
-        {
-          name: 'Supporting 2',
-          route: ''
-        },
-        {
-          name: 'Information',
-          route: ''
-        }
-      ]
-    },
-    {
-      name: 'Testimonial',
-      route: '',
-      list: []
-    },
-    {
-      name: 'Article & News',
-      route: '',
-      list: []
-    },
-    {
-      name: 'Contact Us',
-      route: '',
-      list: []
-    },
-  ]
-}
-
+export default [
+  {
+    route: 'home',
+    list: []
+  },
+  {
+    route: 'about-us',
+    list: []
+  },
+  {
+    route: 'product',
+    list: [
+      {
+        route: 'front-office'
+      },
+      {
+        route: 'back-office'
+      },
+      {
+        route: 'supporting-1'
+      },
+      {
+        route: 'supporting-2'
+      },
+      {
+        route: 'information'
+      }
+    ]
+  },
+  {
+    route: 'testimonial',
+    list: []
+  },
+  {
+    route: 'article-and-news',
+    list: []
+  },
+  {
+    route: 'contact-us',
+    list: []
+  },
+];

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
+import i18n from 'i18next';
 
 // Components
 import MainLayout from '~/components/_layouts/main.layout';
@@ -7,16 +8,13 @@ import MainLayout from '~/components/_layouts/main.layout';
 // Containers
 import Home from '~/containers/Home/Home.container';
 
-// Constants
-import navListData from '~/constants/navListData';
-
-export default function HomePage(props) {
-  const { navList } = props;
+function HomePage() {
   const language = 'id';
+
+  i18n.changeLanguage(language);
 
   return (
     <MainLayout 
-      navList={navList[language]}
       activeNav='Beranda'
       language={language}
     >
@@ -34,7 +32,9 @@ HomePage.getInitialProps = async () => {
   const photos = await res.json();
   
   return {
-    navList: navListData,
+    namespacesRequired: ['common', 'pages'],
     photos
   }
 }
+
+export default HomePage;

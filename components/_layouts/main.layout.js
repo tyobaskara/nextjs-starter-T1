@@ -21,7 +21,6 @@ const MainLayout = props => (
       </Head>
 
       <Header 
-        navList={props.navList}
         activeNav={props.activeNav}
         language={props.language}
       />
