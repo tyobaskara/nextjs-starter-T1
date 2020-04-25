@@ -20,9 +20,15 @@ const MainLayout = props => (
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       </Head>
 
-      <Header />
+      <Header 
+        navList={props.navList}
+        activeNav={props.activeNav}
+        language={props.language}
+      />
       {props.children}
-      <Footer />
+      <Footer
+        language={props.language}
+      />
     </div>
   </>
 );

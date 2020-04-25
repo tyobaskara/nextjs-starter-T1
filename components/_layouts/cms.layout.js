@@ -149,7 +149,7 @@ export default class CmsLayout extends PureComponent {
     const { isLoading } = this.state;
     const { cmsDrawer: { isCmsDrawerOpen }, children } = this.props;
     const layoutClass = isCmsDrawerOpen
-      ? 'layout-dashboard drawer-open' : 'layout-dashboard';
+      ? 'layout-cms drawer-open' : 'layout-cms';
 
     return (
       <div className={layoutClass}>

@@ -45,16 +45,16 @@ BREAKPOINTS
   @else if $point == minLaptop {
     @media (min-width: 1024px) { @content ; }
   }
-  @else if $point == maxtablet {
+  @else if $point == maxTablet {
     @media (max-width: 1023px) { @content ; }
   }
   @else if $point == minTablet {
     @media (min-width: 768px) { @content ; }
   }
-  @else if $point == mobileonly {
+  @else if $point == mobile {
     @media (max-width: 767px)  { @content ; }
   }
-  @else if $point == smallmobileonly {
+  @else if $point == smallMobile {
     @media (max-width: 320px)  { @content ; }
   }
 }
