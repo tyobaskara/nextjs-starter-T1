@@ -2,20 +2,20 @@ import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 
 // Components
-import MainLayout from '~/components/_layouts/main.layout';
+import LayoutMain from '@components/LayoutMain.layout';
 
 // Container
-import About from '~/containers/About/About.container';
+import About from '@components/About.container';
 
 // Constants
-import navListData from '~/constants/navListData';
+import navListData from '@constants/navListData';
 
 export default function AboutPage(props) {
   const { navList } = props;
   const language = 'id';
 
   return (
-    <MainLayout 
+    <LayoutMain 
       navList={navList[language]}
       activeNav='Tentang Kami'
       language={language}
@@ -25,7 +25,7 @@ export default function AboutPage(props) {
       </Head>
 
       <About />
-    </MainLayout>
+    </LayoutMain>
   );
 }
 

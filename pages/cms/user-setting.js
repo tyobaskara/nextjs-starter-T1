@@ -1,13 +1,13 @@
 // Layout
-import MainCMSLayout from '~/components/_layouts/main-cms.layout';
+import LayoutMainCms from '@components/LayoutMainCms.layout';
 
 // Container
-import CmsUserSetting from '~/containers/CmsUserSetting/CmsUserSetting.container';
+import CmsUserSetting from '@components/CmsUserSetting.container';
 
 export default function CmsUserSettingPage() {
   return (
-    <MainCMSLayout>
+    <LayoutMainCms>
       <CmsUserSetting />
-    </MainCMSLayout>
+    </LayoutMainCms>
   );
 }

@@ -2,12 +2,12 @@
 import LayoutMainCms from '@components/LayoutMainCms.layout';
 
 // Container
-import CmsLogin from '@components/CmsLogin.container';
+import CmsCreateUser from '@components/CmsCreateUser.container';
 
-export default function CmsLoginPage() {
+export default function CmsCreateUserPage() {
   return (
     <LayoutMainCms>
-      <CmsLogin />
+      <CmsCreateUser />
     </LayoutMainCms>
   );
 }

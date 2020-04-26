@@ -43,5 +43,8 @@
     "sweetalert2-react-content": "^2.0.2",
     "validator": "^12.1.0"
   },
-  "repository": "https://dHealth-culturo@bitbucket.org/dHealth-culturo/dhealth-culturo.git"
+  "repository": "https://dHealth-culturo@bitbucket.org/dHealth-culturo/dhealth-culturo.git",
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0"
+  }
 }

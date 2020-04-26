@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
-import { i18n } from '~/i18n';
+import { i18n } from '../../i18n';
 
 // Components
-import MainLayout from '~/components/_layouts/main.layout';
+import LayoutMain from '@components/LayoutMain.layout';
 
 // Containers
-import Home from '~/containers/Home/Home.container';
+import Home from '@components/Home.container';
 
 function HomePage(props) {
   const language = 'id';
@@ -14,7 +14,7 @@ function HomePage(props) {
   i18n.changeLanguage(language);
 
   return (
-    <MainLayout 
+    <LayoutMain 
       activeNav='Beranda'
       language={language}
     >
@@ -23,7 +23,7 @@ function HomePage(props) {
       </Head>
 
       <Home language={language} />
-    </MainLayout>
+    </LayoutMain>
   );
 }
 
