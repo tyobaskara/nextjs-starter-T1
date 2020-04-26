@@ -183,6 +183,7 @@ class Footer extends PureComponent {
             {this._renderFooterMid()}
             {this._renderFooterRight()}
           </div>
+          <p className='footer__bottom'>Powered by DOCOTEL</p>
         </div>
       </footer>
     )

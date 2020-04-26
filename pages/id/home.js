@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
-import i18n from 'i18next';
+import { i18n } from '~/i18n';
 
 // Components
 import MainLayout from '~/components/_layouts/main.layout';
@@ -8,7 +8,7 @@ import MainLayout from '~/components/_layouts/main.layout';
 // Containers
 import Home from '~/containers/Home/Home.container';
 
-function HomePage() {
+function HomePage(props) {
   const language = 'id';
 
   i18n.changeLanguage(language);
@@ -32,7 +32,7 @@ HomePage.getInitialProps = async () => {
   const photos = await res.json();
   
   return {
-    namespacesRequired: ['common', 'pages'],
+    namespacesRequired: ['pages'],
     photos
   }
 }
