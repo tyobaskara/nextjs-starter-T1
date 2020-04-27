@@ -1,9 +1,9 @@
 import { PureComponent } from 'react';
 import { withRouter } from 'next/router';
 
-class index extends PureComponent {
+class cms extends PureComponent {
   componentDidMount() {
-    this.props.router.push('/en/home');
+    this.props.router.push('/cms/login');
   }
 
   render() {
@@ -11,8 +11,8 @@ class index extends PureComponent {
   }
 }
 
-index.getInitialProps = () => ({
+cms.getInitialProps = () => ({
   namespacesRequired: ['common']
 });
 
-export default withRouter(index);
+export default withRouter(cms);

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
+import { i18n } from '../../i18n';
 
 // Components
 import LayoutMain from '@components/LayoutMain.layout';
@@ -13,6 +14,8 @@ import navListData from '@constants/navListData';
 export default function AboutPage(props) {
   const { navList } = props;
   const language = 'en';
+
+  i18n.changeLanguage(language);
 
   return (
     <LayoutMain 
@@ -34,6 +37,7 @@ AboutPage.getInitialProps = async () => {
   const photos = await res.json();
   
   return {
+    namespacesRequired: ['common'],
     navList: navListData,
     photos
   }

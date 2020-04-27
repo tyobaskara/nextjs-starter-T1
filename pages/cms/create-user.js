@@ -4,10 +4,16 @@ import LayoutMainCms from '@components/LayoutMainCms.layout';
 // Container
 import CmsCreateUser from '@components/CmsCreateUser.container';
 
-export default function CmsCreateUserPage() {
+function CmsCreateUserPage() {
   return (
     <LayoutMainCms>
       <CmsCreateUser />
     </LayoutMainCms>
   );
 }
+
+CmsCreateUserPage.getInitialProps = () => ({
+  namespacesRequired: ['common']
+});
+
+export default CmsCreateUserPage;

@@ -4,10 +4,16 @@ import LayoutMainCms from '@components/LayoutMainCms.layout';
 // Container
 import CmsUserList from '@components/CmsUserList.container';
 
-export default function CmsUserListPage() {
+function CmsUserListPage() {
   return (
     <LayoutMainCms>
       <CmsUserList />
     </LayoutMainCms>
   );
 }
+
+CmsUserListPage.getInitialProps = () => ({
+  namespacesRequired: ['common']
+});
+
+export default CmsUserListPage;

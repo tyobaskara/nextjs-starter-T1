@@ -6,7 +6,7 @@ function _error() {
   )
 }
 
-_error.getInitialProps = async () => ({
+_error.getInitialProps = () => ({
   namespacesRequired: ['common']
 });
 
