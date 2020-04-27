@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"]
+      "@components": ["./components/*"],
+      "@constants": ["./constants/*"],
+      "@hoc": ["./hoc/*"],
+      "@static": ["./public/static/*"],
+      "@redux": ["./redux/*"],
+      "@utils": ["./utils/*]"]
     }
   },
   "exclude": ["node_modules", "dist"]

@@ -1,13 +1,19 @@
 // Layout
-import MainCMSLayout from '~/components/_layouts/main-cms.layout';
+import LayoutMainCms from '@components/LayoutMainCms.layout';
 
 // Container
-import CmsLogin from '~/containers/CmsLogin/CmsLogin.container';
+import CmsLogin from '@components/CmsLogin.container';
 
-export default function CmsLoginPage() {
+function CmsLoginPage() {
   return (
-    <MainCMSLayout>
+    <LayoutMainCms>
       <CmsLogin />
-    </MainCMSLayout>
+    </LayoutMainCms>
   );
 }
+
+CmsLoginPage.getInitialProps = () => ({
+  namespacesRequired: ['common']
+});
+
+export default CmsLoginPage;

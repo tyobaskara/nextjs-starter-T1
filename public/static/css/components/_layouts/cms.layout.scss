@@ -77,7 +77,23 @@ $drawerWidth: 250px;
   overflow: scroll;
 }
 
-.layout-dashboard {
+.layout-cms {
+  h1, h2, h3 {
+    font-size: 24px;
+    font-family: 'Roboto-Medium';
+    @include breakpoint(underLaptop) {
+      font-size: 20px;
+    }
+  }
+
+  p, span, li, label, input {
+    font-size: 16px;
+    font-family: 'Roboto';
+    @include breakpoint(smallMobile) {
+      font-size: 14px;
+    }
+  }
+
   @include breakpoint(underLaptop) {
     .cmsHeaderMobile {
       background-color: $blue1;

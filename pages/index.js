@@ -1,17 +1,18 @@
-import Head from 'next/head';
-import MainLayout from '~/components/_layouts/main.layout';
+import { PureComponent } from 'react';
+import { withRouter } from 'next/router';
 
-// Containers
-import Home from '~/containers/Home/Home.container';
+class index extends PureComponent {
+  componentDidMount() {
+    this.props.router.push('/en/home');
+  }
 
-export default function HomePage() {
-  return (
-    <MainLayout>
-      <Head>
-        <title>Home Title</title>
-      </Head>
-
-      <Home />
-    </MainLayout>
-  );
+  render() {
+    return <div></div>;
+  }
 }
+
+index.getInitialProps = () => ({
+  namespacesRequired: ['common']
+});
+
+export default withRouter(index);

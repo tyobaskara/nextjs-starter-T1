@@ -11,10 +11,6 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Roboto';
-}
-
 :focus {
   outline: none;
 }
@@ -29,22 +25,50 @@ button:focus {
   box-shadow: none;
 }
 
+ul {
+  margin: 0;
+  list-style-type: none;
+}
+
 a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3 {
-  font-size: 24px;
-  font-family: 'Roboto-Medium';
+.mainLayout_container {
+  padding-top: 115px;
   @include breakpoint(underLaptop) {
-    font-size: 20px;
+    padding-top: 90px;
   }
-}
 
-p, span, li, label, input {
-  font-size: 16px;
-  @include breakpoint(smallmobileonly) {
-    font-size: 14px;
+  h1 {
+    font-family: 'OpenSans-Bold';
+    font-size: 48px;
+  }
+  
+  h2 {
+    font-size: 32px;
+    &.title {
+      background-image: linear-gradient(to bottom, #28528b, #68b86f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      padding: 45px 0;
+      margin: 0;
+    }
+  }
+  
+  h3 {
+    font-family: 'OpenSans-SemiBold';
+    font-size: 22px;
+    color: #444444;
+  }
+  
+  p, span, li, label, input {
+    font-size: 16px;
+    font-family: 'OpenSans';
+    @include breakpoint(smallMobile) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -60,18 +84,18 @@ p, span, li, label, input {
   li {
     button {
       &:before {
-        color: $black1;
-        font-size: 15px;
+        color: $grey1;
+        font-size: 20px;
         opacity: 1;
       }
       &:hover:before {
-        color: $black2;
+        color: $red1;
       }
     }
     &.slick-active {
       button {
         &:before {
-          color: $black2;
+          color: $red1;
         }
       }
     }
@@ -106,7 +130,37 @@ img {
   text-transform: capitalize;
 }
 
-@import './components/CustomModal.component.scss';
+.container {
+  &--dots {
+    background-image: url('/static/images/bg-products.png'), url('/static/images/bg-products.png');
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, no-repeat;
+
+    @include breakpoint(minLaptop) {
+      max-width: 1300px;
+      padding: 0 80px;
+    }
+  }
+}
+
+.section-grey2 {
+  background-color: $grey2;
+}
+
+// Containers
 @import './containers/cmsLogin.scss';
+
+// Components
+@import './components/Header.component.scss';
+@import './components/Footer.component.scss';
+@import './components/CustomModal.component.scss';
 @import './components/_layouts/cms.layout.scss';
 @import './components/CmsUserList.component.scss';
+@import './components/HeroBanner.component.scss';
+@import './components/ProductExcellences.component.scss';
+@import './components/KeyFeatures.component.scss';
+@import './components/Products.component.scss';
+@import './components/Clients.component.scss';
+@import './components/Testimonial.component.scss';
+@import './components/ArticleAndNews.component.scss';
+@import './components/CoverageOfClients.component.scss';

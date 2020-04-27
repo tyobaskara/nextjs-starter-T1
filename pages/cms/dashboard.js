@@ -1,13 +1,19 @@
 // Layout
-import MainCMSLayout from '~/components/_layouts/main-cms.layout';
+import LayoutMainCms from '@components/LayoutMainCms.layout';
 
 // Container
-import CmsDashboard from '~/containers/CmsDashboard/CmsDashboard.container';
+import CmsDashboard from '@components/CmsDashboard.container';
 
-export default function CmsDashboardPage() {
+function CmsDashboardPage() {
   return (
-    <MainCMSLayout>
+    <LayoutMainCms>
       <CmsDashboard />
-    </MainCMSLayout>
+    </LayoutMainCms>
   );
 }
+
+CmsDashboardPage.getInitialProps = () => ({
+  namespacesRequired: ['common']
+});
+
+export default CmsDashboardPage;

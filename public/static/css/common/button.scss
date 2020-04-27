@@ -11,4 +11,22 @@
       font-size: 14px;
     }
   }
+
+  &-blue {
+    border-radius: 26.9px;
+    background-color: $blue1;
+    font-family: 'OpenSans';
+    font-size: 16.5px;
+    color: rgba(255,255,255,.85);
+    display: inline-block;
+    letter-spacing: 1.1px;
+    margin-top: 31px;
+    padding: 15px;
+    text-align: center;
+    transition: color .2s ease-in;
+    width: 253px;
+    &:hover {
+      color: rgba(255,255,255,1);
+    }
+  }
 }

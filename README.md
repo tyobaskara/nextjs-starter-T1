@@ -4,7 +4,8 @@ Checkout to master-dhealth-culturo instead master branch for succeed deploy prod
 
 # D'health Web Development
 
-Frontend Development and CMS using Next.js Framework
+Frontend Development and CMS using Next.js Framework,
+Every Frontend Development starts from pages folder.
 
 ## Run Local Development
 
