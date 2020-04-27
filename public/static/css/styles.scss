@@ -59,15 +59,25 @@ a:hover {
   
   h3 {
     font-family: 'OpenSans-SemiBold';
-    font-size: 22px;
+    font-size: 20px;
     color: #444444;
+
+    @include breakpoint(min992) {
+      font-size: 20px;
+    }
+    @include breakpoint(min1200) {
+      font-size: 22px;
+    }
   }
   
   p, span, li, label, input {
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'OpenSans';
-    @include breakpoint(smallMobile) {
+    @include breakpoint(min992) {
       font-size: 14px;
+    }
+    @include breakpoint(min1200) {
+      font-size: 16px;
     }
   }
 }
@@ -77,8 +87,8 @@ a:hover {
 }
 
 .slick-dots {
-  position: absolute;
-  bottom: 25px;
+  position: relative;
+  bottom: 0;
   left: 0;
   right: 0;
   li {
@@ -136,9 +146,14 @@ img {
     background-position: right bottom, left top;
     background-repeat: no-repeat, no-repeat;
 
-    @include breakpoint(minLaptop) {
+    @include breakpoint(min992) {
       max-width: 1300px;
-      padding: 0 80px;
+      padding: 0 50px;
+    }
+
+    @include breakpoint(min1200) {
+      max-width: 1300px;
+      padding: 0 100px;
     }
   }
 }

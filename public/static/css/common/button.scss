@@ -1,8 +1,8 @@
 .btn {
   @include breakpoint(minLaptop) {
-    font-size: 16px;
+    font-size: 14px;
     span {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
   @include breakpoint(underLaptop) {
@@ -16,7 +16,7 @@
     border-radius: 26.9px;
     background-color: $blue1;
     font-family: 'OpenSans';
-    font-size: 16.5px;
+    font-size: 14px;
     color: rgba(255,255,255,.85);
     display: inline-block;
     letter-spacing: 1.1px;

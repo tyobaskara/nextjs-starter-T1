@@ -45,13 +45,14 @@ function Products(props) {
           className='Products__list'
           {...slickSettings}
         >
+
         <div>
           <div 
             className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/bg-products.png')" }}>
+            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
             <Image
               className='Products__list-icon'
-              src='/static/images/keyfeatures-icon1.png'
+              src='/static/images/product-card-icon.png'
             />
             <h3>Front Office</h3>
             <p>Focusing on improving service quality for patient experiences. From the moment patients needed healthcare services, up to the point they are being served inside the hospitals.</p>
@@ -66,10 +67,10 @@ function Products(props) {
         <div>
           <div 
             className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/bg-products.png')" }}>
+            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
             <Image
               className='Products__list-icon'
-              src='/static/images/keyfeatures-icon1.png'
+              src='/static/images/product-card-icon.png'
             />
             <h3>Back Office</h3>
             <p>The backbone of hospital management. Handling the financial and logistic issues, simplifying the main unit businesses of hospitals.</p>
@@ -84,10 +85,10 @@ function Products(props) {
         <div>
           <div 
             className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/bg-products.png')" }}>
+            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
             <Image
               className='Products__list-icon'
-              src='/static/images/keyfeatures-icon1.png'
+              src='/static/images/product-card-icon.png'
             />
             <h3>Front Office</h3>
             <p>Focusing on improving service quality for patient experiences. From the moment patients needed healthcare services, up to the point they are being served inside the hospitals.</p>
@@ -102,10 +103,10 @@ function Products(props) {
         <div>
           <div 
             className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/bg-products.png')" }}>
+            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
             <Image
               className='Products__list-icon'
-              src='/static/images/keyfeatures-icon1.png'
+              src='/static/images/product-card-icon.png'
             />
             <h3>Front Office</h3>
             <p>Focusing on improving service quality for patient experiences. From the moment patients needed healthcare services, up to the point they are being served inside the hospitals.</p>
@@ -120,10 +121,10 @@ function Products(props) {
         <div>
           <div 
             className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/bg-products.png')" }}>
+            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
             <Image
               className='Products__list-icon'
-              src='/static/images/keyfeatures-icon1.png'
+              src='/static/images/product-card-icon.png'
             />
             <h3>Front Office</h3>
             <p>Focusing on improving service quality for patient experiences. From the moment patients needed healthcare services, up to the point they are being served inside the hospitals.</p>
@@ -134,6 +135,7 @@ function Products(props) {
             </div>
           </div>
         </div>
+        
       </Slider>
     );
   };

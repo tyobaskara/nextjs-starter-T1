@@ -57,6 +57,18 @@ BREAKPOINTS
   @else if $point == smallMobile {
     @media (max-width: 320px)  { @content ; }
   }
+  @else if $point == min1200 {
+    @media (min-width: 1200px) { @content ; }
+  }
+  @else if $point == min992 {
+    @media (min-width: 992px) { @content ; }
+  }
+  @else if $point == min768 {
+    @media (min-width: 768px) { @content ; }
+  }
+  @else if $point == min576 {
+    @media (min-width: 576px) { @content ; }
+  }
 }
 
 @mixin border-radius($radius) {

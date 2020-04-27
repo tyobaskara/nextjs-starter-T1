@@ -1,9 +1,3 @@
-# Branch
-
-- master
-- master-v1
-- master-dhealth-culturo
-
 # D'health Web Development
 
 Frontend Development and CMS using Next.js Framework,

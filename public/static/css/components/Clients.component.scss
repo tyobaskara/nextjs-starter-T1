@@ -35,6 +35,7 @@ $sliderPadding: 12px;
 
       &:before {
         content: '';
+        background-image: url('/static/images/arrow-left.png');
       }
     }
 
@@ -43,6 +44,7 @@ $sliderPadding: 12px;
 
       &:before {
         content: '';
+        background-image: url('/static/images/arrow-right.png');
       }
     }
 

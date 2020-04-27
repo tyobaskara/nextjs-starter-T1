@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import Slider from "react-slick";
 
+// Components
+import Image from '@components/Image.component';
+
 // Utils
 import { navigateTo } from '@utils/navigation.utils';
 // import ReactHtmlParser from 'react-html-parser';
@@ -21,15 +24,16 @@ export default function HeroBanner(props) {
       <Slider {...settings}>
       
         <div className='heroBanner-wrapper'>
-          <img 
+          <Image
             className='heroBanner-bg' 
-            src='https://dummyimage.com/1920x514/333333/ffffff&text=1920x514'  
+            src='/static/images/banner-1.png'
+            srcSet={['/static/images/banner-1@2x.png', '/static/images/banner-1@3x.png']}
           />
 
           <div className='container'>
             <div className='row'>
-              <div className='col-sm-8'>
-                <div className='heroBanner__highlight active'>
+              <div className='col-sm-7'>
+                <div className='heroBanner__highlight'>
                   <h1>One Hospital <br/>Management System <br/>For All Hospital Needs</h1>
                   <p>Thought experiments (Gedankenexperimenten) are “facts” in the sense that they have a “real life” correlate in the form of electrochemical activity in the brain.</p>
                   <Link href={navigateTo('about-us', language)}>
@@ -39,24 +43,54 @@ export default function HeroBanner(props) {
               </div>
             </div>
           </div>
+
+        </div>
+      
+        <div className='heroBanner-wrapper'>
+          <Image
+            className='heroBanner-bg' 
+            src='/static/images/banner-2.png'
+            srcSet={['/static/images/banner-2@2x.png', '/static/images/banner-2@3x.png']}
+          />
         </div>
 
         <div className='heroBanner-wrapper'>
-          <img 
+          <Image
             className='heroBanner-bg' 
-            src='https://dummyimage.com/1920x514/333333/ffffff&text=1920x514'  
+            src='/static/images/banner-3.png'
+            srcSet={['/static/images/banner-3@2x.png', '/static/images/banner-3@3x.png']}
+          />
+        </div>
+
+        <div className='heroBanner-wrapper'>
+          <Image
+            className='heroBanner-bg'
+            src='/static/images/banner-4.png'
+            srcSet={['/static/images/banner-4@2x.png', '/static/images/banner-4@3x.png']}
+          />
+        </div>
+
+        <div className='heroBanner-wrapper'>
+          <Image
+            className='heroBanner-bg'
+            src='/static/images/banner-5.png'
+            srcSet={['/static/images/banner-5@2x.png', '/static/images/banner-5@3x.png']}
           />
 
           <div className='container'>
             <div className='row'>
-              <div className='col-sm-8'>
+              <div className='col-sm-7'>
                 <div className='heroBanner__highlight'>
-                  <h2>One Hospital <br/>Management System <br/>For All Hospital Needs</h2>
+                  <h1>One Hospital <br/>Management System <br/>For All Hospital Needs</h1>
                   <p>Thought experiments (Gedankenexperimenten) are “facts” in the sense that they have a “real life” correlate in the form of electrochemical activity in the brain.</p>
+                  <Link href={navigateTo('about-us', language)}>
+                    <a className='btn-blue'>See More Testimonial</a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
 
       </Slider>

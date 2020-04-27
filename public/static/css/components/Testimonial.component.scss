@@ -15,10 +15,18 @@
       background-color: white;
       border-radius: 10px;
       box-shadow: 0 20px 60px 0 rgba(25, 104, 252, 0.1);
-      min-height: 475px;
+      min-height: 500px;
       margin-bottom: 45px;
       padding: 30px;
       position: relative;
+
+      @include breakpoint(min992) {
+        min-height: 520px;
+      }
+
+      @include breakpoint(min1200) {
+        min-height: 500px;
+      }
     }
 
     &-profile {

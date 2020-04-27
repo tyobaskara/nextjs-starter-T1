@@ -14,10 +14,18 @@
       background-repeat: no-repeat;
       background-size: 160px 150px;
       background-position: top left;
-      height: 525px;
+      height: 500px;
       padding: 20px 15px;
       position: relative;
       text-align: center;
+
+      @include breakpoint(min992) {
+        height: 500px;
+      }
+  
+      @include breakpoint(min1200) {
+        height: 550px;
+      }
 
       h3 {
         line-height: 1;
