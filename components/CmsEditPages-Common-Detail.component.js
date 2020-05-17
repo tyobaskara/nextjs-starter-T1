@@ -133,8 +133,6 @@ export default class CmsEditPagesDetail extends PureComponent {
     const imageSrc = isObject(file) 
       ? URL.createObjectURL(file) 
       : file;
-    console.log('this.state.formData');
-    console.log(this.state.formData);
 
     return (
       <div className="form-group" key={stateKey}>
