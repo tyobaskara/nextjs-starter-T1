@@ -1,0 +1,21 @@
+.customModal.cmsResetPasswordModal {
+  .customModal-wrapper {
+    width: 300px;
+  }
+}
+
+.formResetPassword {
+  &-title {
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  &-action {
+    margin-top: 25px;
+    .btn {
+      margin-right: 15px;
+    }
+  }
+}

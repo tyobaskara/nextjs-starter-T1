@@ -3,7 +3,8 @@ export default {
     route: {
       dashboardPage: '/cms/dashboard',
       loginPage: '/cms/login',
-      userSettingPage: '/cms/user-setting'
+      userSettingPage: '/cms/user-setting',
+      editPagesHomeBannerPage: '/cms-edit-pages-home/banner'
     },
     loginTokenName: 'loginToken',
     drawerMenu: [
@@ -16,11 +17,17 @@ export default {
         name: 'User Setting',
         route: '/cms/user-setting',
         iconClassName: 'fas fa-users'
+      },
+      {
+        name: 'Edit Pages',
+        route: '/cms/edit-pages',
+        iconClassName: 'fas fa-file-code'
       }
     ],
     drawerActiveMenu: {
       dashboard: 'Dashboard',
-      userSetting: 'User Setting'
+      userSetting: 'User Setting',
+      editPages: 'Edit Pages'
     }
   }
 }

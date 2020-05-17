@@ -71,10 +71,10 @@ export default class CmsDashboard extends PureComponent {
     return isLoading ? <Loader /> : (
       <div className='cms-wrapper'>
         <div className='cms-container'>
+          {this._renderBreadCrumb()}
           <div className='welcomeMessageWrapper'>
             {this._renderWelcomeMessage()}
           </div>
-          {this._renderBreadCrumb()}
         </div>
       </div>
     );

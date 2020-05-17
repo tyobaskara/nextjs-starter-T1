@@ -87,9 +87,9 @@ export default class CmsUserList extends PureComponent {
   );
 
   _renderUserList = () => (
-    <ul className='cmsUserList'>
+    <ul className='cmsList'>
       {this.state.userListData.map(user => (
-        <li key={user.email} className='cmsUserList-item'>
+        <li key={user.email} className='cmsList__item'>
           <p>Email: {user.email}</p>
           {this._renderUserListAction(user.id)}
         </li>
@@ -98,7 +98,7 @@ export default class CmsUserList extends PureComponent {
   );
 
   _renderUserListAction = (userId) => (
-    <div className='cmsUserList-action'>
+    <div className='cmsList__action'>
       <button 
         className='btn btn-warning'
         onClick={this._showResetPasswordUserModal(userId)}
