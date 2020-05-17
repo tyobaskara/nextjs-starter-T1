@@ -232,11 +232,26 @@ export default class CmsEditPagesList extends PureComponent {
     }, this.fetchListData);
   };
 
+  _renderLinkBtnVideoConfig = () => {
+    const { videoConfig } = this.props;
+
+    return videoConfig ? (
+      <div>
+        <Link 
+          href={`/cms-edit-pages/config?configKey=${videoConfig}`}
+        >
+          <a className='btn btn-warning mb-3'>Set Video Config</a>
+        </Link>
+      </div>
+    ) : null;
+  };
+
   render() {
     return (
       <Fragment>
         {this._renderBreadCrumb()}
         {this._renderListAndPagination()}
+        {this._renderLinkBtnVideoConfig()}
         {this.state.isLoading ? <Loader /> : null}
       </Fragment>
     );

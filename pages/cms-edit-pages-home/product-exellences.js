@@ -37,7 +37,8 @@ function CmsEditPagesHomeProductExellencesPage() {
     listTitle: 'Product Exellences',
     apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/product-exellences',
     apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/product-exellences/delete',
-    linkActionList:  '/cms-edit-pages-home-product-exellences'
+    linkActionList:  '/cms-edit-pages-home-product-exellences',
+    videoConfig: 'PDE'
   });
 
   return (

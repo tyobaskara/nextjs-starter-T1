@@ -12,7 +12,7 @@ import CmsEditPagesCommonList from '@components/CmsEditPages-Common-List.compone
 export default function CmsEditPagesList(props) {
   const _renderCmsEditPagesCommonList = () => {
     const { token, apiGetListUrl, apiRemoveListUrl,
-      breadCrumbList, linkActionList, listTitle } = props;
+      breadCrumbList, linkActionList, listTitle, videoConfig } = props;
 
     return (
       <CmsEditPagesCommonList 
@@ -23,6 +23,7 @@ export default function CmsEditPagesList(props) {
         linkActionList={linkActionList}
         token={token}
         showPagination={false}
+        videoConfig={videoConfig}
       />
     );
   };

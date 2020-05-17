@@ -303,7 +303,8 @@ $drawerWidth: 250px;
 
     .preview-image {
       max-height: 300px;
-      width: auto;
+      width: 100%;
+      max-width: 750px;
       display: block;
     }
   }
