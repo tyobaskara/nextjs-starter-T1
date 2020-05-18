@@ -12,7 +12,7 @@ import isObject from 'lodash/isObject';
 import LayoutCms from '@components/LayoutCms.layout';
 
 // Component
-import CmsEditPagesCommonConfig from '@components/CmsEditPages-Common-Config.component';
+import CmsEditPagesConfigForm from '@components/CmsEditPages-Config-Form.component';
 import Loader from '@components/Loader.component';
 
 // Utils
@@ -94,12 +94,12 @@ export default class CmsEditPagesConfig extends PureComponent {
     return transformedData;
   };
 
-  _renderCmsEditPagesCommonConfig = () => {
+  _renderCmsEditPagesConfigForm = () => {
     const { breadCrumbList, apiConfig } = this.props;
     const { configData, formData } = this.state;
 
     return !isEmpty(configData) && (
-      <CmsEditPagesCommonConfig 
+      <CmsEditPagesConfigForm 
         breadCrumbList={breadCrumbList}
         configData={configData}
         defaultFormData={formData}
@@ -120,7 +120,7 @@ export default class CmsEditPagesConfig extends PureComponent {
       >
         <div className='cms-wrapper'>
           <div className='cms-container'>
-            {this._renderCmsEditPagesCommonConfig()}
+            {this._renderCmsEditPagesConfigForm()}
             {this._renderErrorMessage()}
             {this.state.isLoading ? <Loader /> : null}
           </div>

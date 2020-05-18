@@ -10,7 +10,7 @@ import axios from 'axios';
 import LayoutCms from '@components/LayoutCms.layout';
 
 // Component
-import CmsEditPagesCommonCreate from '@components/CmsEditPages-Common-Create.component';
+import CmsEditPagesCreateForm from '@components/CmsEditPages-Create-Form.component';
 
 export default class CmsEditPagesCreate extends PureComponent {
   constructor(props) {
@@ -25,12 +25,12 @@ export default class CmsEditPagesCreate extends PureComponent {
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`;
   }
 
-  _renderCmsEditPagesCommonCreate = () => {
+  _renderCmsEditPagesCreateForm = () => {
     const { formData } = this.state;
     const { apiCreateUrl, inputFileList, breadCrumbList, dataFixture } = this.props;
 
     return (
-      <CmsEditPagesCommonCreate 
+      <CmsEditPagesCreateForm 
         detailBreadCrumbList={breadCrumbList}
         detailData={dataFixture}
         defaultFormData={formData}
@@ -48,7 +48,7 @@ export default class CmsEditPagesCreate extends PureComponent {
       >
         <div className='cms-wrapper'>
           <div className='cms-container'>
-            {this._renderCmsEditPagesCommonCreate()}
+            {this._renderCmsEditPagesCreateForm()}
           </div>
         </div>
       </LayoutCms>

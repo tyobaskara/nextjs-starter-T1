@@ -7,15 +7,15 @@
 import LayoutCms from '@components/LayoutCms.layout';
 
 // Component
-import CmsEditPagesCommonList from '@components/CmsEditPages-Common-List.component';
+import CmsEditPagesListAction from '@components/CmsEditPages-List-Action.component';
 
 export default function CmsEditPagesList(props) {
-  const _renderCmsEditPagesCommonList = () => {
+  const _renderCmsEditPagesListAction = () => {
     const { token, apiGetListUrl, apiRemoveListUrl,
       breadCrumbList, linkActionList, listTitle, videoConfig } = props;
 
     return (
-      <CmsEditPagesCommonList 
+      <CmsEditPagesListAction 
         title={listTitle}
         apiGetListUrl={apiGetListUrl}
         apiRemoveListUrl={apiRemoveListUrl}
@@ -35,7 +35,7 @@ export default function CmsEditPagesList(props) {
     >
       <div className='cms-wrapper'>
         <div className='cms-container'>
-          {_renderCmsEditPagesCommonList()}
+          {_renderCmsEditPagesListAction()}
         </div>
       </div>
     </LayoutCms>

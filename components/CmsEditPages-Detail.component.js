@@ -12,7 +12,7 @@ import isObject from 'lodash/isObject';
 import LayoutCms from '@components/LayoutCms.layout';
 
 // Component
-import CmsEditPagesCommonDetail from '@components/CmsEditPages-Common-Detail.component';
+import CmsEditPagesDetailForm from '@components/CmsEditPages-Detail-Form.component';
 import Loader from '@components/Loader.component';
 
 // Utils
@@ -92,7 +92,7 @@ export default class CmsEditPagesDetail extends PureComponent {
     return transformedData;
   };
 
-  _renderCmsEditPagesCommonDetail = () => {
+  _renderCmsEditPagesDetailForm = () => {
     const { listId, pid, breadCrumbList, breadCrumbListActive, 
       apiUpdateUrl, inputFileList } = this.props;
     const { detailData, formData } = this.state;
@@ -106,7 +106,7 @@ export default class CmsEditPagesDetail extends PureComponent {
     ];
 
     return !isEmpty(detailData) && (
-      <CmsEditPagesCommonDetail 
+      <CmsEditPagesDetailForm 
         detailBreadCrumbList={detailBreadCrumbList}
         detailData={detailData}
         defaultFormData={formData}
@@ -128,7 +128,7 @@ export default class CmsEditPagesDetail extends PureComponent {
       >
         <div className='cms-wrapper'>
           <div className='cms-container'>
-            {this._renderCmsEditPagesCommonDetail()}
+            {this._renderCmsEditPagesDetailForm()}
             {this._renderErrorMessage()}
             {this.state.isLoading ? <Loader /> : null}
           </div>

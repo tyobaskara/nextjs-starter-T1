@@ -19,7 +19,7 @@ import Loader from '@components/Loader.component';
 import isEmpty from 'lodash/isEmpty';
 import { getErrorMessage } from '@utils/fetch.utils';
 
-export default class CmsEditPagesList extends PureComponent {
+export default class CmsEditPagesListAction extends PureComponent {
   state = {
     isLoading: true,
     isFetchDataError: false,

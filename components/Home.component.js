@@ -12,7 +12,8 @@ import CoverageOfClients from '@components/CoverageOfClients.component';
 
 class Container extends PureComponent {
   render() {
-    const { language } = this.props;
+    const { language, content } = this.props;
+    console.log(content);
 
     return (
       <div>

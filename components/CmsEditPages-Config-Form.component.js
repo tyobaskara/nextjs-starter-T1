@@ -18,7 +18,7 @@ import Image from '@components/Image.component';
 import { getErrorMessage } from '@utils/fetch.utils';
 import { capitalizeFirstLetter } from '@utils/string.utils';
 
-export default class CmsEditPagesDetail extends PureComponent {
+export default class CmsEditPagesConfigForm extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -36,7 +36,7 @@ export default class CmsEditPagesDetail extends PureComponent {
       <form className='form-cmsContent' onSubmit={this._submitForm}>
         {this._renderFormItems()}
         {this._renderErrorMessage()}
-        <button type="submit" className="btn btn-primary">Update</button>
+        <button type="submit" className="btn btn-primary">Save</button>
       </form>
     );
   };
@@ -48,18 +48,18 @@ export default class CmsEditPagesDetail extends PureComponent {
   ) : null;
 
   _renderFormItems= () => {
-    const { detailData } = this.props;
-    const formKeys = Object.keys(detailData);
+    const { configData } = this.props;
+    const formKeys = Object.keys(configData);
 
-    return this._getFormItems(detailData, formKeys);
+    return this._getFormItems(configData, formKeys);
   };
 
-  _getFormItems = (detailData, keys) => {
+  _getFormItems = (configData, keys) => {
     const _renderFormItems = [];
 
     for (let i = 0; i < keys.length; i++) {
       const topLevelLabelName = keys[i];
-      const formItemData = detailData[topLevelLabelName];
+      const formItemData = configData[topLevelLabelName];
 
       if (isObject(formItemData)) {
         const nestedKeys = Object.keys(formItemData);
@@ -164,6 +164,8 @@ export default class CmsEditPagesDetail extends PureComponent {
   };
 
   _renderInputText = (stateKey, label) => {
+    const isDisabled = label === 'key' ? true : false;
+    
     return (
       <div className="form-group" key={stateKey}>
         <label htmlFor={stateKey}>{capitalizeFirstLetter(label)}</label>
@@ -173,6 +175,7 @@ export default class CmsEditPagesDetail extends PureComponent {
           id={stateKey} 
           onChange={event => this.onInputChange(event, stateKey)} 
           value={this.state.formData[stateKey]}
+          disabled={isDisabled}
         />
       </div>
     );
@@ -195,26 +198,18 @@ export default class CmsEditPagesDetail extends PureComponent {
 
     this.setState({
       isLoading: true
-    }, this.fetchUpdateDetail)
+    }, this.fetchSaveConfig)
   };
 
-  fetchUpdateDetail = async () => {
+  fetchSaveConfig = async () => {
     const { formData } = this.state;
-    const { apiUpdateUrl } = this.props;
-
-    let fetchFormData = new FormData();
-    for ( let key in formData ) {
-      fetchFormData.append(key, formData[key]);
-    }
+    const { apiSaveConfig } = this.props;
 
     try {
       const options = {
         method: 'POST',
-        headers: {
-          'content-type': 'multipart/form-data'
-        },
-        data: fetchFormData,
-        url: apiUpdateUrl
+        data: formData,
+        url: apiSaveConfig
       };
       const response = await axios(options);
       const successMessage = response.data.message;
@@ -231,7 +226,7 @@ export default class CmsEditPagesDetail extends PureComponent {
   };
 
   _renderBreadCrumb = () => (
-    <BreadCrumb data={this.props.detailBreadCrumbList} />
+    <BreadCrumb data={this.props.breadCrumbList} />
   );
   
   _renderSuccessInfo = () => {
@@ -252,12 +247,12 @@ export default class CmsEditPagesDetail extends PureComponent {
   };
 
   render() {
-    const { detailData } = this.props;
+    const { configData } = this.props;
 
     return (
       <Fragment>
         {this._renderBreadCrumb()}
-        {!isEmpty(detailData) ? this._renderFormContainer() : null}
+        {!isEmpty(configData) ? this._renderFormContainer() : null}
         {this._renderSuccessInfo()}
         {this.state.isLoading ? <Loader /> : null}
       </Fragment>

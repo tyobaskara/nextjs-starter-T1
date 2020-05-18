@@ -10,7 +10,6 @@ import Home from '@components/Home.container';
 
 function HomePage(props) {
   const language = 'id';
-
   i18n.changeLanguage(language);
 
   return (
@@ -22,18 +21,21 @@ function HomePage(props) {
         <title>Beranda</title>
       </Head>
 
-      <Home language={language} />
+      <Home 
+        {...props}
+        language={language} 
+      />
     </LayoutMain>
   );
 }
 
 HomePage.getInitialProps = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/photos');
-  const photos = await res.json();
+  const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/home');
+  const { data } = await res.json();
   
   return {
     namespacesRequired: ['pages'],
-    photos
+    content: data
   }
 }
 

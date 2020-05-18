@@ -18,7 +18,7 @@ import Image from '@components/Image.component';
 import { getErrorMessage } from '@utils/fetch.utils';
 import { capitalizeFirstLetter } from '@utils/string.utils';
 
-export default class CmsEditPagesCreate extends PureComponent {
+export default class CmsEditPagesDetailForm extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -36,7 +36,7 @@ export default class CmsEditPagesCreate extends PureComponent {
       <form className='form-cmsContent' onSubmit={this._submitForm}>
         {this._renderFormItems()}
         {this._renderErrorMessage()}
-        <button type="submit" className="btn btn-primary">Create</button>
+        <button type="submit" className="btn btn-primary">Update</button>
       </form>
     );
   };
@@ -195,12 +195,12 @@ export default class CmsEditPagesCreate extends PureComponent {
 
     this.setState({
       isLoading: true
-    }, this.fetchCreate)
+    }, this.fetchUpdateDetail)
   };
 
-  fetchCreate = async () => {
-    const { apiCreateUrl } = this.props;
+  fetchUpdateDetail = async () => {
     const { formData } = this.state;
+    const { apiUpdateUrl } = this.props;
 
     let fetchFormData = new FormData();
     for ( let key in formData ) {
@@ -214,7 +214,7 @@ export default class CmsEditPagesCreate extends PureComponent {
           'content-type': 'multipart/form-data'
         },
         data: fetchFormData,
-        url: apiCreateUrl
+        url: apiUpdateUrl
       };
       const response = await axios(options);
       const successMessage = response.data.message;
