@@ -240,7 +240,7 @@ export default class CmsEditPagesCreateForm extends PureComponent {
     if (isSuccess) {
       setTimeout(() => {
         this.setState({ isSuccess: false, successMessage: '' });
-      }, 3000);
+      }, 1000);
     }
 
     return (

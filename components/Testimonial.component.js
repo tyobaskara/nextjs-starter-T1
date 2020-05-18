@@ -49,7 +49,7 @@ function Testimonial(props) {
           <div className='Testimonial__list-item'>
             <div className='Testimonial__list-profile'>
               <Image
-                src='/static/images/keyfeatures-icon1.png'
+                src='/static/images/testimonial-1.png'
               />
               <h3>John Doe</h3>
               <p>CEO, RS Budi Kasih</p>
@@ -79,7 +79,7 @@ function Testimonial(props) {
           <div className='Testimonial__list-item'>
             <div className='Testimonial__list-profile'>
               <Image
-                src='/static/images/keyfeatures-icon1.png'
+                src='/static/images/testimonial-1.png'
               />
               <h3>John Doe</h3>
               <p>CEO, RS Budi Kasih</p>
@@ -109,7 +109,7 @@ function Testimonial(props) {
           <div className='Testimonial__list-item'>
             <div className='Testimonial__list-profile'>
               <Image
-                src='/static/images/keyfeatures-icon1.png'
+                src='/static/images/testimonial-1.png'
               />
               <h3>John Doe</h3>
               <p>CEO, RS Budi Kasih</p>

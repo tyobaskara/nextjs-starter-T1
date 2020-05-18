@@ -13,15 +13,31 @@ import CoverageOfClients from '@components/CoverageOfClients.component';
 class Container extends PureComponent {
   render() {
     const { language, content } = this.props;
+    const { mainBanner, productExellence, keyFeatures, products, clients } = content;
     console.log(content);
 
     return (
       <div>
-        <HeroBanner language={language} />
-        <ProductExellences/>
-        <KeyFeatures/>
-        <Products language={language} />
-        <Clients/>
+        <HeroBanner 
+          language={language} 
+          content={mainBanner}
+        />
+        <ProductExellences
+          language={language}
+          content={productExellence}
+        />
+        <KeyFeatures
+          language={language}
+          content={keyFeatures}
+        />
+        <Products 
+          language={language} 
+          content={products}
+        />
+        <Clients
+          language={language} 
+          content={clients}
+        />
         <Testimonial language={language} />
         <ArticleAndNews language={language} />
         <CoverageOfClients />

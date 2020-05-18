@@ -4,6 +4,9 @@ import { PureComponent } from 'react';
 import Image from '@components/Image.component';
 import YoutubeEmbed from '@components/YoutubeEmbed.component';
 
+// Utils
+import ReactHtmlParser from 'react-html-parser';
+
 const imageData = {
   src: '/static/images/product-exellences-bg.png',
   srcSet: [
@@ -14,11 +17,12 @@ const imageData = {
 
 export default class ProductExellences extends PureComponent {
   _renderLeftContent = () => {
+    const { content: { videoLink } } = this.props;
     return (
       <div className='col-sm-6 productExellences__left'>
         <YoutubeEmbed 
           className='productExellences__youtube'
-          youtubeId='5Peo-ivmupE'
+          youtubeId={videoLink}
         />
       </div>
     );
@@ -29,45 +33,26 @@ export default class ProductExellences extends PureComponent {
       <div className='col-sm-6 productExellences__right'>
 
         <ul className='productExellences__list'>
-          <li>
-            <Image 
-              src='/static/images/product-exellences-icon-1.png'
-              className='productExellences__list-icon'
-            />
-            <h3>Well-Design Solution</h3>
-            <p>Designed by using top-down approaches, from business capabilities to system functionality.</p>
-          </li>
-
-          <li>
-            <Image 
-              src='/static/images/product-exellences-icon-2.png'
-              className='productExellences__list-icon'
-            />
-            <h3>Highly Standardized</h3>
-            <p>Fulfilling the high standards of KARS (Komisi Akreditas Rumah Sakit), both in administration recording and patient data representation.</p>
-          </li>
-
-          <li>
-            <Image 
-              src='/static/images/product-exellences-icon-3.png'
-              className='productExellences__list-icon'
-            />
-            <h3>Flexibly Interoperable</h3>
-            <p>Able to manage all data growth, modules and features addition, without decreasing system productivity.</p>
-          </li>
-
-          <li>
-            <Image 
-              src='/static/images/product-exellences-icon-4.png'
-              className='productExellences__list-icon'
-            />
-            <h3>Advanced, yet Simple & Easy to Use</h3>
-            <p>Optimal user interface that creates simplicity and ease-of-use for doctor, nurse, and hospital management.</p>
-          </li>
+          {this._renderRightListItems()}
         </ul>
 
       </div>
     );
+  };
+
+  _renderRightListItems = () => {
+    const { content: { items = [] }, language } = this.props;
+
+    return items.map(listItem => (
+      <li key={listItem.title[language]}>
+        <Image 
+          src={listItem.image}
+          className='productExellences__list-icon'
+        />
+        <h3>{ReactHtmlParser(listItem.title[language])}</h3>
+        <p>{ReactHtmlParser(listItem.description[language])}</p>
+      </li>
+    ));
   };
 
   render() {

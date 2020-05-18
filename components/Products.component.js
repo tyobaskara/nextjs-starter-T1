@@ -1,15 +1,13 @@
-import Link from 'next/link';
 import Slider from 'react-slick';
 
 //Components
 import Image from '@components/Image.component';
+import ButtonLink from '@components/ButtonLink.component';
 
 // Utils
-import { navigateTo } from '@utils/navigation.utils';
-// import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 
 function Products(props) {
-  const { language } = props;
   const slickSettings = {
     dots: true,
     infinite: false,
@@ -39,104 +37,38 @@ function Products(props) {
     ]
   };
 
-  function _renderSlider() {
+  const _renderSlider = () => (
+    <Slider 
+      className='Products__list'
+      {...slickSettings}
+    >
+      {props.content.map(listItem => _renderSliderItem(listItem))}
+    </Slider>
+  );
+
+  function _renderSliderItem(listItem) {
+    const { language } = props;
+    const { image, title, description, link } = listItem;
+
     return (
-      <Slider 
-          className='Products__list'
-          {...slickSettings}
-        >
-
-        <div>
-          <div 
-            className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
-            <Image
-              className='Products__list-icon'
-              src='/static/images/product-card-icon.png'
+      <div key={title[language]}>
+        <div 
+          className='Products__list-item'
+          style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
+          <Image
+            className='Products__list-icon'
+            src={image}
+          />
+          <h3>{ReactHtmlParser(title[language])}</h3>
+          <p>{ReactHtmlParser(description[language])}</p>
+          <div className='Products__list-btn'>
+            <ButtonLink 
+              link={link}
+              text='Explore More'
             />
-            <h3>Front Office</h3>
-            <p>Focusing on improving service quality for patient experiences. From the moment patients needed healthcare services, up to the point they are being served inside the hospitals.</p>
-            <div className='Products__list-btn'>
-              <Link href={navigateTo('about-us', language)}>
-                <a className='btn-blue'>Explore More</a>
-              </Link>
-            </div>
           </div>
         </div>
-
-        <div>
-          <div 
-            className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
-            <Image
-              className='Products__list-icon'
-              src='/static/images/product-card-icon.png'
-            />
-            <h3>Back Office</h3>
-            <p>The backbone of hospital management. Handling the financial and logistic issues, simplifying the main unit businesses of hospitals.</p>
-            <div className='Products__list-btn'>
-              <Link href={navigateTo('about-us', language)}>
-                <a className='btn-blue'>Explore More</a>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div 
-            className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
-            <Image
-              className='Products__list-icon'
-              src='/static/images/product-card-icon.png'
-            />
-            <h3>Front Office</h3>
-            <p>Focusing on improving service quality for patient experiences. From the moment patients needed healthcare services, up to the point they are being served inside the hospitals.</p>
-            <div className='Products__list-btn'>
-              <Link href={navigateTo('about-us', language)}>
-                <a className='btn-blue'>Explore More</a>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div 
-            className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
-            <Image
-              className='Products__list-icon'
-              src='/static/images/product-card-icon.png'
-            />
-            <h3>Front Office</h3>
-            <p>Focusing on improving service quality for patient experiences. From the moment patients needed healthcare services, up to the point they are being served inside the hospitals.</p>
-            <div className='Products__list-btn'>
-              <Link href={navigateTo('about-us', language)}>
-                <a className='btn-blue'>Explore More</a>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div 
-            className='Products__list-item'
-            style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
-            <Image
-              className='Products__list-icon'
-              src='/static/images/product-card-icon.png'
-            />
-            <h3>Front Office</h3>
-            <p>Focusing on improving service quality for patient experiences. From the moment patients needed healthcare services, up to the point they are being served inside the hospitals.</p>
-            <div className='Products__list-btn'>
-              <Link href={navigateTo('about-us', language)}>
-                <a className='btn-blue'>Explore More</a>
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-      </Slider>
+      </div>
     );
   };
   

@@ -55,7 +55,7 @@ function ArticleAndNews(props) {
               <a className='ArticleAndNews__list-item'>
                 <div className='ArticleAndNews__list-top'>
                   <Image 
-                    src='/static/images/clients-2.png'
+                    src='/static/images/article-2.png'
                   />
                   <span 
                     className='ArticleAndNews__list-tag'
@@ -86,7 +86,7 @@ function ArticleAndNews(props) {
               <a className='ArticleAndNews__list-item'>
                 <div className='ArticleAndNews__list-top'>
                   <Image 
-                    src='/static/images/clients-2.png'
+                    src='/static/images/article-2.png'
                   />
                   <span 
                     className='ArticleAndNews__list-tag'
@@ -117,7 +117,7 @@ function ArticleAndNews(props) {
               <a className='ArticleAndNews__list-item'>
                 <div className='ArticleAndNews__list-top'>
                   <Image 
-                    src='/static/images/clients-2.png'
+                    src='/static/images/article-2.png'
                   />
                   <span 
                     className='ArticleAndNews__list-tag'

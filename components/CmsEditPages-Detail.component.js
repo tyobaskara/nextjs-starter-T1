@@ -71,8 +71,6 @@ export default class CmsEditPagesDetail extends PureComponent {
           const formDataKey0 = `${topLevelKeyName}${nestedKey1}`;
 
           if (isObject(nestedDetailData1)) {
-            const nestedDetailData1 = nestedDetailData1;
-
             for (let nestedKey1 in nestedDetailData1) {
               const nestedDetailData2 = nestedDetailData1[nestedKey1];
               const nestedKey2 = nestedKey1 === 'id' ? 'Idn' : capitalizeFirstLetter(nestedKey1);
