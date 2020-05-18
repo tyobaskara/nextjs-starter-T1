@@ -13,8 +13,8 @@ import CoverageOfClients from '@components/CoverageOfClients.component';
 class Container extends PureComponent {
   render() {
     const { language, content } = this.props;
-    const { mainBanner, productExellence, keyFeatures, products, clients } = content;
-    console.log(content);
+    const { mainBanner, productExellence, keyFeatures, 
+      products, clients } = content;
 
     return (
       <div>

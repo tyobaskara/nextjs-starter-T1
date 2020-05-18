@@ -42,11 +42,11 @@ function Products(props) {
       className='Products__list'
       {...slickSettings}
     >
-      {props.content.map(listItem => _renderSliderItem(listItem))}
+      {props.content.map((listItem, index) => _renderSliderItem(listItem, index))}
     </Slider>
   );
 
-  function _renderSliderItem(listItem) {
+  function _renderSliderItem(listItem, index) {
     const { language } = props;
     const { image, title, description, link } = listItem;
 
@@ -54,7 +54,7 @@ function Products(props) {
       <div key={title[language]}>
         <div 
           className='Products__list-item'
-          style={{ backgroundImage: "url('/static/images/product-card-bg.png')" }}>
+          style={{ backgroundImage: `url('/static/images/product-card-bg-${index + 1}.png')` }}>
           <Image
             className='Products__list-icon'
             src={image}
