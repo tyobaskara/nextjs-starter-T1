@@ -48,8 +48,9 @@
     top: 0;
     bottom:0;
     right: 0;
-    width: 100%;
+    width: auto;
     height: 100%;
+    margin: auto;
     @include object-fit(contain);
   }
 

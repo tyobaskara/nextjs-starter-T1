@@ -65,6 +65,7 @@ function Products(props) {
             <ButtonLink 
               link={link}
               text='Explore More'
+              language={language}
             />
           </div>
         </div>

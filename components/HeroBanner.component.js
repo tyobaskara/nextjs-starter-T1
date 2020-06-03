@@ -45,6 +45,7 @@ export default function HeroBanner(props) {
                   <ButtonLink
                     link={button.link}
                     text={button.text[language]}
+                    language={language}
                   />
                 </div>
               </div>

@@ -5,7 +5,7 @@ import { navigateTo } from '@utils/navigation.utils';
 import { validateHttp } from '@utils/string.utils';
 
 export default function ButtonLink(props) {
-  const { link, text} = props;
+  const { link, text, language } = props;
 
   const _renderButtonLink = () => validateHttp(link) ? (
     <a 

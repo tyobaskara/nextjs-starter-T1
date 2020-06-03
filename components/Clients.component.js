@@ -50,7 +50,7 @@ export default function Clients(props) {
     const { language } = props;
 
     return (
-      <div>
+      <div key={text[language]}>
         <div className='Clients__list-item'>
           <Image 
             src={image}
