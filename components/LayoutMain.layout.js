@@ -24,11 +24,13 @@ const LayoutMain = props => (
 
       <Header 
         activeNav={props.activeNav}
+        activeNestedNav={props.activeNestedNav}
         language={props.language}
       />
       {props.children}
       <Footer
         language={props.language}
+        footerData={props.footerData}
       />
     </div>
   </>

@@ -48,10 +48,6 @@ const editPagesListRoute = [
     name: 'Clients'
   },
   {
-    route: '/cms-edit-pages-home/testimonial',
-    name: 'Testimonial'
-  },
-  {
     route: '/cms-edit-pages-home/articles-and-news',
     name: 'Article And News'
   },

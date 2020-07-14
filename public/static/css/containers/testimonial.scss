@@ -1,0 +1,153 @@
+.testimonial {
+  background-image: url('/static/images/testimonial-bg.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+
+  h1.title {
+    padding-bottom: 15px;
+  }
+  h1 + h2 {
+    font-family: 'OpenSans';
+    font-size: 16px;
+    line-height: 1.11;
+    text-align: center;
+    color: #2e5892;
+    padding-bottom: 45px;
+  }
+
+}
+
+.testimonial-list {
+  margin: 0 -50px;
+  margin-bottom: 50px;
+  @include breakpoint(underLaptop) {
+    margin: 0;
+    padding: 0px 15px;
+  }
+
+  > li {
+    margin-bottom: 50px;
+    @include breakpoint(underLaptop) {
+      margin: 0;
+      margin-bottom: 30px;
+      padding: 0 !important;
+    }
+  }
+
+  > li:first-child {
+    padding-top: 50px !important;
+  }
+
+  > li:nth-child(odd) {
+    background-image: url('/static/images/testimonial-dot-bg.png');
+    background-size: 300px auto;
+    background-position: top left;
+    background-repeat: no-repeat;
+    padding: 0 50px;
+    text-align: left;
+  }
+
+  > li:nth-child(even) {
+    background-image: url('/static/images/testimonial-dot-bg.png');
+    background-size: 300px auto;
+    background-position: top right;
+    background-repeat: no-repeat;
+    padding: 0 50px;
+    text-align: right;
+  }
+
+  .wrapper-1 {
+    border-radius: 10px;
+    box-shadow: 0 20px 60px 0 rgba(25, 104, 252, 0.1);
+    background-color: #ffffff;
+    display: inline-block;
+    text-align: left;
+    width: 800px;
+    @include breakpoint(underLaptop) {
+      width: 100%;
+    }
+  }
+
+  .left {
+    background-color: #e3e9fd;
+    padding: 25px;
+  }
+
+  .avatar {
+    margin-bottom: 20px;
+
+    &-image {
+      display: inline-block;
+      vertical-align: top;
+      height: 80px;
+      width: 80px;
+      @include object-fit(contain);
+    }
+
+    &-desc {
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 20px;
+      padding-top: 15px;
+
+      p {
+        margin: 0;
+      }
+
+      &__name {
+        font-family: 'OpenSans-Bold';
+        font-size: 16px;
+        line-height: 1.67;
+        color: #444444;
+      }
+      &__title {
+        font-family: 'OpenSans';
+        font-size: 14px;
+        line-height: 2.14;
+        color: #285189;
+      }
+    }
+  }
+
+  .youtubeEmbed {
+    iframe {
+      height: 205px;
+    }
+  }
+
+  .right {
+    background-color: white;
+    padding: 25px;
+  }
+
+  .problem-solution {
+    p {
+      font-size: 14px;
+      line-height: 1.88;
+      color: #444444;
+    }
+  }
+
+  .quote {
+    .quote-top {
+      height: 40px;
+      width: auto;
+    }
+
+    p {
+      color: #444444;
+      font-family: 'OpenSans-Bold';
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.88;
+      margin: 0;
+      padding: 15px;
+    }
+  }
+}
+
+.testimonial-load-more {
+  text-align: center;
+  padding-bottom: 50px;
+}

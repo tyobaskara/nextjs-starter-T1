@@ -3,9 +3,10 @@ export function capitalizeFirstLetter(string) {
 }
 
 export function validateHttp(str) {
-  var tarea = str;
-  if (tarea.indexOf("http://") == 0 || tarea.indexOf("https://") == 0) {
-    return true;
+  if (str !== null) {
+    if (str.indexOf("http://") == 0 || str.indexOf("https://") == 0) {
+      return true;
+    }
   }
 
   return false;

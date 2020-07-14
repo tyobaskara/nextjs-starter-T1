@@ -37,7 +37,8 @@ function CmsEditPagesHomeClientsPage() {
     listTitle: 'Clients',
     apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/clients',
     apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/clients/delete',
-    linkActionList:  '/cms-edit-pages-home-clients'
+    linkActionList:  '/cms-edit-pages-home-clients',
+    showPagination: true
   });
 
   return (

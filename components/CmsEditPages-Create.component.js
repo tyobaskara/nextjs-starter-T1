@@ -27,7 +27,7 @@ export default class CmsEditPagesCreate extends PureComponent {
 
   _renderCmsEditPagesCreateForm = () => {
     const { formData } = this.state;
-    const { apiCreateUrl, inputFileList, breadCrumbList, dataFixture } = this.props;
+    const { apiCreateUrl, inputFileList, breadCrumbList, dataFixture, contentType } = this.props;
 
     return (
       <CmsEditPagesCreateForm 
@@ -36,6 +36,7 @@ export default class CmsEditPagesCreate extends PureComponent {
         defaultFormData={formData}
         apiCreateUrl={apiCreateUrl}
         inputFileList={inputFileList}
+        contentType={contentType}
       />
     );
   };

@@ -11,7 +11,7 @@ import CmsEditPagesListAction from '@components/CmsEditPages-List-Action.compone
 
 export default function CmsEditPagesList(props) {
   const _renderCmsEditPagesListAction = () => {
-    const { token, apiGetListUrl, apiRemoveListUrl,
+    const { token, apiGetListUrl, apiRemoveListUrl, showPagination = false,
       breadCrumbList, linkActionList, listTitle, videoConfig } = props;
 
     return (
@@ -22,7 +22,7 @@ export default function CmsEditPagesList(props) {
         breadCrumbList={breadCrumbList}
         linkActionList={linkActionList}
         token={token}
-        showPagination={false}
+        showPagination={showPagination}
         videoConfig={videoConfig}
       />
     );

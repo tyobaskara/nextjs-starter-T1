@@ -282,6 +282,8 @@ export default class CmsUserList extends PureComponent {
   };
 
   onPaginationClick = pageNumber => () => {
+    window.scrollTo(0, 0);
+    
     this.setState({ pageNumber, isLoading: true }, this.fetchUserList);
   };
 

@@ -1,25 +1,39 @@
+import { PureComponent } from 'react';
 import Link from 'next/link';
 
 // Utils
 import { navigateTo } from '@utils/navigation.utils';
 import { validateHttp } from '@utils/string.utils';
 
-export default function ButtonLink(props) {
-  const { link, text, language } = props;
+export default class ButtonLink extends PureComponent {
+  _renderButtonLink = () => validateHttp(this.props.link) ? 
+    this._renderLink() : this._renderLinkRoute();
 
-  const _renderButtonLink = () => validateHttp(link) ? (
-    <a 
-      className='btn-blue'
-      href={link}
-      target='_blank'
-    >{text}</a>
-  ) : (
-    <Link href={navigateTo(link, language)}>
+  _renderLink = () => {
+    const { link, text } = this.props;
+
+    return (
       <a 
         className='btn-blue'
+        href={link}
+        target='_blank'
       >{text}</a>
-    </Link>
-  );
+    );
+  };
 
-  return _renderButtonLink();
+  _renderLinkRoute = () => {
+    const { link, text, language } = this.props;
+
+    return (
+      <Link href={navigateTo(link, language)}>
+        <a 
+          className='btn-blue'
+        >{text}</a>
+      </Link>
+    );
+  };
+
+  render() {
+    return this._renderButtonLink();
+  }
 }

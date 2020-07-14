@@ -30,6 +30,14 @@ const editPagesListRoute = [
   {
     route: '/cms-edit-pages/about-us',
     name: 'About Us'
+  },
+  {
+    route: '/cms-edit-pages/product',
+    name: 'Product'
+  },
+  {
+    route: '/cms-edit-pages/testimonial',
+    name: 'Testimonial'
   }
 ];
 

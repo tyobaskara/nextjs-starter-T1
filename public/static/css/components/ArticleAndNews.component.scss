@@ -1,0 +1,26 @@
+.ArticleAndNews {
+  
+  &__list {
+    margin: 0 -10px;
+    padding-bottom: 45px;
+
+    .slick-slide {
+      padding: 0 10px;
+    }
+  }
+
+}
+
+.articleTag {
+  display: block;
+  padding: 10px;
+  width: 98px;
+  height: 35px;
+  @include border-radius(2.2px);
+  color: white;
+  font-family: 'OpenSans';
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  text-align: center;
+}

@@ -3,8 +3,7 @@ export default {
     route: {
       dashboardPage: '/cms/dashboard',
       loginPage: '/cms/login',
-      userSettingPage: '/cms/user-setting',
-      editPagesHomeBannerPage: '/cms-edit-pages-home/banner'
+      userSettingPage: '/cms/user-setting'
     },
     loginTokenName: 'loginToken',
     drawerMenu: [
@@ -22,12 +21,18 @@ export default {
         name: 'Edit Pages',
         route: '/cms/edit-pages',
         iconClassName: 'fas fa-file-code'
+      },
+      {
+        name: 'Message Center',
+        route: '/cms/message-center',
+        iconClassName: 'far fa-envelope'
       }
     ],
     drawerActiveMenu: {
       dashboard: 'Dashboard',
       userSetting: 'User Setting',
-      editPages: 'Edit Pages'
+      editPages: 'Edit Pages',
+      messageCenter: 'Message Center'
     }
   }
 }

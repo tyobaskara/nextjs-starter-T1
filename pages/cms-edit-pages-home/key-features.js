@@ -37,7 +37,8 @@ function CmsEditPagesHomeKeyFeaturesPage() {
     listTitle: 'Key Features',
     apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/key-features',
     apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/key-features/delete',
-    linkActionList:  '/cms-edit-pages-home-key-features'
+    linkActionList:  '/cms-edit-pages-home-key-features',
+    showPagination: true
   });
 
   return (

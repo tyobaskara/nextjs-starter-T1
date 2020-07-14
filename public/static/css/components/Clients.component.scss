@@ -1,0 +1,132 @@
+$sliderPadding: 12px;
+
+.Clients {
+  padding-bottom: 45px;
+  
+  &__list {
+    margin: 0 -$sliderPadding;
+
+    @include breakpoint(minLaptop) {
+      padding: 0 40px;
+    }
+    
+    @include breakpoint(underLaptop) {
+      padding-bottom: 50px;
+    }
+
+    .slick-dots {
+      @include breakpoint(underLaptop) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+
+    .slick-slide {
+      padding: 20px $sliderPadding;
+    }
+
+    .slick-prev, .slick-next {
+      width: 23px;
+      height: 43px;
+      cursor: pointer;
+      z-index: 1;
+
+      &::before {
+        color: red;
+        display: block;
+        background-image: url('/static/images/english.png');
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        width: 23px;
+        height: 43px;
+        
+        @include breakpoint(underLaptop) {
+          background-image: url('/static/images/arrow-right.png');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          width: 15px;
+        }
+      }
+    }
+
+    .slick-prev {
+      left: 0;
+
+      &:before {
+        content: '';
+        background-image: url('/static/images/arrow-left.png');
+      }
+
+      @include breakpoint(underLaptop) {
+        left: 15px;
+      }
+    }
+
+    .slick-next {
+      right: 0;
+
+      &:before {
+        content: '';
+        background-image: url('/static/images/arrow-right.png');
+      }
+
+      @include breakpoint(underLaptop) {
+        right: 15px;
+      }
+    }
+
+    &-item {
+      position: relative;
+      @include breakpoint(underLaptop) {
+        width: 80%;
+        margin: auto;
+      }
+
+      img {
+        width: 100%;
+        height: 155px;
+        margin: auto;
+        @include object-fit(contain);
+
+        @include breakpoint(underLaptop) {
+          height: 100px;
+          width: auto;
+        }
+      }
+
+      &-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0; top: 0; right: 0; bottom: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-color: rgba(40, 83, 143, .88);
+        margin: 0;
+        padding: 15px;
+        opacity: 0;
+        transition: opacity .2s ease-in;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        > span {
+          font-family: 'OpenSans-Bold';
+          font-size: 14px;
+          line-height: 1.29;
+          text-align: center;
+          color: $red1;
+        }
+      }
+
+    }
+
+  }
+
+}

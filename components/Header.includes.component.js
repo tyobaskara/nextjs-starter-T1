@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { withTranslation } from '../i18n';
 import find from 'lodash/find';
 
+// Component
+import Image from '@components/Image.component';
+
 // Utils
 import { navigateTo } from '@utils/navigation.utils';
 
@@ -19,7 +22,7 @@ class Header extends PureComponent {
   }
 
   _renderLogo = () => (
-    <Link href='/'>
+    <Link href={`/${this.props.language}/home`}>
       <a className='dhealthNav-logo'>
         <img 
           src='/static/images/dhealth-logo.png' 
@@ -98,19 +101,16 @@ class Header extends PureComponent {
                 <i className="fas fa-caret-down"></i>
               </a>
             </Link>
-            <ul>
-              {list.map(listItem => {
-                const listTitle = this.props.t(`${listItem.route}-title`);
-
-                return (
-                  <li key={listTitle}>
-                    <Link href={navigateTo(listItem.route, language)}>
-                      <a>{listTitle}</a>
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
+            <div className='nestedList'>
+              <div className='row'>
+                <div className='col-lg-6'>
+                  {this._renderProductNavListItem(list, 'left')}
+                </div>
+                <div className='col-lg-6'>
+                  {this._renderProductNavListItem(list, 'right')}
+                </div>
+              </div>
+            </div>
           </div>
         </li>
       );
@@ -124,6 +124,26 @@ class Header extends PureComponent {
       </li>
     );
   };
+
+  _renderProductNavListItem = (list, direction) => {
+    return list.map((listItem, index) => {
+      const { activeNestedNav, t, language } = this.props;
+      const listTitle = t(`${listItem.route}-title`);
+      const isActiveClass = activeNestedNav == listItem.route ? 'active' : '';
+      const isLeftOrRight = direction == 'left' ? index < 3 : index > 2;
+
+      return isLeftOrRight ? (
+        <div className={isActiveClass} key={listTitle}>
+          <Link href={navigateTo(listItem.route, language)}>
+            <a>
+              <Image src={listItem.icon} />
+              <span>{listTitle}</span>
+            </a>
+          </Link>
+        </div>
+      ) : null;
+    });
+  }
 
   _renderLanguageToggleBtn = () => (
     <div className='languageToggle'>
@@ -164,12 +184,12 @@ class Header extends PureComponent {
   onSelectLanguage = language => () => {
     const { router } = this.props;
     this.setState({ language }, () => {
-      const { route } = router;
+      const { asPath } = router;
       const { language } = this.state;
       
-      // replace route from matches any word character between first slash character
+      // replace asPath from matches any word character between first slash character
       // ex: /en/Home -> `/${language}/Home`
-      const redirectRoute = route.replace(/\/\w+\//g, `/${language}/`); 
+      const redirectRoute = asPath.replace(/\/\w+\//g, `/${language}/`); 
       router.push(redirectRoute);
     });
   };

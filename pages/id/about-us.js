@@ -6,39 +6,40 @@ import { i18n } from '../../i18n';
 import LayoutMain from '@components/LayoutMain.layout';
 
 // Container
-import About from '@components/About.container';
-
-// Constants
-import navListData from '@constants/navListData';
+import About from '@components/page.About.component';
 
 export default function AboutPage(props) {
-  const { navList } = props;
   const language = 'id';
-
   i18n.changeLanguage(language);
 
   return (
     <LayoutMain 
-      navList={navList[language]}
       activeNav='Tentang Kami'
       language={language}
+      footerData={props.footerData}
     >
       <Head>
         <title>Tentang Kami</title>
       </Head>
 
-      <About />
+      <About 
+        {...props}
+        language={language}
+      />
     </LayoutMain>
   );
 }
 
 AboutPage.getInitialProps = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/photos');
-  const photos = await res.json();
+  const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/about-us');
+  const { data } = await res.json();
+
+  const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+  const { data: footerData } = await footerRes.json();
   
   return {
-    namespacesRequired: ['common'],
-    navList: navListData,
-    photos
+    namespacesRequired: ['pages', 'visionmission', 'implementations'],
+    content: data,
+    footerData
   }
 }

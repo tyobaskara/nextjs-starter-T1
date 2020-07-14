@@ -1,15 +1,10 @@
 import Slider from 'react-slick';
-import Link from 'next/link';
 
 // Components
-import Image from '@components/Image.component';
-
-// Utils
-import { navigateTo } from '@utils/navigation.utils';
-// import ReactHtmlParser from 'react-html-parser';
+import ArticleCard from '@components/ArticleCard.component';
 
 function ArticleAndNews(props) {
-  const { language } = props;
+  const { language, content = [] } = props;
   const slickSettings = {
     dots: false,
     infinite: false,
@@ -49,100 +44,19 @@ function ArticleAndNews(props) {
           className='ArticleAndNews__list'
           {...slickSettings}
         >
+          {content.map(item => {
 
-          <div>
-            <Link href={navigateTo('about-us', language)}>
-              <a className='ArticleAndNews__list-item'>
-                <div className='ArticleAndNews__list-top'>
-                  <Image 
-                    src='/static/images/article-2.png'
-                  />
-                  <span 
-                    className='ArticleAndNews__list-tag'
-                    style={{ backgroundColor: 'tomato' }}
-                  >
-                    Article
-                  </span>
-                </div>
-
-                <div className='ArticleAndNews__list-item-content'>
-                  <h3
-                    title='Upgrading To Microsoft Windows Vista Tips'
-                  >Upgrading To Microsoft Windows Vista Tips</h3>
-                  <p>By Abul Hasan Milon |  02 Feb 2019</p>
-                </div>
-
-                <div className='ArticleAndNews__list-item-btn'>
-                  <div className='btn-blue'>
-                    Explore More
-                  </div>
-                </div>
-              </a>
-            </Link>
-          </div>
-
-          <div>
-            <Link href={navigateTo('about-us', language)}>
-              <a className='ArticleAndNews__list-item'>
-                <div className='ArticleAndNews__list-top'>
-                  <Image 
-                    src='/static/images/article-2.png'
-                  />
-                  <span 
-                    className='ArticleAndNews__list-tag'
-                    style={{ backgroundColor: 'tomato' }}
-                  >
-                    Article
-                  </span>
-                </div>
-
-                <div className='ArticleAndNews__list-item-content'>
-                  <h3
-                    title='Upgrading To Microsoft Windows Vista Tips Lorem Ipsum Dolor'
-                  >Upgrading To Microsoft Windows Vista Tips Lorem Ipsum Dolor</h3>
-                  <p>By Abul Hasan Milon |  02 Feb 2019</p>
-                </div>
-
-                <div className='ArticleAndNews__list-item-btn'>
-                  <div className='btn-blue'>
-                    Explore More
-                  </div>
-                </div>
-              </a>
-            </Link>
-          </div>
-
-          <div>
-            <Link href={navigateTo('about-us', language)}>
-              <a className='ArticleAndNews__list-item'>
-                <div className='ArticleAndNews__list-top'>
-                  <Image 
-                    src='/static/images/article-2.png'
-                  />
-                  <span 
-                    className='ArticleAndNews__list-tag'
-                    style={{ backgroundColor: 'tomato' }}
-                  >
-                    Article
-                  </span>
-                </div>
-
-                <div className='ArticleAndNews__list-item-content'>
-                  <h3
-                    title='Upgrading To Microsoft Windows Vista Tips'
-                  >Upgrading To Microsoft Windows Vista Tips</h3>
-                  <p>By Abul Hasan Milon |  02 Feb 2019</p>
-                </div>
-
-                <div className='ArticleAndNews__list-item-btn'>
-                  <div className='btn-blue'>
-                    Explore More
-                  </div>
-                </div>
-              </a>
-            </Link>
-          </div>
-
+            return (
+              <div key={item.id}>
+                <ArticleCard 
+                  language={language}
+                  content={item}
+                  btnName='Explore More'
+                  btnLink={`article-and-news-detail?id=${item.id}&title=${item.title}`}
+                />
+              </div>
+            )
+          })}
         </Slider>
       </div>
     </section>

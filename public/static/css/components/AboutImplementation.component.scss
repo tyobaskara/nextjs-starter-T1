@@ -1,0 +1,134 @@
+.aboutImplementation {
+  padding: 25px 0;
+
+  .aboutImplementation__title {
+    color: #444444;
+    font-family: 'OpenSans-Bold';
+    font-size: 14px;
+    line-height: 1.88;
+    text-align: center;
+
+    @include breakpoint(min992) {
+      font-size: 14px;
+    }
+
+    @include breakpoint(min1200) {
+      font-size: 16px;
+    }
+  }
+
+  .tab-wrapper {
+    @include breakpoint(underLaptop) {
+      width: 100%;
+      overflow: scroll;
+
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 2px;
+        height: 5px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .5);
+        box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+      }
+    }
+  }
+
+  .aboutImplementation__tabs {
+    background-color: #d3d6d8;
+    cursor: pointer;
+    width: 750px;
+    margin: auto;
+    margin-bottom: 50px;
+    @include breakpoint(underLaptop) {
+      margin-bottom: 30px;
+    }
+
+    > li {
+      float: left;
+      width: 25%;
+      height: 70px;
+      font-family: 'OpenSans';
+      font-weight: 600;
+      letter-spacing: 1.1px;
+      
+      > div {
+        display: table;
+        width: 100%;
+        height: 100%;
+
+        span {
+          background-color: #d3d6d8;
+          color: #28538f;
+          display: table-cell;
+          font-size: 14px;
+          text-align: center;
+          vertical-align: middle;
+        }
+      }
+
+      &.active {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0; 
+          height: 0; 
+          border-left: 20px solid transparent;
+          border-right: 20px solid transparent;
+          
+          border-top: 20px solid #28538f;
+        }
+
+        > div {
+          span {
+            background-color: #28538f;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .aboutImplementation__tabs-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &-item {
+      width: 22%;
+      margin: 10px;
+
+      @include breakpoint(underLaptop) {
+        width: 100%;
+      }
+      
+      .wrapper {
+        background-color: #f0f2f8;
+        padding: 20px;
+      }
+
+      img {
+        display: block;
+        height: 100px;
+        width: auto;
+        margin: auto;
+      }
+
+      p {
+        color: #28538f;
+        font-family: 'OpenSans';
+        letter-spacing: 1.1px;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+  }
+
+}

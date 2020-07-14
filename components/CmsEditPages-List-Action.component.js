@@ -35,8 +35,8 @@ export default class CmsEditPagesListAction extends PureComponent {
 
   fetchListData = async () => {
     const { pageNumber } = this.state;
-    const { apiGetListUrl } = this.props;
-    const url = `${apiGetListUrl}?page=${pageNumber}`;
+    const { apiGetListUrl, showPagination } = this.props;
+    const url = showPagination ? `${apiGetListUrl}?page=${pageNumber}` : apiGetListUrl;
 
     try {
       const { data: response } = await axios({
@@ -44,14 +44,20 @@ export default class CmsEditPagesListAction extends PureComponent {
         url
       });
       const listData = response.data;
-      const paging = response.paging;
 
-      this.setState({ 
-        isLoading: false, 
-        listData,
-        pageNumber: paging.pageNumber,
-        totalPages: paging.totalPages
-      });
+      if (showPagination) {
+        this.setState({ 
+          isLoading: false, 
+          listData,
+          pageNumber: response.paging.pageNumber,
+          totalPages: response.paging.totalPages
+        });
+      } else {
+        this.setState({ 
+          isLoading: false, 
+          listData
+        });
+      }
     } catch(error) {
       const errorMessage = getErrorMessage(error);
       this.setState({ isLoading: false, isFetchDataError: true, errorMessage });
@@ -88,7 +94,9 @@ export default class CmsEditPagesListAction extends PureComponent {
 
   _renderListItem = (item, index) => {
     const { title } = this.props;
-    const slideNumber = index + 1;
+    const { pageNumber } = this.state;
+    const limit = 10; // default limit from api
+    const slideNumber = (index + 1) + ((pageNumber * limit) - limit);
     const listId = item.id;
 
     return (
@@ -160,7 +168,7 @@ export default class CmsEditPagesListAction extends PureComponent {
   };
 
   _renderListAndPagination = () => {
-    const { showPagination = false } = this.props;
+    const { showPagination } = this.props;
     const { isFetchListError, errorMessage } = this.state;
 
     if (isFetchListError) {
@@ -226,6 +234,8 @@ export default class CmsEditPagesListAction extends PureComponent {
   };
 
   onPaginationClick = pageNumber => () => {
+    window.scrollTo(0, 0);
+    
     this.setState({ 
       pageNumber, 
       isLoading: true 

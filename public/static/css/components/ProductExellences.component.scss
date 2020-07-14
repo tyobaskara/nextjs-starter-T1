@@ -1,0 +1,75 @@
+.productExellences {
+  padding-bottom: 25px;
+
+  @include breakpoint(underLaptop) {
+    h3 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+
+  &__youtube {
+    width: 100%;
+    height: 100%;
+
+    @include breakpoint(underLaptop) {
+      padding-bottom: 25px;
+    }
+
+    button {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0; 
+        height: 0; 
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        border-left: 40px solid $red1;
+      }
+    }
+
+    img, iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      @include object-fit(cover);
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+
+    > li {
+      position: relative;
+      padding: 10px 0 10px 80px;
+
+      @include breakpoint(underLaptop) {
+        padding: 10px 0 10px 95px;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 60px;
+      height: 58.4px;
+      @include object-fit(contain);
+
+      @include breakpoint(underLaptop) {
+        left: 15px;
+      }
+    }
+  }
+
+}

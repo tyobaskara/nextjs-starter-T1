@@ -199,7 +199,7 @@ export default class CmsEditPagesCreateForm extends PureComponent {
   };
 
   fetchCreate = async () => {
-    const { apiCreateUrl } = this.props;
+    const { apiCreateUrl, contentType } = this.props;
     const { formData } = this.state;
 
     let fetchFormData = new FormData();
@@ -208,7 +208,7 @@ export default class CmsEditPagesCreateForm extends PureComponent {
     }
 
     try {
-      const options = {
+      let options = {
         method: 'POST',
         headers: {
           'content-type': 'multipart/form-data'
@@ -216,6 +216,17 @@ export default class CmsEditPagesCreateForm extends PureComponent {
         data: fetchFormData,
         url: apiCreateUrl
       };
+      if (contentType === 'application/json') {
+        options = {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          data: formData,
+          url: apiCreateUrl
+        }
+      }
+
       const response = await axios(options);
       const successMessage = response.data.message;
       

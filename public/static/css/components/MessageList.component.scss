@@ -1,0 +1,44 @@
+.message-list {
+  &__item {
+    border: 1px solid $blue1;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding: 15px;
+    position: relative;
+
+    .number {
+      text-decoration: underline;
+    }
+
+    label, p {
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    label {
+      color: $blue1;
+      font-family: 'OpenSans-Bold';
+    }
+
+    .overlay {
+      background: rgb(40,83,143);
+      background: linear-gradient(0deg, rgba(40,83,143,1) 0%, rgba(252,252,252,1) 57%, rgba(255,255,255,0.2847514005602241) 100%);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 55px;
+      button {
+        color: $WildSand;
+        font-size: 16px;
+        position: absolute;
+        left: 0;
+        bottom: 3px;
+        right: 0;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+}

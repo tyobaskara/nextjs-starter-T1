@@ -1,0 +1,67 @@
+.KeyFeatures {
+  padding-bottom: 45px;
+
+  &__web-list {
+    box-shadow: 0 12px 42px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  &__list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    @include breakpoint(underLaptop) {
+      display: block;
+      overflow: scroll;
+      white-space: nowrap;
+    }
+
+    > li {
+      background: white;
+      border: solid 1px $grey3;
+      @include breakpoint(underLaptop) {
+        display: inline-block;
+        vertical-align: top;
+      }
+      
+      &.width-20 {
+        flex: 0 0 20%;
+        max-width: 20%;
+
+        @include breakpoint(underLaptop) {
+          flex: none;
+          width: 220px;
+          height: 278px;
+          max-width: none;
+        }
+      }
+
+      &.width-25 {
+        flex: 0 0 25%;
+        max-width: 25%;
+
+        @include breakpoint(underLaptop) {
+          flex: none;
+          width: 220px;
+          height: 278px;
+          max-width: none;
+        }
+      }
+    }
+
+    &-image {
+      display: block;
+      width: 100px;
+      height: 100px;
+      @include object-fit(contain);
+      margin: 30px auto 0;
+    }
+
+    &-desc {
+      color: $black3;
+      font-family: 'OpenSans';
+      font-size: 22px;
+      text-align: center;
+      margin: 20px auto 30px;
+    }
+  }
+}

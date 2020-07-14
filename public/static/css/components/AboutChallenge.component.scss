@@ -1,0 +1,46 @@
+.aboutChallenge {
+  background-image: url('/static/images/rectangle.png');
+  background-size: 100% 90%;
+  background-repeat: no-repeat;
+  background-position: top center;
+
+  h1 {
+    line-height: 40px;
+    @include breakpoint(underLaptop) {
+      line-height: 30px;
+    }
+
+    &.title {
+      padding-top: 30px;
+    }
+  }
+
+  &__content {
+    width: 80%;
+    margin: auto;
+    @include breakpoint(underLaptop) {
+      width: 100%;
+    }
+
+    img {
+      width: 30%;
+      float: left;
+      margin-right: 25px;
+    }
+
+    p {
+      font-family: 'OpenSans';
+      font-size: 16px;
+      line-height: 1.71;
+      color: #444444;
+
+      @include breakpoint(min992) {
+        font-size: 16px;
+      }
+
+      @include breakpoint(min1200) {
+        font-size: 19px;
+      }
+    }
+  }
+}

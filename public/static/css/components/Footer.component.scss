@@ -1,0 +1,167 @@
+.footer {
+  background-color: $WildBlueYonder;
+
+  a {
+    display: block;
+  }
+
+  &-title {
+    font-family: 'OpenSans-Bold' !important;
+    font-size: 12px;
+    line-height: 1.33;
+    color: white;
+  }
+
+  &-wrapper {
+    padding: 50px 0;
+  }
+
+  &-left {
+    float: left;
+    @include breakpoint(minLaptop) {
+      width: 210px;
+    }
+    @include breakpoint(maxTablet) {
+      float: none;
+    }
+
+    img {
+      width: 210px;
+      height: auto;
+      @include object-fit(contain);
+
+      @include breakpoint(underLaptop) {
+        display: block;
+        margin: auto;
+        margin-bottom: 40px;
+      }
+      @include breakpoint(min992) {
+        width: 180px;
+        height: auto;
+      }
+    
+      @include breakpoint(min1200) {
+        width: 200px;
+        height: auto;
+      }
+    }
+
+    p {
+      font-family: 'OpenSans-Bold';
+      font-size: 12px;
+      line-height: 1.33;
+      color: white;
+      margin-top: 15px;
+
+      @include breakpoint(underLaptop) {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      @include breakpoint(min992) {
+        font-size: 10px;
+        width: 180px;
+        height: auto;
+      }
+    
+      @include breakpoint(min1200) {
+        font-size: 12px;
+        width: 210px;
+        height: auto;
+      }
+    }
+  }
+
+  &-mid {
+    float: left;
+    padding: 0 30px;
+    margin: 0;
+
+    @include breakpoint(minLaptop) {
+      width: calc(100% - 410px);
+    }
+    @include breakpoint(underLaptop) {
+      float: none;
+      padding: 0 10px;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 10px;
+
+      a, span {
+        color: white;
+        font-family: 'OpenSans';
+        font-size: 14px;
+        line-height: 1.43;
+      }
+    }
+  }
+
+  &-contact {
+    a {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+
+      img {
+        width: 16px;
+        height: 16px;
+        margin-right: 20px;
+        @include object-fit(contain);
+        position: absolute;
+        left: 0;
+        top: 2px;
+      }
+    }
+  }
+
+  &-right {
+    float: right;
+    @include breakpoint(minLaptop) {
+      width: 200px;
+    }
+    @include breakpoint(maxTablet) {
+      float: none;
+    }
+  }
+
+  &-media {
+    list-style-type: none;
+    margin: 0;
+    @include breakpoint(underLaptop) {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    > li {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 25px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    a {
+      img {
+        width: 30px;
+        height: 30px;
+        @include object-fit(contain);
+      }
+    }
+  }
+
+  &__bottom {
+    color: white;
+    font-family: 'OpenSans';
+    font-size: 12px;
+    line-height: 1.33;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 15px;
+  }
+
+}

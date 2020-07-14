@@ -11,19 +11,24 @@ export default [
     route: 'product',
     list: [
       {
-        route: 'front-office'
+        route: 'product-front-office',
+        icon: '/static/images/product-menu-icon-1.png'
       },
       {
-        route: 'back-office'
+        route: 'product-back-office',
+        icon: '/static/images/product-menu-icon-2.png'
       },
       {
-        route: 'supporting-1'
+        route: 'product-service-1',
+        icon: '/static/images/product-menu-icon-3.png'
       },
       {
-        route: 'supporting-2'
+        route: 'product-service-2',
+        icon: '/static/images/product-menu-icon-4.png'
       },
       {
-        route: 'information'
+        route: 'product-information',
+        icon: '/static/images/product-menu-icon-5.png'
       }
     ]
   },

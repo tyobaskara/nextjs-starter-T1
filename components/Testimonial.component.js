@@ -6,6 +6,7 @@ import Image from '@components/Image.component';
 
 // Utils
 import { navigateTo } from '@utils/navigation.utils';
+import { capitalizeFirstLetter } from 'utils/string.utils';
 // import ReactHtmlParser from 'react-html-parser';
 
 function Testimonial(props) {
@@ -39,103 +40,54 @@ function Testimonial(props) {
     ]
   };
 
-  function _renderSlider() {
+  const _renderSlider = () => {
+    const { content } = props;
+
     return (
       <Slider 
         className='Testimonial__list'
         {...slickSettings}
       >
-        <div>
-          <div className='Testimonial__list-item'>
-            <div className='Testimonial__list-profile'>
-              <Image
-                src='/static/images/testimonial-1.png'
-              />
-              <h3>John Doe</h3>
-              <p>CEO, RS Budi Kasih</p>
-            </div>
-
-            <div className='Testimonial__list-content'>
-              <Image 
-                className='Testimonial__list-quoteTop'
-                src='/static/images/quote-top.png'
-              />
-              <p>By integrating registration within D’Health, RS Budi Kasih has streamlined their registration process and reduced more than half of their registrations by two to three minutes.</p>
-              <Image 
-              className='Testimonial__list-quoteBot'
-                src='/static/images/quote-bot.png'
-              />
-            </div>
-
-            <div className='Testimonial__list-btn'>
-              <Link href={navigateTo('about-us', language)}>
-                <a className='btn-blue'>Explore More</a>
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-        <div>
-          <div className='Testimonial__list-item'>
-            <div className='Testimonial__list-profile'>
-              <Image
-                src='/static/images/testimonial-1.png'
-              />
-              <h3>John Doe</h3>
-              <p>CEO, RS Budi Kasih</p>
-            </div>
-
-            <div className='Testimonial__list-content'>
-              <Image 
-                className='Testimonial__list-quoteTop'
-                src='/static/images/quote-top.png'
-              />
-              <p>By integrating registration within D’Health, RS Budi Kasih has streamlined their registration process and reduced more than half of their registrations by two to three minutes.</p>
-              <Image 
-              className='Testimonial__list-quoteBot'
-                src='/static/images/quote-bot.png'
-              />
-            </div>
-
-            <div className='Testimonial__list-btn'>
-              <Link href={navigateTo('about-us', language)}>
-                <a className='btn-blue'>Explore More</a>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div className='Testimonial__list-item'>
-            <div className='Testimonial__list-profile'>
-              <Image
-                src='/static/images/testimonial-1.png'
-              />
-              <h3>John Doe</h3>
-              <p>CEO, RS Budi Kasih</p>
-            </div>
-
-            <div className='Testimonial__list-content'>
-              <Image 
-                className='Testimonial__list-quoteTop'
-                src='/static/images/quote-top.png'
-              />
-              <p>RS Budi Kasih has streamlined their registration process and reduced more than half of their registrations by two to three minutes.</p>
-              <Image 
-              className='Testimonial__list-quoteBot'
-                src='/static/images/quote-bot.png'
-              />
-            </div>
-
-            <div className='Testimonial__list-btn'>
-              <Link href={navigateTo('about-us', language)}>
-                <a className='btn-blue'>Explore More</a>
-              </Link>
-            </div>
-          </div>
-        </div>
-
+        {content.map(item => _renderTestimonialItem(item))}
       </Slider>
+    );
+  };
+
+  const _renderTestimonialItem = (item) => {
+    const { photo, name, job } = item;
+    const lang = capitalizeFirstLetter(language);
+    const quotation = `quotation${lang}`;
+    
+    return (
+      <div key={item.id}>
+        <div className='Testimonial__list-item'>
+          <div className='Testimonial__list-profile'>
+            <Image
+              src={photo}
+            />
+            <h3>{name}</h3>
+            <p>{job}</p>
+          </div>
+
+          <div className='Testimonial__list-content'>
+            <Image 
+              className='Testimonial__list-quoteTop'
+              src='/static/images/quote-top.png'
+            />
+            <p>{item[quotation]}</p>
+            <Image 
+            className='Testimonial__list-quoteBot'
+              src='/static/images/quote-bot.png'
+            />
+          </div>
+
+          <div className='Testimonial__list-btn'>
+            <Link href={navigateTo('testimonial', language)}>
+              <a className='btn-blue'>Explore More</a>
+            </Link>
+          </div>
+        </div>
+      </div>
     );
   };
   

@@ -1,6 +1,7 @@
 import { PureComponent } from 'react';
 import Link from 'next/link';
 import { withTranslation } from '../i18n';
+import get from 'lodash/get';
 
 class Footer extends PureComponent {
 
@@ -63,18 +64,18 @@ class Footer extends PureComponent {
     const { language } = this.props;
     const ProductList = {
       id: [
-        { route: 'front-office' },
-        { route: 'back-office' },
-        { route: 'supporting-1' },
-        { route: 'supporting-2' },
-        { route: 'information' }
+        { route: 'product-front-office' },
+        { route: 'product-back-office' },
+        { route: 'product-service-1' },
+        { route: 'product-service-2' },
+        { route: 'product-information'}
       ],
       en: [
-        { route: 'front-office' },
-        { route: 'back-office' },
-        { route: 'supporting-1' },
-        { route: 'supporting-2' },
-        { route: 'information' }
+        { route: 'product-front-office' },
+        { route: 'product-back-office' },
+        { route: 'product-service-1' },
+        { route: 'product-service-2' },
+        { route: 'product-information'}
       ]
     };
     
@@ -98,77 +99,66 @@ class Footer extends PureComponent {
     );
   };
 
-  _renderSectionContact = () => (
-    <div className='col-12 col-md-6'>
-      <p className='footer-title'>Contact</p>
-      <ul className='footer-contact'>
-        <li>
-          <a href="tel:+62216302626">
-            <img 
-              src='/static/images/icon-call.png' 
-              srcSet='/static/images/icon-call@2x.png 2x, /static/images/icon-call@3x.png 3x'
-            />
-            <span>+62 21 630 2626</span>
-          </a>
-        </li>
-        <li>
-          <a href='mailto:info@dhealth.co.id'>
-            <img 
-              src='/static/images/icon-envelope.png' 
-              srcSet='/static/images/icon-envelope@2x.png 2x, /static/images/icon-envelope@3x.png 3x'
-            />
-            <span>info@dhealth.co.id</span>
-          </a>
-        </li>
-        <li>
-          <a href='https://goo.gl/maps/icvWn2YWpKQNjsWMA' target='_blank'>
-            <img 
-              src='/static/images/icon-location.png' 
-              srcSet='/static/images/icon-location@2x.png 2x, /static/images/icon-location@3x.png 3x'
-            />
-            <span>Jl.KH.Hasyim Ashari No.26, RT.1/RW.4, Petojo Utara, Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10130</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+  _renderSectionContact = () => {
+    const { footerData = {} } = this.props;
+    const phone = get(footerData, 'phone', '');
+    const mail = get(footerData, 'mail', '');
+    const addressLink = get(footerData, 'addressLink', '');
+    const addressText = get(footerData, 'addressText', '');
+
+    return (
+      <div className='col-12 col-md-6'>
+        <p className='footer-title'>Contact</p>
+        <ul className='footer-contact'>
+          <li>
+            <a href={`tel:${phone}`}>
+              <img 
+                src='/static/images/icon-call.png' 
+                srcSet='/static/images/icon-call@2x.png 2x, /static/images/icon-call@3x.png 3x'
+              />
+              <span>{phone}</span>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${mail}`}>
+              <img 
+                src='/static/images/icon-envelope.png' 
+                srcSet='/static/images/icon-envelope@2x.png 2x, /static/images/icon-envelope@3x.png 3x'
+              />
+              <span>{mail}</span>
+            </a>
+          </li>
+          <li>
+            <a href={addressLink} target='_blank'>
+              <img 
+                src='/static/images/icon-location.png' 
+                srcSet='/static/images/icon-location@2x.png 2x, /static/images/icon-location@3x.png 3x'
+              />
+              <span>{addressText}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    );
+  };
 
   _renderFooterRight = () => {
+    const { footerData } = this.props;
+    const socialMedia = get(footerData, 'socialMedia', []);
+
     return (
       <div className='footer-right'>
         <ul className='footer-media'>
-          <li>
-            <a href='#'>
-              <img 
-                src='/static/images/icon-facebook.png' 
-                srcSet='/static/images/icon-facebook@2x.png 2x, /static/images/icon-facebook@3x.png 3x'
-              />
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <img 
-                src='/static/images/icon-instagram.png' 
-                srcSet='/static/images/icon-instagram@2x.png 2x, /static/images/icon-instagram@3x.png 3x'
-              />
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <img 
-                src='/static/images/icon-youtube.png' 
-                srcSet='/static/images/icon-youtube@2x.png 2x, /static/images/icon-youtube@3x.png 3x'
-              />
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <img 
-                src='/static/images/icon-linkedin.png' 
-                srcSet='/static/images/icon-linkedin@2x.png 2x, /static/images/icon-linkedin@3x.png 3x'
-              />
-            </a>
-          </li>
+          {socialMedia.map(item => (
+            <li key={item.id}>
+              <a href={item.link} target='_blank'>
+                <img 
+                  src={item.icon}
+                  alt={item.name}
+                />
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     );

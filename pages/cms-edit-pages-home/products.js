@@ -2,7 +2,7 @@
 import LayoutMainCms from '@components/LayoutMainCms.layout';
 
 // Container
-import CmsEditPagesList from '@components/CmsEditPages-List.container';
+import CmsEditProductList from '@components/CmsEdit-Product-List.container';
 
 // Constants
 import Constants from '@constants/constants';
@@ -34,15 +34,14 @@ function CmsEditPagesHomeProductsPage() {
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
-    listTitle: 'Products',
+    listTitle: 'Product',
     apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/products',
-    apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/products/delete',
     linkActionList:  '/cms-edit-pages-home-products'
   });
 
   return (
     <LayoutMainCms>
-      <CmsEditPagesList 
+      <CmsEditProductList 
         {...getProps()}
       />
     </LayoutMainCms>

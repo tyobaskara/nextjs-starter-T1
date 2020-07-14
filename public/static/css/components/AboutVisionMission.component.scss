@@ -1,0 +1,67 @@
+.aboutVisionMission {
+  margin-bottom: 25px;
+  
+  h3.title {
+    font-family: 'OpenSans-SemiBold';
+    font-size: 14px;
+    line-height: 1.88;
+    text-align: center;
+    color: #444444;
+
+    @include breakpoint(min992) {
+      font-size: 14px;
+    }
+
+    @include breakpoint(min1200) {
+      font-size: 16px;
+    }
+  }
+
+  &__bg {
+    background-image: url('/static/images/vision-mission.png');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+  }
+
+  .aboutVisionMission__content {
+    text-align: center;
+    padding: 25px 0;
+
+    h2 {
+      font-family: 'OpenSans-SemiBold';
+      font-size: 24px;
+      line-height: 1.22;
+      color: #ffffff;
+      padding-bottom: 25px;
+      margin: 0;
+
+      @include breakpoint(min992) {
+        font-size: 26px;
+      }
+
+      @include breakpoint(min1200) {
+        font-size: 36px;
+      }
+    }
+
+    p {
+      font-family: 'OpenSans';
+      font-size: 16px;
+      line-height: 1.94;
+      text-align: center;
+      color: #ffffff;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 25px;
+
+      @include breakpoint(min992) {
+        font-size: 12px;
+      }
+
+      @include breakpoint(min1200) {
+        font-size: 16px;
+      }
+    }
+  }
+}

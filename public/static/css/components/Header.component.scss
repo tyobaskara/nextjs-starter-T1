@@ -1,0 +1,358 @@
+.languageToggle {
+  border: 1px solid transparent;
+  position: relative;
+  padding: 5px;
+
+  @include breakpoint(underLaptop) {
+    display: inline-block;
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+
+  img {
+    width: 27px;
+    height: 19px;
+    @include object-fit(contain);
+
+    @include breakpoint(min992) {
+      width: 20px;
+      height: auto;
+    }
+
+    @include breakpoint(min1200) {
+      width: 27px;
+      height: auto;
+    }
+  }
+
+  ul {
+    display: none;
+    margin: 0;
+    li {
+      display: block;
+      opacity: 0.5;
+      transition: opacity .2s ease-in;
+      &:hover {
+        opacity: 1;
+      }
+      button {
+        padding-top: 5px;
+        @include breakpoint(underLaptop) {
+          padding: 10px 0;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    border: 1px solid $WildSand;
+    .languageToggle-list {
+      display: block;
+    }
+  }
+
+  &-selected {
+    position: relative;
+    padding-right: 20px;
+
+    @include breakpoint(underLaptop) {
+      padding-top: 10px;
+      padding-right: 0;
+    }
+
+    i {
+      margin-left: 10px;
+      @include breakpoint(minLaptop) {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &-list {
+    @include breakpoint(underLaptop) {
+      text-align: left;
+    }
+  }
+}
+
+.dhealthNav {
+  box-shadow: 0 2px 11px 0 rgba(233, 233, 233, 0.5);
+  z-index: 50;
+  @include breakpoint(minLaptop) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+  }
+
+  @include breakpoint(min992) {
+    height: 80px;
+  }
+
+  @include breakpoint(min1200) {
+    height: 115px;
+  }
+
+  &-logo {
+    img {
+      width: 145px;
+      height: 50px;
+      object-fit: contain;
+
+      @include breakpoint(min992) {
+        width: 115px;
+        height: auto;
+      }
+
+      @include breakpoint(min1200) {
+        width: 192px;
+        height: auto;
+      }
+    }
+  }
+  
+  &-left {
+    padding-top: 25px;
+
+    @include breakpoint(minLaptop) {
+      float: left;
+    }
+
+    @include breakpoint(min992) {
+      padding-top: 20px;
+    }
+
+    @include breakpoint(min1200) {
+      padding-top: 25px;
+    }
+  }
+
+  &-right {
+    position: relative;
+    @include breakpoint(minLaptop) {
+      float: right;
+    }
+    @include breakpoint(underLaptop) {
+      padding-top: 25px;
+    }
+  }
+
+  &-list {
+    list-style-type: none;
+    margin: 0;
+
+    @include breakpoint(min992) {
+      padding-top: 30px;
+      padding-right: 80px;
+    }
+
+    @include breakpoint(min1200) {
+      padding-top: 45px;
+      padding-right: 80px;
+    }
+
+    > li {
+      @include breakpoint(minLaptop) {
+        margin-right: 25px;
+        display: inline-block;
+      }
+      &.active {
+        font-family: 'OpenSans-Bold';
+      }
+
+      &.active, &:hover {
+        a, span {
+          color: $red1;
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+        a, span {
+          font-family: 'OpenSans-Bold';
+        }
+      }
+    }
+
+    a, span {
+      color: $black3;
+      font-size: 21px;
+      line-height: 1.43;
+      @include breakpoint(min992) {
+        font-size: 13px;
+      }
+      @include breakpoint(min1200) {
+        font-size: 14px;
+      }
+    }
+
+    a {
+      display: block;
+      @include breakpoint(underLaptop) {
+        text-align: center;
+        padding: 10px 0;
+      }
+    }
+  }
+
+  .container {
+    position: relative;
+
+    &::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+  }
+
+  .languageToggle {
+    @include breakpoint(minLaptop) {
+      position: absolute;
+      right: 0;
+    }
+
+    @include breakpoint(min992) {
+      top: 23px;
+    }
+
+    @include breakpoint(min1200) {
+      top: 40px;
+    }
+  }
+}
+
+.dhealthNav {
+  &-headerMobile {
+    display: none;
+  }
+  @include breakpoint(underLaptop) {
+    &-headerMobile {
+      background: white;
+      box-shadow: 0 2px 11px 0 rgba(233, 233, 233, 0.5);
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 0 15px;
+      height: 90px;
+      z-index: 50;
+    }
+
+    &-hamburger {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      i {
+        font-size: 23px;
+      }
+    }
+
+    &-logo {
+      display: inline-block;
+      margin-top: 20px;
+    }
+    
+    &-left {
+      display: none;
+    }
+
+    .container {
+      position: fixed;
+      top: -100%;
+      background: white;
+      overflow: scroll;
+      opacity: 0;
+      text-align: center;
+      transition: top .2s ease-in, opacity .2s ease-in;
+      z-index: 5;
+      &.show {
+        top: 90px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.hoverExpandList {
+  position: relative;
+
+  i {
+    margin-left: 10px;
+  }
+
+  .nestedList {
+    display: none;
+    padding: 15px;
+
+    .row {
+      @include breakpoint(underLaptop) {
+        width: 250px;
+        margin: auto;
+      }
+    }
+
+    .active {
+      a {
+        background-color: #f0f2f8;
+      }
+    }
+
+    a {
+      align-items: center;
+      border-radius: 2px;
+      display: flex;
+      padding: 15px;
+      transition: all .1s ease-in;
+      
+      img {
+        height: 60px;
+        width: auto;
+      }
+      span {
+        margin-left: 15px;
+        font-family: 'OpenSans';
+        font-size: 14px;
+        line-height: 1.79;
+        color: #28538f;
+      }
+
+      @include breakpoint(underLaptop) {
+        text-align: center;
+        padding: 10px;
+        font-size: 18px;
+      }
+    }
+
+    a:hover {
+      background-color: #f0f2f8;
+    }
+  }
+
+  &:hover {
+    .nestedList {
+      background: white;
+      border: 1px solid $WildSand;
+      border-radius: 4px;
+      box-shadow: 0px 1px 1px $WildSand;
+      display: block;
+      list-style-type: none;
+      text-align: center;
+      @include breakpoint(minLaptop) {
+        position: absolute;
+        top: 100%;
+        left: -55px;
+        width: 460px;
+      }
+    }
+  }
+
+}

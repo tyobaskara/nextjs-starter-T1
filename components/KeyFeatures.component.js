@@ -37,7 +37,7 @@ export default function KeyFeatures(props) {
       <div className='container'>
         <h2 className='title'>Key Features</h2>
 
-        <div className='KeyFeatures__web-list d-none d-sm-block'>
+        <div className='KeyFeatures__web-list'>
           {_renderList()}
         </div>
         

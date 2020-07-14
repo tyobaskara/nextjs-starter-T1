@@ -37,7 +37,8 @@ function CmsEditPagesHomeBannerPage() {
     listTitle: 'Banner',
     apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/banners',
     apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/banners/delete',
-    linkActionList:  '/cms-edit-pages-home-banner'
+    linkActionList:  '/cms-edit-pages-home-banner',
+    showPagination: true
   });
 
   return (

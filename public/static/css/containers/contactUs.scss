@@ -1,0 +1,110 @@
+.contactUs {
+  background-image: url('/static/images/contact-us-bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center -285px;
+  padding-bottom: 40px;
+
+  h1.title {
+    margin-bottom: 0;
+    padding-bottom: 15px;
+  }
+  h2 {
+    color: #28538f;
+    font-family: 'OpenSans';
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+  &__container {
+    background-color: #fff;
+    padding: 20px 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 11px 0 rgba(233, 233, 233, 0.5);
+  }
+
+  &__title{
+    color: #28538f;
+    font-size: 18px;
+
+    @include breakpoint(underLaptop) {
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__contact {
+    a {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      text-decoration: none;
+
+      img {
+        width: 16px;
+        height: 16px;
+        margin-right: 20px;
+        @include object-fit(contain);
+        position: absolute;
+        left: 0;
+        top: 2px;
+      }
+
+      p {
+        color: #444;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__map{
+    display: block;
+    width: 100%;
+    height: 280px;
+  }
+}
+
+.freeDemo {
+  &__input {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #d3d6d8;
+    box-sizing: border-box;
+    border: none;
+  }
+
+  /* Change the white to any color ;) */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #d3d6d8 inset !important;
+  }
+
+  &__input:first-child {
+    margin-right: 5px;
+  }
+
+  &__note {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #d3d6d8;
+    box-sizing: border-box;
+    border: none;
+    resize: none;
+  }
+
+  &__submit {
+    text-align: center;
+  }
+
+  .error-message {
+    color: $red1;
+    list-style-position: inside;
+    list-style-type: disc;
+    padding: 10px;
+  }
+}

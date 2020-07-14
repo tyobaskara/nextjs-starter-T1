@@ -2,6 +2,18 @@ const express = require('express');
 const next = require('next');
 const helmet = require("helmet");
 const compression = require("compression");
+// const cors = require('cors');
+
+// const { createProxyMiddleware } = require('http-proxy-middleware');
+// const devProxy = {
+//   '/api': {
+//     target: 'http://localhost:3000', 
+//     pathRewrite: {
+//         '^/api': '/api'
+//     },
+//     changeOrigin: true
+//   }
+// };
 
 const nextI18NextMiddleware = require('next-i18next/middleware').default;
 const nextI18next = require('../i18n');
@@ -19,6 +31,21 @@ const routes = require("./routes");
 
   await nextI18next.initPromise;
   server.use(nextI18NextMiddleware(nextI18next));
+
+  // server.use(cors());
+  // server.options('*', cors());
+
+  // server.use(function(req, res, next) {
+  //   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  //   next();
+  // });
+  
+  // if (dev && devProxy) {
+  //   Object.keys(devProxy).forEach(function(context) {
+  //       server.use(createProxyMiddleware (context, devProxy[context]))
+  //   })
+  // }
 
   if (!dev) {
     /* Helmet helps secure our app by setting various HTTP headers */
