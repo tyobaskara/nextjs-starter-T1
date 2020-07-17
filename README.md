@@ -3,6 +3,8 @@
 Frontend Development and CMS using Next.js Framework,
 Every Frontend Development starts from pages folder.
 
+To checkout the final branch example, Please checkout to branch -> master-dhealth-culturo
+
 ## Run Local Development
 
 > $ Npm install
