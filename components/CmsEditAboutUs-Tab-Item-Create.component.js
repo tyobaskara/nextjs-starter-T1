@@ -7,7 +7,7 @@ import { PureComponent } from 'react';
 import axios from 'axios';
 
 // Layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
 import CmsEditAboutUsTabItemCreateForm from '@components/CmsEditAboutUs-Tab-Item-Create-Form.component';

@@ -1,15 +1,17 @@
-import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import { i18n } from '../../i18n';
+import isEmpty from 'lodash/isEmpty';
 
 // Components
-import LayoutMain from '@components/LayoutMain.layout';
+import LayoutMain from '@components/layout.LayoutMain';
 
 // Containers
-import ArticleAndNewsDetail from '@components/page.ArticleAndNewsDetail.component';
+import ArticleAndNewsDetail from '@components/page.ArticleAndNewsDetail';
+
+// Redux Actions
+import { setFooterData } from '@redux/actions/footerActions';
 
 function ArticleAndNewsDetailPage(props) {
-  const { articleId, articleTitle } = props;
   const language = 'en';
   i18n.changeLanguage(language);
 
@@ -19,10 +21,6 @@ function ArticleAndNewsDetailPage(props) {
       language={language}
       footerData={props.footerData}
     >
-      <Head>
-        <title>Article and News</title>
-      </Head>
-
       <ArticleAndNewsDetail 
         {...props}
         language={language} 
@@ -31,7 +29,10 @@ function ArticleAndNewsDetailPage(props) {
   );
 }
 
-ArticleAndNewsDetailPage.getInitialProps = async ({ query }) => {
+ArticleAndNewsDetailPage.getInitialProps = async ({ query, store }) => {
+  const { footer } = store.getState();
+  let footerData = footer.data;
+
   const { id, title } = query;
   const res = await fetch(`http://nonprod.dhealth.arinanda.com/api/v1/article/${id}?language=en`);
   const { data } = await res.json();
@@ -42,8 +43,13 @@ ArticleAndNewsDetailPage.getInitialProps = async ({ query }) => {
   const recentPosRes = await fetch(`http://nonprod.dhealth.arinanda.com/api/v1/article?language=en&pageNumber=1&pageSize=4`);
   const { data: recentPosData } = await recentPosRes.json();
 
-  const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
-  const { data: footerData } = await footerRes.json();
+  if (isEmpty(footerData)) {
+    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const { data } = await footerRes.json();
+    await store.dispatch(setFooterData(data));
+    
+    footerData = data;
+  }
   
   return {
     namespacesRequired: ['pages', 'articleAndNews'],

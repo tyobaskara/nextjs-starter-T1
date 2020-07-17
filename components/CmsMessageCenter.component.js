@@ -6,11 +6,11 @@
 import { PureComponent } from 'react';
 
 // Layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import ActionList from '@components/ActionList.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import ActionList from '@components/component.ActionList';
 
 import Constants from '@constants/constants';
 

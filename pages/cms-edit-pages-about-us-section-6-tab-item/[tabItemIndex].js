@@ -1,5 +1,5 @@
 // Layout
-import LayoutMainCms from '@components/LayoutMainCms.layout';
+import LayoutMainCms from '@components/layout.LayoutMainCms';
 
 // Container
 import CmsEditAboutUsTabItemDetail from '@components/CmsEditAboutUs-Tab-Item-Detail.container';

@@ -1,0 +1,6 @@
+Sitemap: [Sitemap.xml url]
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*

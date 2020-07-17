@@ -9,11 +9,11 @@ import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
 
 // Layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
 import CmsEditPagesDetailForm from '@components/CmsEditPages-Detail-Form.component';
-import Loader from '@components/Loader.component';
+import Loader from '@components/component.Loader';
 
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';
@@ -76,13 +76,16 @@ export default class CmsEditPagesDetail extends PureComponent {
               const nestedKey2 = nestedKey1 === 'id' ? 'Idn' : capitalizeFirstLetter(nestedKey1);
               const formDataKey1 = `${topLevelKeyName}${nestedKey2}`;
 
+              if (formDataKey1 == 'id') continue;
               transformedData[formDataKey1] = nestedDetailData2;
             }
           } else {
+            if (formDataKey0 == 'id') continue;
             transformedData[formDataKey0] = nestedDetailData1;
           }
         }
       } else {
+        if (topLevelKeyName == 'id') continue;
         transformedData[topLevelKeyName] = nestedDetailData0;
       }
     }

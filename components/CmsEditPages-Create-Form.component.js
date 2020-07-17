@@ -7,12 +7,13 @@ import { PureComponent, Fragment } from 'react';
 import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
+import { Editor } from '@tinymce/tinymce-react'; 
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import Loader from '@components/Loader.component';
-import Snagbar from '@components/Snagbar.component';
-import Image from '@components/Image.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import Loader from '@components/component.Loader';
+import Snagbar from '@components/component.Snagbar';
+import Image from '@components/component.Image';
 
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';
@@ -117,15 +118,84 @@ export default class CmsEditPagesCreateForm extends PureComponent {
   };
 
   _renderFormGroup = (inputLabel, topLevelLabelName) => {
-    const { inputFileList = [] } = this.props;
+    const { inputFileList = [], selectOptionList = [], editorList = [] } = this.props;
     const conditionalLabelName = inputLabel === 'id' ? 'Idn' : capitalizeFirstLetter(inputLabel);
     const stateKey = topLevelLabelName ? `${topLevelLabelName}${conditionalLabelName}` : inputLabel;
+
+    const getSelectOption = selectOptionList.find(list => list.selectKey == inputLabel);
+    if (!isEmpty(getSelectOption)) {
+      const { options } = getSelectOption;
+      return this._renderSelectOptions(stateKey, inputLabel, options);
+    }
+
+    if (editorList.indexOf(inputLabel) > -1) {
+      return this._renderEditor(stateKey, inputLabel);
+    }
     
     if (inputFileList.indexOf(topLevelLabelName) > -1 || inputFileList.indexOf(inputLabel) > -1) {
       return this._renderInputFile(stateKey, inputLabel);
     }
 
     return this._renderInputText(stateKey, inputLabel);
+  };
+
+  _renderEditor = (stateKey, label) => (
+    <div className='form-group' key={stateKey}>
+      <label>{capitalizeFirstLetter(label)}</label>
+      <Editor
+        apiKey="jktc2wwwpyroi3rpdx2qu4yf6zc2hxrjwnbk4if6w1xy0bsi"
+        initialValue={this.state.formData[stateKey]}
+        init={{
+          height: 500,
+          menubar: false,
+          plugins: [
+            'advlist autolink lists link image', 
+            'charmap print preview anchor help',
+            'searchreplace visualblocks code',
+            'insertdatetime media table paste wordcount'
+          ],
+          toolbar:
+            'undo redo | formatselect | bold italic | \
+            alignleft aligncenter alignright | \
+            bullist numlist outdent indent | help'
+        }}
+        onChange={event => this.handleEditorChange(event, stateKey)}
+      />
+    </div>
+  );
+
+  handleEditorChange = (event, stateKey) => {
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [stateKey]: event.target.getContent()
+      },
+      isError: false
+    }));
+  }
+
+  _renderSelectOptions = (stateKey, label, options) => {
+    let optionsWithPlaceHolder = [...options];
+    optionsWithPlaceHolder.unshift('placeholder');
+    const value = this.state.formData[stateKey];
+
+    return (
+      <div className="form-group" key={stateKey}>
+        <label htmlFor={stateKey}>{capitalizeFirstLetter(label)}</label>
+        <select 
+          id={stateKey} 
+          className="form-control" 
+          onChange={event => this.onInputChange(event, stateKey)} 
+          value={value}
+        >
+          {optionsWithPlaceHolder.map((option, index) => index == 0 ? (
+            <option key='placeholder'>- Choose Label -</option>  
+          ) : (
+            <option key={option} value={option}>{option}</option>  
+          ))}
+        </select>
+      </div>
+    )
   };
 
   _renderInputFile = (stateKey, label) => {
@@ -192,7 +262,7 @@ export default class CmsEditPagesCreateForm extends PureComponent {
 
   _submitForm = (event) => {
     event.preventDefault();
-
+    
     this.setState({
       isLoading: true
     }, this.fetchCreate)

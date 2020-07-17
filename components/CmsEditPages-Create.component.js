@@ -7,7 +7,7 @@ import { PureComponent } from 'react';
 import axios from 'axios';
 
 // Layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
 import CmsEditPagesCreateForm from '@components/CmsEditPages-Create-Form.component';
@@ -27,7 +27,7 @@ export default class CmsEditPagesCreate extends PureComponent {
 
   _renderCmsEditPagesCreateForm = () => {
     const { formData } = this.state;
-    const { apiCreateUrl, inputFileList, breadCrumbList, dataFixture, contentType } = this.props;
+    const { apiCreateUrl, inputFileList, breadCrumbList, dataFixture, contentType, editorList, selectOptionList } = this.props;
 
     return (
       <CmsEditPagesCreateForm 
@@ -36,6 +36,8 @@ export default class CmsEditPagesCreate extends PureComponent {
         defaultFormData={formData}
         apiCreateUrl={apiCreateUrl}
         inputFileList={inputFileList}
+        selectOptionList={selectOptionList}
+        editorList={editorList}
         contentType={contentType}
       />
     );

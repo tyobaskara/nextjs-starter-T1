@@ -1,12 +1,16 @@
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import { i18n } from '../../i18n';
+import isEmpty from 'lodash/isEmpty';
 
 // Components
-import LayoutMain from '@components/LayoutMain.layout';
+import LayoutMain from '@components/layout.LayoutMain';
 
 // Containers
-import Service1 from '@components/page.product.Service1.component';
+import Service1 from '@components/page.product.Service1';
+
+// Redux Actions
+import { setFooterData } from '@redux/actions/footerActions';
 
 function Service1Page(props) {
   const language = 'id';
@@ -21,6 +25,7 @@ function Service1Page(props) {
     >
       <Head>
         <title>Produk - Service 1</title>
+        <meta name="Description" content="Product - Service 1" />
       </Head>
 
       <Service1 
@@ -31,13 +36,21 @@ function Service1Page(props) {
   );
 }
 
-Service1Page.getInitialProps = async () => {
+Service1Page.getInitialProps = async ({ store }) => {
+  const { footer } = store.getState();
+  let footerData = footer.data;
+
   const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/products');
   const { data } = await res.json();
   const service1Data = data[2];
-  
-  const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
-  const { data: footerData } = await footerRes.json();
+
+  if (isEmpty(footerData)) {
+    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const { data } = await footerRes.json();
+    await store.dispatch(setFooterData(data));
+    
+    footerData = data;
+  }
   
   return {
     namespacesRequired: ['pages'],

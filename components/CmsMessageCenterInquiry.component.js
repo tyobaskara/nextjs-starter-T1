@@ -7,11 +7,11 @@ import { PureComponent, Fragment } from 'react';
 import axios from 'axios';
 
 // Layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import Loader from '@components/Loader.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import Loader from '@components/component.Loader';
 import MessageList from 'components/cms.MessageList.component';
 
 // Utils

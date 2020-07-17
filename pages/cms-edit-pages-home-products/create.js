@@ -1,12 +1,12 @@
 // Layout
-import LayoutMainCms from '@components/LayoutMainCms.layout';
+import LayoutMainCms from '@components/layout.LayoutMainCms';
 
 // Container
 import CmsEditPagesCreate from '@components/CmsEditPages-Create.container';
 
 // Constants
 import Constants from '@constants/constants';
-import dataFixture from '@constants/products.fixtures';
+import dataFixture from '@constants/fixtures.products';
 
 const {
   cms: {

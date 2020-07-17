@@ -9,11 +9,11 @@ import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
 
 // Layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
 import CmsEditAboutUsTabDetailForm from '@components/CmsEditAboutUs-Tab-Detail-Form.component';
-import Loader from '@components/Loader.component';
+import Loader from '@components/component.Loader';
 
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';

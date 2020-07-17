@@ -4,7 +4,7 @@
  */
 
 // Layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
 import CmsEditAboutUsListAction from '@components/CmsEditAboutUs-List-Action.component';

@@ -1,0 +1,408 @@
+@import './common/slick.scss';
+@import './common/slick_theme.scss';
+@import './common/fontface.scss';
+@import './common/mixin.scss';
+@import './common/color.scss';
+@import './common/button.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+}
+
+button {
+  background: none;
+  border: 0;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.headerGap {
+  padding-top: 90px;
+
+  @include breakpoint(min992) {
+    padding-top: 80px;
+  }
+
+  @include breakpoint(min1200) {
+    padding-top: 115px;
+  }
+}
+
+.mainLayout_container {
+  .main-title {
+    background-image: linear-gradient(to bottom, #28528b, #68b86f);
+    font-family: 'OpenSans-SemiBold';
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @include breakpoint(min992) {
+      font-size: 26px;
+    }
+
+    @include breakpoint(min1200) {
+      font-size: 32px;
+    }
+  }
+
+  h1 {
+    font-family: 'OpenSans-SemiBold';
+    font-size: 24px;
+
+    @include breakpoint(min992) {
+      font-size: 26px;
+    }
+
+    @include breakpoint(min1200) {
+      font-size: 34px;
+    }
+
+
+    &.title {
+      background-image: linear-gradient(to bottom, #28528b, #68b86f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      padding: 45px 0;
+      margin: 0;
+
+      @include breakpoint(min992) {
+        padding: 30px 0;
+      }
+  
+      @include breakpoint(min1200) {
+        padding: 45px 0;
+      }
+    }
+  }
+  
+  h2 {
+    font-size: 24px;
+    @include breakpoint(min992) {
+      font-size: 26px;
+    }
+
+    @include breakpoint(min1200) {
+      font-size: 32px;
+    }
+
+    &.title {
+      background-image: linear-gradient(to bottom, #28528b, #68b86f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      padding: 45px 0;
+      margin: 0;
+
+      @include breakpoint(min992) {
+        padding: 30px 0;
+      }
+  
+      @include breakpoint(min1200) {
+        padding: 45px 0;
+      }
+    }
+  }
+  
+  h3 {
+    font-family: 'OpenSans-SemiBold';
+    font-size: 20px;
+    color: #444444;
+
+    @include breakpoint(min992) {
+      font-size: 20px;
+    }
+    @include breakpoint(min1200) {
+      font-size: 22px;
+    }
+  }
+  
+  p, span, li, label, input {
+    font-size: 14px;
+    font-family: 'OpenSans';
+    @include breakpoint(min992) {
+      font-size: 14px;
+    }
+    @include breakpoint(min1200) {
+      font-size: 16px;
+    }
+  }
+
+  b {
+    font-family: 'OpenSans-Bold';
+  }
+}
+
+.slick-initialized {
+  overflow: hidden;
+}
+
+.slick-dots {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  li {
+    @include breakpoint(min992) {
+      margin: 0 2px;
+    }
+    @include breakpoint(min1200) {
+      margin: 0 5px;
+    }
+    @include breakpoint(underLaptop) {
+      margin: 0;
+    }
+
+    button {
+      @include breakpoint(min992) {
+        width: 17px;
+        height: 17px;
+      }
+      @include breakpoint(min1200) {
+        width: 20px;
+        height: 20px;
+      }
+      &:before {
+        color: $grey1;
+        font-size: 15px;
+        opacity: 1;
+        @include breakpoint(min992) {
+          font-size: 17px;
+        }
+        @include breakpoint(min1200) {
+          font-size: 20px;
+        }
+      }
+      &:hover:before {
+        color: $red1;
+      }
+    }
+    &.slick-active {
+      button {
+        &:before {
+          color: $red1;
+        }
+      }
+    }
+  }
+}
+
+img {
+  width: 100%;
+}
+
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(155,155,155, .25);
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+  }
+}
+
+.form-error, error-message {
+  color: red;
+  display: block;
+  font-family: 'Roboto-Medium';
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.container {
+  &--dots {
+    background-image: url('/static/images/bg-products.png'), url('/static/images/bg-products.png');
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, no-repeat;
+
+    @include breakpoint(min992) {
+      max-width: 1300px;
+      padding: 0 50px;
+    }
+
+    @include breakpoint(min1200) {
+      max-width: 1300px;
+      padding: 0 100px;
+    }
+  }
+}
+
+.section-grey2 {
+  background-color: $grey2;
+}
+
+.youtube-embed {
+  width: 100%;
+  height: 100%;
+
+  button {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0; 
+      height: 0; 
+      border-top: 40px solid transparent;
+      border-bottom: 40px solid transparent;
+      border-left: 40px solid $red1;
+    }
+  }
+
+  img, iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    @include object-fit(cover);
+  }
+}
+
+.modal-1 {
+  position: fixed;
+  left: 0; right: 0; top: 0; bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  z-index: 4;
+
+  .overlay {
+    background-color: rgba(155,155,155, .25);
+    position: fixed;
+    left: 0; right: 0; top: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+
+  .wrapper {
+    border-radius: 5.5px;
+    box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.15);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 150px;
+    width: 500px;
+    margin: auto;
+    margin-bottom: 50px;
+    background: white;
+    padding: 20px;
+    z-index: 5;
+    
+    @include breakpoint(underLaptop) {
+      width: 100%;
+      top: 140px;
+    }
+  }
+
+  .main-title {
+    padding-bottom: 15px;
+  }
+}
+
+.ellipsis {
+  /* hide text if it more than N lines  */
+ overflow: hidden;
+ /* for set '...' in absolute position */
+ position: relative; 
+ /* use this value to count block height */
+ line-height: 1.2em;
+ /* max-height = line-height (1.2) * lines max number (3) */
+ max-height: 3.6em; 
+ /* fix problem when last visible word doesn't adjoin right side  */
+ text-align: justify;  
+ /* place for '...' */
+ margin-right: -1em;
+ padding-right: 1em;
+ word-break: break-all;
+
+ /* create the ... */
+ &::before {
+   /* points in the end */
+   content: '...';
+   /* absolute position */
+   position: absolute;
+   /* set position to right bottom corner of block */
+   right: 0;
+   bottom: 0;
+ }
+ /* hide ... if we have text, which is less than or equal to max lines */
+ &::after {
+   /* points in the end */
+   content: '';
+   /* absolute position */
+   position: absolute;
+   /* set position to right bottom corner of text */
+   right: 0;
+   /* set width and height */
+   width: 1em;
+   height: 1em;
+   margin-top: 0.2em;
+   /* bg color = bg color under block */
+   background: white;
+ }
+}
+
+// Containers
+@import './containers/cmsLogin.scss';
+@import './containers/contactUs.scss';
+@import './containers/testimonial.scss';
+@import './containers/product.scss';
+@import './containers/articleAndNews.scss';
+@import './containers/articleAndNewsDetail.scss';
+
+// Components
+@import './components/Header.component.scss';
+@import './components/Footer.component.scss';
+@import './components/CustomModal.component.scss';
+@import './components/_layouts/cms.layout.scss';
+@import './components/CmsUserList.component.scss';
+@import './components/HeroBanner.component.scss';
+@import './components/ProductExellences.component.scss';
+@import './components/KeyFeatures.component.scss';
+@import './components/Products.component.scss';
+@import './components/Clients.component.scss';
+@import './components/Testimonial.component.scss';
+@import './components/ArticleAndNews.component.scss';
+@import './components/ArticleCard.component.scss';
+@import './components/CoverageOfClients.component.scss';
+@import './components/AboutChallenge.component.scss';
+@import './components/AboutSlider.component.scss';
+@import './components/AboutSolution.component.scss';
+@import './components/AboutSolutionItem.component.scss';
+@import './components/AboutVisionMission.component.scss';
+@import './components/AboutSmartHospital.component.scss';
+@import './components/AboutImplementation.component.scss';
+@import './components/MessageList.component.scss';

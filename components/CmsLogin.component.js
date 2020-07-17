@@ -5,7 +5,7 @@ import axios from 'axios';
 const isRememberMeDefaultValue = true;
 
 // Component
-import Loader from '@components/Loader.component';
+import Loader from '@components/component.Loader';
 
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';

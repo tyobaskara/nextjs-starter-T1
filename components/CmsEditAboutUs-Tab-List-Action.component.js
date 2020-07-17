@@ -8,8 +8,8 @@ import axios from 'axios';
 import Link from 'next/link';
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import Loader from '@components/Loader.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import Loader from '@components/component.Loader';
 
 // Utils
 import isEmpty from 'lodash/isEmpty';

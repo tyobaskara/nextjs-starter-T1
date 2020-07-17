@@ -9,10 +9,10 @@ import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import Loader from '@components/Loader.component';
-import Snagbar from '@components/Snagbar.component';
-import Image from '@components/Image.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import Loader from '@components/component.Loader';
+import Snagbar from '@components/component.Snagbar';
+import Image from '@components/component.Image';
 
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';

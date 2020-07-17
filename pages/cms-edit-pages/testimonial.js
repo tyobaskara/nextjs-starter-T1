@@ -1,5 +1,5 @@
 // Layout
-import LayoutMainCms from '@components/LayoutMainCms.layout';
+import LayoutMainCms from '@components/layout.LayoutMainCms';
 
 // Container
 import CmsEditTestimonialList from '@components/CmsEdit-Testimonial-List.container';
@@ -26,7 +26,7 @@ const breadCrumbList = [
   }
 ];
 
-function CmsEditPagesAboutUsSection2ItemPage() {
+function CmsEditPagesTestimonialPage() {
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
@@ -45,8 +45,8 @@ function CmsEditPagesAboutUsSection2ItemPage() {
   );
 }
 
-CmsEditPagesAboutUsSection2ItemPage.getInitialProps = async () => ({
+CmsEditPagesTestimonialPage.getInitialProps = async () => ({
   namespacesRequired: ['common']
 });
 
-export default CmsEditPagesAboutUsSection2ItemPage;
+export default CmsEditPagesTestimonialPage;

@@ -1,5 +1,5 @@
 // Layout
-import LayoutMainCms from '@components/LayoutMainCms.layout';
+import LayoutMainCms from '@components/layout.LayoutMainCms';
 
 // Container
 import CmsEditPagesList from '@components/CmsEditPages-List.container';

@@ -11,12 +11,12 @@ import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal);
 
 // layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import Loader from '@components/Loader.component';
-import CustomModal from '@components/CustomModal.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import Loader from '@components/component.Loader';
+import CustomModal from '@components/component.CustomModal';
 
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';

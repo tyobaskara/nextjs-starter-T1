@@ -1,0 +1,120 @@
+.Testimonial {
+  @include breakpoint(underLaptop) {
+    padding-bottom: 40px;
+  }
+  
+  h2.title {
+    padding-bottom: 0;
+  }
+
+  &__list {
+    margin: 0 -12.5px;
+    padding-top: 45px;
+
+    .slick-slide {
+      padding: 20px 12.5px;
+    }
+
+    &-item {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px 0 rgba(25, 104, 252, 0.1);
+      height: 500px;
+      margin-bottom: 45px;
+      padding: 30px;    
+      position: relative;
+    }
+
+    &-profile {
+      position: relative;
+      padding-left: 110px;
+      margin-bottom: 10px;
+      min-height: 90px;
+
+      img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 90px;
+        height: 90px;
+        @include object-fit(contain);
+      }
+
+      h3 {
+        font-family: 'OpenSans-Bold';
+        font-size: 18px;
+        line-height: 1.67;
+        color: $black3;
+        margin: 0;
+        padding-top: 10px;
+      }
+
+      p {
+        opacity: 0.8;
+        font-family: 'OpenSans';
+        font-size: 14px;
+        line-height: 2.14;
+        color: $blue2;
+        margin: 0;
+      }
+    }
+
+    &-content {
+      height: 240px;
+      overflow: hidden;
+      padding: 30px 10px;
+      padding-bottom: 0;
+      position: relative;
+
+      p {
+        font-family: 'OpenSans';
+        font-size: 16px;
+        font-style: italic;
+        line-height: 1.88;
+        letter-spacing: normal;
+        color: $black3;
+        margin: 0;
+        word-break: break-all;
+      }
+
+      .ellipsis {
+        max-height: 180px;
+        &::after {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    &-quoteTop {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 30px;
+      @include object-fit(contain);
+    }
+
+    &-quoteBot {
+      position: absolute;
+      right: 30px;
+      bottom: 100px;
+      width: 40px;
+      height: 30px;
+      @include object-fit(contain);
+    }
+
+    &-btn {
+      text-align: center;
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      right: 30px;
+
+      a {
+        margin: 0;
+      }
+    }
+
+  }
+
+}

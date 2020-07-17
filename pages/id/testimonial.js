@@ -1,12 +1,16 @@
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import { i18n } from '../../i18n';
+import isEmpty from 'lodash/isEmpty';
 
 // Components
-import LayoutMain from '@components/LayoutMain.layout';
+import LayoutMain from '@components/layout.LayoutMain';
 
 // Containers
-import Testimonial from '@components/page.Testimonial.component';
+import Testimonial from '@components/page.Testimonial';
+
+// Redux Actions
+import { setFooterData } from '@redux/actions/footerActions';
 
 function TestimonialPage(props) {
   const language = 'id';
@@ -20,6 +24,7 @@ function TestimonialPage(props) {
     >
       <Head>
         <title>Testimonial</title>
+        <meta name="Description" content="Testimonial" />
       </Head>
 
       <Testimonial 
@@ -30,12 +35,20 @@ function TestimonialPage(props) {
   );
 }
 
-TestimonialPage.getInitialProps = async () => {
+TestimonialPage.getInitialProps = async ({ store }) => {
+  const { footer } = store.getState();
+  let footerData = footer.data;
+
   const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/testimonial?pageNumber=1&pageSize=3');
   const { data } = await res.json();
-  
-  const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
-  const { data: footerData } = await footerRes.json();
+
+  if (isEmpty(footerData)) {
+    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const { data } = await footerRes.json();
+    await store.dispatch(setFooterData(data));
+    
+    footerData = data;
+  }
   
   return {
     namespacesRequired: ['pages', 'testimonial'],

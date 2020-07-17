@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 
 // Layout
-import LayoutMainCms from '@components/LayoutMainCms.layout';
+import LayoutMainCms from '@components/layout.LayoutMainCms';
 
 // Container
 import CmsEditProductItemDetail from '@components/CmsEdit-Product-Item-Detail.container';
@@ -24,7 +24,7 @@ function CmsEditProductItemDetailPage() {
 
   const getProps = () => ({
     apiGetDataUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/products/[productId]/items',
-    apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/products/[productId]/items/[itemId]',
+    apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/products/[productId]/items?id=[itemId]',
     breadCrumbList,
     drawerActiveMenu: editPages,
     inputFileList: ['icon'],

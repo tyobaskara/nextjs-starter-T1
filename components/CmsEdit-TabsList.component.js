@@ -4,11 +4,11 @@
  */
 
 // Layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import ActionTabList from '@components/ActionTabList.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import ActionTabList from '@components/component.ActionTabList';
 
 export default function CmsEditTabsList(props) {
   const _renderBreadCrumb = () => (

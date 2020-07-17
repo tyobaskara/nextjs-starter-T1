@@ -8,10 +8,10 @@ import axios from 'axios';
 import Link from 'next/link';
 
 // layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
-import Loader from '@components/Loader.component';
+import Loader from '@components/component.Loader';
 
 import Constants from '@constants/constants';
 

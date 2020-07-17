@@ -1,12 +1,16 @@
 import Head from 'next/head';
-// import fetch from 'isomorphic-unfetch';
+import fetch from 'isomorphic-unfetch';
 import { i18n } from '../../i18n';
+import isEmpty from 'lodash/isEmpty';
 
 // Components
-import LayoutMain from '@components/LayoutMain.layout';
+import LayoutMain from '@components/layout.LayoutMain';
 
 // Containers
-import ContactUs from '@components/page.ContactUs.component';
+import ContactUs from '@components/page.ContactUs';
+
+// Redux Actions
+import { setFooterData } from '@redux/actions/footerActions';
 
 function ContactUsPage(props) {
   const language = 'id';
@@ -20,6 +24,7 @@ function ContactUsPage(props) {
     >
       <Head>
         <title>Kontak Kami</title>
+        <meta name="Description" content="Kontak Kami" />
       </Head>
 
       <ContactUs 
@@ -30,9 +35,17 @@ function ContactUsPage(props) {
   );
 }
 
-ContactUsPage.getInitialProps = async () => {
-  const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
-  const { data: footerData } = await footerRes.json();
+ContactUsPage.getInitialProps = async ({ store }) => {
+  const { footer } = store.getState();
+  let footerData = footer.data;
+
+  if (isEmpty(footerData)) {
+    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const { data } = await footerRes.json();
+    await store.dispatch(setFooterData(data));
+    
+    footerData = data;
+  }
   
   return {
     namespacesRequired: ['pages'],

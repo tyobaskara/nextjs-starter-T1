@@ -1,12 +1,16 @@
 import Head from 'next/head';
 import fetch from 'isomorphic-unfetch';
 import { i18n } from '../../i18n';
+import isEmpty from 'lodash/isEmpty';
 
 // Components
-import LayoutMain from '@components/LayoutMain.layout';
+import LayoutMain from '@components/layout.LayoutMain';
 
 // Containers
-import FrontOffice from '@components/page.product.FrontOffice.component';
+import FrontOffice from '@components/page.product.FrontOffice';
+
+// Redux Actions
+import { setFooterData } from '@redux/actions/footerActions';
 
 function ProductPage(props) {
   const language = 'id';
@@ -21,6 +25,7 @@ function ProductPage(props) {
     >
       <Head>
         <title>Produk - Front Office</title>
+        <meta name="Description" content="Product - Front Office" />
       </Head>
 
       <FrontOffice 
@@ -31,13 +36,21 @@ function ProductPage(props) {
   );
 }
 
-ProductPage.getInitialProps = async () => {
+ProductPage.getInitialProps = async ({ store }) => {
+  const { footer } = store.getState();
+  let footerData = footer.data;
+
   const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/products');
   const { data } = await res.json();
   const frontOfficeData = data[0];
-  
-  const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
-  const { data: footerData } = await footerRes.json();
+
+  if (isEmpty(footerData)) {
+    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const { data } = await footerRes.json();
+    await store.dispatch(setFooterData(data));
+    
+    footerData = data;
+  }
   
   return {
     namespacesRequired: ['pages'],

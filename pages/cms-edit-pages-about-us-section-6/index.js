@@ -3,13 +3,13 @@ import axios from 'axios';
 import Link from 'next/link';
 
 // Layout
-import LayoutMainCms from '@components/LayoutMainCms.layout';
+import LayoutMainCms from '@components/layout.LayoutMainCms';
 
 // Container
 import CmsEditTabsList from '@components/CmsEdit-TabsList.container';
 
 // Component
-import Loader from '@components/Loader.component';
+import Loader from '@components/component.Loader';
 
 // Constants
 import Constants from '@constants/constants';

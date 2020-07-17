@@ -65,8 +65,9 @@ const routes = require("./routes");
     const { status = 500, message } = err;
     res.status(status).json(message);
   });
-
+  
   server.all('*', (req, res) => {
+    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
     handle(req, res);
   });
 

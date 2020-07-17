@@ -7,12 +7,12 @@ import { PureComponent } from 'react';
 import axios from 'axios';
 
 // layout
-import LayoutCms from '@components/LayoutCms.layout';
+import LayoutCms from '@components/layout.LayoutCms';
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import Loader from '@components/Loader.component';
-import Snagbar from '@components/Snagbar.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import Loader from '@components/component.Loader';
+import Snagbar from '@components/component.Snagbar';
 
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';

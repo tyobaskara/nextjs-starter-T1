@@ -7,12 +7,13 @@ import { PureComponent, Fragment } from 'react';
 import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
+import { Editor } from '@tinymce/tinymce-react'; 
 
 // Component
-import BreadCrumb from '@components/BreadCrumb.component';
-import Loader from '@components/Loader.component';
-import Snagbar from '@components/Snagbar.component';
-import Image from '@components/Image.component';
+import BreadCrumb from '@components/component.BreadCrumb';
+import Loader from '@components/component.Loader';
+import Snagbar from '@components/component.Snagbar';
+import Image from '@components/component.Image';
 
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';
@@ -72,13 +73,78 @@ export default class CmsEditTestimonialDetailForm extends PureComponent {
   };
 
   _renderFormGroup = (inputLabel) => {
-    const { inputFileList = [] } = this.props;
+    const { inputFileList = [], selectOptionList = [], editorList = [] } = this.props;
+
+    const getSelectOption = selectOptionList.find(list => list.selectKey == inputLabel);
+    if (!isEmpty(getSelectOption)) {
+      const { options } = getSelectOption;
+      return this._renderSelectOptions(inputLabel, options);
+    }
     
     if (inputFileList.indexOf(inputLabel) > -1) {
       return this._renderInputFile(inputLabel);
     }
 
+    if (editorList.indexOf(inputLabel) > -1) {
+      return this._renderEditor(inputLabel);
+    }
+
     return this._renderInputText(inputLabel);
+  };
+
+  _renderEditor = (inputLabel) => {
+    return (
+      <div className='form-group' key={inputLabel}>
+        <label>{capitalizeFirstLetter(inputLabel)}</label>
+        <Editor
+          apiKey="jktc2wwwpyroi3rpdx2qu4yf6zc2hxrjwnbk4if6w1xy0bsi"
+          initialValue={this.state.formData[inputLabel]}
+          init={{
+            height: 500,
+            menubar: false,
+            plugins: [
+              'advlist autolink lists link image', 
+              'charmap print preview anchor help',
+              'searchreplace visualblocks code',
+              'insertdatetime media table paste wordcount'
+            ],
+            toolbar:
+              'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help'
+          }}
+          onChange={event => this.handleEditorChange(event, inputLabel)}
+        />
+      </div>
+    );
+  };
+
+  handleEditorChange = (event, stateKey) => {
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [stateKey]: event.target.getContent()
+      },
+      isError: false
+    }));
+  }
+
+  _renderSelectOptions = (inputLabel, options) => {
+    return (
+      <div className="form-group" key={inputLabel}>
+        <label htmlFor={inputLabel}>{capitalizeFirstLetter(inputLabel)}</label>
+        <select 
+          id={inputLabel} 
+          className="form-control" 
+          onChange={event => this.onInputChange(event, inputLabel)} 
+          value={this.state.formData[inputLabel]}
+        >
+          {options.map(option => (
+            <option key={option} value={option}>{option}</option>  
+          ))}
+        </select>
+      </div>
+    )
   };
 
   _renderInputFile = (inputLabel) => {
