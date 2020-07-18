@@ -356,12 +356,15 @@ class ArticleAndNewsDetail extends PureComponent {
   };
 
   render() {
+    const title = ReactHtmlParser(this.props.content.title)[0];
+    const description = ReactHtmlParser(this.props.content.body)[0].props.children[0];
+
     return (
       <Fragment>
         <Head>
-          <title>{this.props.content.title}</title>
-          <meta name="title" content={this.props.content.title} />
-          <meta name="description" content={this.props.content.body} />
+          <title>{title}</title>
+          <meta name="title" content={title} />
+          <meta name="description" content={description} />
         </Head>
 
         <div className='headerGap'>
