@@ -4,6 +4,7 @@ import Router from 'next/router';
 import Link from 'next/link';
 import { withTranslation } from '../i18n';
 import axios from 'axios';
+import get from 'lodash/get';
 
 // Components
 import {
@@ -356,15 +357,16 @@ class ArticleAndNewsDetail extends PureComponent {
   };
 
   render() {
-    const title = ReactHtmlParser(this.props.content.title)[0];
-    const description = ReactHtmlParser(this.props.content.body)[0].props.children[0];
+    const { content } = this.props;
+    const title = content.title.replace(/<[^>]*>/g, "");
+    const body = content.body.replace(/<[^>]*>/g, "");
 
     return (
       <Fragment>
         <Head>
           <title>{title}</title>
           <meta name="title" content={title} />
-          <meta name="description" content={description} />
+          <meta name="description" content={body} />
         </Head>
 
         <div className='headerGap'>
