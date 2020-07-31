@@ -46,14 +46,17 @@ function ArticleAndNews(props) {
           {...slickSettings}
         >
           {content.map(item => {
-
+            const { label, id } = item;
+            const type = label.toLowerCase();
+            const title = item.title.split(' ').join('-');
+            
             return (
               <div key={item.id}>
                 <ArticleCard 
                   language={language}
                   content={item}
                   btnName={props.t('explore-more')}
-                  btnLink={`article-and-news-detail?id=${item.id}&title=${item.title}`}
+                  btnLink={`${type}/${id}/${title}`}
                 />
               </div>
             )

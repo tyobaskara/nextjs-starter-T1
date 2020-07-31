@@ -113,7 +113,7 @@ export default class BackOffice extends PureComponent {
         </div>
 
         <div className='product-body'>
-          <p>{ReactHtmlParser(activeContent[descriptionKey])}</p>
+          <div className='editor-content'>{ReactHtmlParser(activeContent[descriptionKey])}</div>
 
           <div className={`product-icon-list ${name}`}>
             <div className='wrapper'>

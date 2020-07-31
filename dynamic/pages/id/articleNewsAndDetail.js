@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import { i18n } from '../../i18n';
+import { i18n } from '../../../i18n';
 import isEmpty from 'lodash/isEmpty';
 
 // Components
@@ -11,7 +11,7 @@ import ArticleAndNewsDetail from '@components/page.ArticleAndNewsDetail';
 // Redux Actions
 import { setFooterData } from '@redux/actions/footerActions';
 
-function ArticleAndNewsDetailPage(props) {
+const ArticleNewsDetailPage = (props) => {
   const language = 'id';
   i18n.changeLanguage(language);
 
@@ -27,13 +27,16 @@ function ArticleAndNewsDetailPage(props) {
       />
     </LayoutMain>
   );
-}
+};
 
-ArticleAndNewsDetailPage.getInitialProps = async ({ query, store }) => {
+export const getArticleAndNewsDetailInitialProps = async ({ query, store }) => {
   const { footer } = store.getState();
   let footerData = footer.data;
 
-  const { id, title } = query;
+  const { dynamic } = query;
+  const pageType = dynamic[0];
+  const id = dynamic[1];
+  const title = dynamic[2];
   const res = await fetch(`http://nonprod.dhealth.arinanda.com/api/v1/article/${id}?language=id`);
   const { data } = await res.json();
 
@@ -58,8 +61,9 @@ ArticleAndNewsDetailPage.getInitialProps = async ({ query, store }) => {
     content: data,
     commentData,
     recentPosData,
-    footerData
+    footerData,
+    pageType
   }
 }
 
-export default ArticleAndNewsDetailPage;
+export default ArticleNewsDetailPage;

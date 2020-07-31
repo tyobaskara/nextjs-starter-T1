@@ -89,15 +89,21 @@ class ArticleAndNews extends PureComponent {
 
     return (
       <ul className='articleAndNews__list'>
-        {content.map(item => (
-          <li key={item.id}>
-            <ArticleCard 
-              language={language}
-              content={item}
-              btnLink={`article-and-news-detail?id=${item.id}&title=${item.title}`}
-            />
-          </li>
-        ))}
+        {content.map(item => {
+          const { label, id } = item;
+          const type = label.toLowerCase();
+          const title = item.title.split(' ').join('-');
+
+          return (
+            <li key={item.id}>
+              <ArticleCard 
+                language={language}
+                content={item}
+                btnLink={`${type}/${id}/${title}`}
+              />
+            </li>
+          );
+        })}
       </ul>
     );
   };

@@ -4,7 +4,6 @@ import Router from 'next/router';
 import Link from 'next/link';
 import { withTranslation } from '../i18n';
 import axios from 'axios';
-import get from 'lodash/get';
 
 // Components
 import {
@@ -324,12 +323,14 @@ class ArticleAndNewsDetail extends PureComponent {
 
         <ul className='recentPost__list'>
           {recentPosData.map(item => {
-            const { id, title } = item;
-            const recentPostUrl = `article-and-news-detail?id=${id}&title=${title}`;
+            const { id, title, label, image } = item;
+            const type = label.toLowerCase();
+            const titleLink = title.split(' ').join('-');
+            const recentPostUrl = `${type}/${id}/${titleLink}`;
 
             return (
               <li 
-                key={`${item.id}`}
+                key={`${id}`}
                 className='recentPost__list-item'
               >
                 <Link href={navigateTo(recentPostUrl, language)}>
@@ -337,14 +338,14 @@ class ArticleAndNewsDetail extends PureComponent {
                     <div className='row'>
                       <div className='col-4'>
                         <img 
-                          src={item.image}
+                          src={image}
                           className='recentPost__img'
-                          alt={item.label}
+                          alt={label}
                         />
                       </div>
                       <div className='col-8'>
-                        <ArticleTag label={item.label} />
-                        <p className='recentPost__list-title' title={item.title}>{item.title}</p>
+                        <ArticleTag label={label} />
+                        <p className='recentPost__list-title' title={title}>{title}</p>
                       </div>
                     </div>
                   </a>
@@ -357,18 +358,48 @@ class ArticleAndNewsDetail extends PureComponent {
     );
   };
 
-  render() {
+  _renderHead = () => {
     const { content } = this.props;
-    const title = content.title.replace(/<[^>]*>/g, "");
-    const body = content.body.replace(/<[^>]*>/g, "");
+    const { shareUrl } = this.state;
+    const title = content.title.replace(/<[^>]*>/g, "").slice(0, 155);
+    const body = content.body.replace(/<[^>]*>/g, "").slice(0, 155);
 
     return (
+      <Head>
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={body} />
+        {/* <!--  Essential META Tags --> */}
+
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={body} />
+        <meta property="og:image" content={content.image} />
+        <meta property="og:image:width" content="200" />
+        <meta property="og:image:height" content="200" />
+        {/* <meta property="og:url" content={shareUrl} /> */}
+        <meta property="og:type" content={content.label.toLowerCase()} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="fb:app_id" content="413363352613693" />
+
+
+        {/* <!--  Non-Essential, But Recommended --> */}
+
+        <meta property="og:site_name" content="D'health" />
+        <meta name="twitter:image:alt" content={title} />
+
+
+        {/* <!--  Non-Essential, But Required for Analytics --> */}
+
+        {/* <meta property="fb:app_id" content="your_app_id" />
+        <meta name="twitter:site" content="@website-username" /> */}
+      </Head>
+    );
+  };
+
+  render() {
+    return (
       <Fragment>
-        <Head>
-          <title>{title}</title>
-          <meta name="title" content={title} />
-          <meta name="description" content={body} />
-        </Head>
+        {this._renderHead()}
 
         <div className='headerGap'>
           <section className='articleAndNewsDetail'>

@@ -190,7 +190,7 @@ class Header extends PureComponent {
       
       // replace asPath from matches any word character between first slash character
       // ex: /en/Home -> `/${language}/Home`
-      const redirectRoute = asPath.replace(/\/\w+\//g, `/${language}/`); 
+      const redirectRoute = asPath.replace(/\/\w+\//, `/${language}/`); 
       router.push(redirectRoute);
     });
   };

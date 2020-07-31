@@ -7,7 +7,9 @@
       "@hoc/*": ["./hoc/*"],
       "@static/*": ["./public/static/*"],
       "@redux/*": ["./redux/*"],
-      "@utils/*": ["./utils/*]"]
+      "@utils/*": ["./utils/*"],
+      "@dynamicEn/*": ["./dynamic/pages/en/*"],
+      "@dynamicId/*": ["./dynamic/pages/id/*"]
     }
   },
   "exclude": ["node_modules", "dist"]
