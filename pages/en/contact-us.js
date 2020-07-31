@@ -1,5 +1,5 @@
 import Head from 'next/head';
-// import fetch from 'isomorphic-unfetch';
+import fetch from 'isomorphic-unfetch';
 import { i18n } from '../../i18n';
 import isEmpty from 'lodash/isEmpty';
 

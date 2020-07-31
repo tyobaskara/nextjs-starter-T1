@@ -81,8 +81,7 @@ export default class CmsEditProductItemDetail extends PureComponent {
   };
 
   _renderCmsEditPagesDetailForm = () => {
-    const { productId, itemId, breadCrumbList, apiUpdateUrl, inputFileList,
-      unorderedList } = this.props;
+    const { productId, itemId, breadCrumbList, apiUpdateUrl, inputFileList, editorList } = this.props;
     const { productItemData, formData } = this.state;
     
     const detailBreadCrumbList = [
@@ -103,7 +102,7 @@ export default class CmsEditProductItemDetail extends PureComponent {
         defaultFormData={formData}
         apiUpdateUrl={updateUrl}
         inputFileList={inputFileList}
-        unorderedList={unorderedList}
+        editorList={editorList}
       />
     )
   }

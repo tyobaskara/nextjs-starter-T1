@@ -21,12 +21,8 @@ const breadCrumbList = [
     name: 'Edit Pages'
   },
   {
-    route: '/cms-edit-pages/home',
-    name: 'Home'
-  },
-  {
-    route: '/cms-edit-pages-home/products',
-    name: 'Products'
+    route: '/cms-edit-pages/product',
+    name: 'Product'
   }
 ];
 
@@ -36,8 +32,8 @@ function CmsEditPagesProductsDetailPage() {
     apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/products/[productId]',
     breadCrumbList,
     drawerActiveMenu: editPages,
-    inputFileList: ['icon', 'dashboardIcon', 'desktopImage', 'mobileImage'],
-    whiteList: ['dashboardIcon', 'descriptionEn', 'descriptionId', 'link', 'titleEn', 'titleId']
+    inputFileList: ['icon'],
+    whiteList: ['icon']
   });
 
   return (

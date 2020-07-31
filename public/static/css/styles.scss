@@ -375,6 +375,36 @@ img {
  }
 }
 
+.editor-content {
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: 1rem;
+  }
+
+  ol {
+    list-style-position: inside;
+    margin-bottom: 1rem;
+  }
+
+  ul li, ol li {
+    margin-bottom: 5px;
+  }
+
+  ul > li, ol > li{
+    margin-left: 25px;
+  }
+
+  ul li li {
+    list-style-type: circle;
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+  }
+}
+
 // Containers
 @import './containers/cmsLogin.scss';
 @import './containers/contactUs.scss';

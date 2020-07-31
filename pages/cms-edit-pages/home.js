@@ -47,14 +47,10 @@ const editPagesListRoute = [
     route: '/cms-edit-pages-home/clients',
     name: 'Clients'
   },
-  {
-    route: '/cms-edit-pages-home/articles-and-news',
-    name: 'Article And News'
-  },
-  {
-    route: '/cms-edit-pages-home/coverage-of-clients',
-    name: 'Coverage Of Clients'
-  }
+  // {
+  //   route: '/cms-edit-pages-home/coverage-of-clients',
+  //   name: 'Coverage Of Clients'
+  // }
 ];
 
 function CmsEditPagesHomePage() {

@@ -28,7 +28,8 @@ function CmsEditProductItemDetailPage() {
     breadCrumbList,
     drawerActiveMenu: editPages,
     inputFileList: ['icon'],
-    unorderedList: ['featuresEn', 'featuresId']
+    editorList: ['descriptionEn', 'descriptionId', 'featuresEn', 'featuresId']
+    // unorderedList: ['featuresEn', 'featuresId']
   });
 
   return (

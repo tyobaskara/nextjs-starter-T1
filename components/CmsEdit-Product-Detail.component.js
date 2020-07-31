@@ -43,7 +43,7 @@ export default class CmsEditProductDetail extends PureComponent {
     try {
       const { data: { data } } = await axios.get(url);
       const productData = data.find(key => key.id == productId);
-
+      
       this.setState({ 
         isLoading: false, 
         productData,
@@ -75,7 +75,7 @@ export default class CmsEditProductDetail extends PureComponent {
   };
 
   _renderCmsEditPagesDetailForm = () => {
-    const { productId, breadCrumbList, apiUpdateUrl, inputFileList } = this.props;
+    const { productId, breadCrumbList, apiUpdateUrl, inputFileList, whiteList } = this.props;
     const { productData, formData } = this.state;
     const detailBreadCrumbList = [
       ...breadCrumbList,
@@ -93,6 +93,7 @@ export default class CmsEditProductDetail extends PureComponent {
         defaultFormData={formData}
         apiUpdateUrl={updateUrl}
         inputFileList={inputFileList}
+        whiteList={whiteList}
       />
     )
   }

@@ -55,6 +55,7 @@ export default class CmsEditProductDetailForm extends PureComponent {
   };
 
   _getFormItems = (productData, keys) => {
+    const { whiteList = [] } = this.props;
     const _renderFormItems = [];
 
     for (let i = 0; i < keys.length; i++) {
@@ -64,7 +65,13 @@ export default class CmsEditProductDetailForm extends PureComponent {
       if (isObject(formItemData)) {
         continue;
       } else if (topLevelLabelName !== 'id') {
-        _renderFormItems.push(this._renderFormGroup(topLevelLabelName));
+        if (whiteList.length > 0) {
+          if (whiteList.indexOf(topLevelLabelName) > -1) {
+            _renderFormItems.push(this._renderFormGroup(topLevelLabelName));
+          }
+        } else {
+          _renderFormItems.push(this._renderFormGroup(topLevelLabelName));
+        }
       }
     }
 
@@ -149,7 +156,8 @@ export default class CmsEditProductDetailForm extends PureComponent {
     event.preventDefault();
 
     this.setState({
-      isLoading: true
+      isLoading: true,
+      isError: false
     }, this.fetchUpdateDetail)
   };
 

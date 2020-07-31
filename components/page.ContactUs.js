@@ -1,5 +1,6 @@
 import { PureComponent } from "react";
 import { withTranslation } from '../i18n';
+import get from 'lodash/get';
 
 // Component
 import FormFreeDemo from '@components/component.FormFreeDemo';
@@ -13,7 +14,11 @@ class ContactUs extends PureComponent {
   }
 
   render() {
-    const { t } = this.props;
+    const { t, footerData } = this.props;
+    const phone = get(footerData, 'phone', '');
+    const mail = get(footerData, 'mail', '');
+    const addressLink = get(footerData, 'addressLink', '');
+    const addressText = get(footerData, 'addressText', '');
 
     return (
       <div className="contactUs wow fadeIn headerGap">
@@ -31,37 +36,33 @@ class ContactUs extends PureComponent {
               <h6 className="contactUs__title">{t('reach-us')}</h6>
               <ul className="contactUs__contact">
                 <li>
-                  <a href="tel:+62216302626">
+                  <a href={`tel:${phone}`}>
                     <img
                       src="/static/images/contact-us-call-black.png"
                       srcSet="/static/images/contact-us-call-black@2x.png 2x, /static/images/contact-us-call-black@3x.png 3x"
                     />
-                    <p>+62 21 630 2626</p>
+                    <p>{phone}</p>
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@dhealth.co.id">
+                  <a href={`mailto:${mail}`}>
                     <img
                       src="/static/images/contact-us-envelope-black.png"
                       srcSet="/static/images/contact-us-envelope-black@2x.png 2x, /static/images/contact-us-envelope-black@3x.png 3x"
                     />
-                    <p>info@dhealth.co.id</p>
+                    <p>{mail}</p>
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://goo.gl/maps/icvWn2YWpKQNjsWMA"
+                    href={addressLink}
                     target="_blank"
                   >
                     <img
                       src="/static/images/contact-us-maps-and-flags-black.png"
                       srcSet="/static/images/contact-us-maps-and-flags-black@2x.png 2x, /static/images/contact-us-maps-and-flags-black@3x.png 3x"
                     />
-                    <p>
-                      Jl.KH.Hasyim Ashari No.26, RT.1/RW.4, Petojo Utara,
-                      Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta
-                      10130
-                    </p>
+                    <p>{addressText}</p>
                   </a>
                 </li>
               </ul>

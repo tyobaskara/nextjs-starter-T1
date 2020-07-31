@@ -71,7 +71,7 @@ class ArticleAndNewsDetail extends PureComponent {
 
           {this._renderArticleHeader()}
 
-          <div className='articleBody'>
+          <div className='articleBody editor-content'>
             <img className='mainImage' src={image} alt={title}/>
             {ReactHtmlParser(body)}
           </div>
@@ -206,7 +206,7 @@ class ArticleAndNewsDetail extends PureComponent {
 
   _renderCommentList = () => {
     const { commentData, t } = this.props;
-
+    
     return (
       <Fragment>
         <p><b>{t('comments')}</b></p>
@@ -214,8 +214,8 @@ class ArticleAndNewsDetail extends PureComponent {
           <ul className='formComments__list'>
           {commentData.map((item, index) => (
             <p
-              key={`${item.name}_${item.comment}_${index}`}
-            ><b>{item.name}</b> item.comment</p>
+              key={`${item.name}_${item.text}_${index}`}
+            ><b>{item.name}</b> {item.text}</p>
           ))}
         </ul>
         ) : null}
@@ -273,7 +273,8 @@ class ArticleAndNewsDetail extends PureComponent {
     event.preventDefault();
 
     this.setState({
-      isLoading: true
+      isLoading: true,
+      isError: false
     }, this.fetchComment)
   };
 

@@ -5,6 +5,7 @@
 
 import { PureComponent, Fragment } from 'react';
 import axios from 'axios';
+import { Editor } from '@tinymce/tinymce-react'; 
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
 
@@ -75,28 +76,65 @@ export default class CmsEditProductItemDetailForm extends PureComponent {
     return _renderFormItems;
   };
 
-  _renderFormGroup = (inputLabel, topLevelLabelName) => {
-    const { inputFileList = [], unorderedList = [] } = this.props;
-    const conditionalLabelName = inputLabel === 'id' ? 
-      'Idn' : capitalizeFirstLetter(inputLabel);
-    const stateKey = topLevelLabelName ? 
-      `${topLevelLabelName}${conditionalLabelName}` : inputLabel;
+  _renderFormGroup = (stateKey) => {
+    const { inputFileList = [], unorderedList = [], editorList = [] } = this.props;
 
-    if (inputFileList.indexOf(topLevelLabelName) > -1 || inputFileList.indexOf(inputLabel) > -1) {
-      return this._renderInputFile(stateKey, inputLabel);
-    } else if (unorderedList.indexOf(topLevelLabelName) > -1 || unorderedList.indexOf(inputLabel) > -1) {
-      return this._renderInputUnorderedList(stateKey, inputLabel);
+    if (inputFileList.indexOf(stateKey) > -1) {
+      return this._renderInputFile(stateKey);
+    } 
+    else if (unorderedList.indexOf(stateKey) > -1) {
+      return this._renderInputUnorderedList(stateKey);
+    }
+    else if (editorList.indexOf(stateKey) > -1) {
+      return this._renderEditor(stateKey);
     }
 
-    return this._renderInputText(stateKey, inputLabel);
+    return this._renderInputText(stateKey);
   };
 
-  _renderInputUnorderedList = (stateKey, label) => {
+  _renderEditor = (stateKey) => {
+    return (
+      <div className='form-group' key={stateKey}>
+        <label>{capitalizeFirstLetter(stateKey)}</label>
+        <Editor
+          apiKey="jktc2wwwpyroi3rpdx2qu4yf6zc2hxrjwnbk4if6w1xy0bsi"
+          initialValue={this.state.formData[stateKey]}
+          init={{
+            height: 500,
+            plugins: [
+              'advlist autolink lists link image', 
+              'charmap print preview anchor help',
+              'searchreplace visualblocks code',
+              'insertdatetime media table paste wordcount'
+            ],
+            toolbar:
+              'undo redo | formatselect | bold italic | \
+              alignleft aligncenter alignright | \
+              bullist numlist outdent indent | help',
+            menubar: "tools"
+          }}
+          onChange={event => this.handleEditorChange(event, stateKey)}
+        />
+      </div>
+    );
+  };
+
+  handleEditorChange = (event, stateKey) => {
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [stateKey]: event.target.getContent()
+      },
+      isError: false
+    }));
+  }
+
+  _renderInputUnorderedList = (stateKey) => {
     const value = this.state.formData[stateKey];
 
     return (
       <div className="form-group" key={stateKey}>
-        <label htmlFor={stateKey}>{capitalizeFirstLetter(label)}</label>
+        <label htmlFor={stateKey}>{capitalizeFirstLetter(stateKey)}</label>
         <textarea 
           className="form-control"
           id={stateKey} 
@@ -121,7 +159,7 @@ export default class CmsEditProductItemDetailForm extends PureComponent {
     }));
   };
 
-  _renderInputFile = (stateKey, label) => {
+  _renderInputFile = (stateKey) => {
     const file = this.state.formData[stateKey];
     const imageSrc = isObject(file) 
       ? URL.createObjectURL(file) 
@@ -129,7 +167,7 @@ export default class CmsEditProductItemDetailForm extends PureComponent {
 
     return (
       <div className="form-group" key={stateKey}>
-        <label htmlFor={stateKey}>{capitalizeFirstLetter(label)}</label>
+        <label htmlFor={stateKey}>{capitalizeFirstLetter(stateKey)}</label>
         <Image className='preview-image' src={imageSrc} />
 
         <input 
@@ -156,10 +194,10 @@ export default class CmsEditProductItemDetailForm extends PureComponent {
     }));
   };
 
-  _renderInputText = (stateKey, label) => {
+  _renderInputText = (stateKey) => {
     return (
       <div className="form-group" key={stateKey}>
-        <label htmlFor={stateKey}>{capitalizeFirstLetter(label)}</label>
+        <label htmlFor={stateKey}>{capitalizeFirstLetter(stateKey)}</label>
         <input 
           type="text" 
           className="form-control" 
@@ -187,7 +225,8 @@ export default class CmsEditProductItemDetailForm extends PureComponent {
     event.preventDefault();
 
     this.setState({
-      isLoading: true
+      isLoading: true,
+      isError: false
     }, this.fetchUpdateDetail)
   };
 

@@ -41,8 +41,8 @@ BackOfficePage.getInitialProps = async ({ store }) => {
   let footerData = footer.data;
 
   const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/products');
-  const { data } = await res.json();
-  const backOfficeData = data[1];
+  const { data: products } = await res.json();
+  const backOfficeData = products[1];
 
   if (isEmpty(footerData)) {
     const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
@@ -55,6 +55,7 @@ BackOfficePage.getInitialProps = async ({ store }) => {
   return {
     namespacesRequired: ['pages'],
     content: backOfficeData,
+    products,
     footerData
   }
 }

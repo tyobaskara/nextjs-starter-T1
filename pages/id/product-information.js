@@ -41,8 +41,8 @@ InformationPage.getInitialProps = async ({ store }) => {
   let footerData = footer.data;
 
   const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/products');
-  const { data } = await res.json();
-  const informationData = data[4];
+  const { data: products } = await res.json();
+  const informationData = products[4];
 
   if (isEmpty(footerData)) {
     const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
@@ -55,6 +55,7 @@ InformationPage.getInitialProps = async ({ store }) => {
   return {
     namespacesRequired: ['pages'],
     content: informationData,
+    products,
     footerData
   }
 }

@@ -26,7 +26,8 @@ export default class BackOffice extends PureComponent {
   }
 
   _renderProductLeft = () => {
-    const { language, name } = this.props;
+    const { language, name, products = [] } = this.props;
+    const titleKey = 'title' + capitalizeFirstLetter(language);
 
     return (
       <div className='product-left'>
@@ -34,40 +35,60 @@ export default class BackOffice extends PureComponent {
           <li className={name === 'front-office' ? 'active' : ''}>
             <Link href={`/${language}/product-front-office`}>
               <a>
-                <span className='product-icon front-office'></span>
-                <span className='name'>Front Office</span>
+                <img 
+                  className='product-icon'
+                  src={products[0].icon}
+                  alt={products[0][titleKey]}
+                />
+                <span className='name'>{products[0][titleKey]}</span>
               </a>
             </Link>
           </li>
           <li className={name === 'back-office' ? 'active' : ''}>
             <Link href={`/${language}/product-back-office`}>
               <a>
-                <span className='product-icon back-office'></span>
-                <span className='name'>Back Office</span>
+                <img 
+                  className='product-icon'
+                  src={products[1].icon}
+                  alt={products[1][titleKey]}
+                />
+                <span className='name'>{products[1][titleKey]}</span>
               </a>
             </Link>
           </li>
           <li className={name === 'service-1' ? 'active' : ''}>
             <Link href={`/${language}/product-service-1`}>
               <a>
-                <span className='product-icon service-1'></span>
-                <span className='name'>Service 1</span>
+                <img 
+                  className='product-icon'
+                  src={products[2].icon}
+                  alt={products[2][titleKey]}
+                />
+                <span className='name'>{products[2][titleKey]}</span>
               </a>
             </Link>
           </li>
           <li className={name === 'service-2' ? 'active' : ''}>
             <Link href={`/${language}/product-service-2`}>
               <a>
-                <span className='product-icon service-2'></span>
-                <span className='name'>Service 2</span>
+                <img 
+                  className='product-icon'
+                  src={products[3].icon}
+                  alt={products[3][titleKey]}
+                />
+                <span className='name'>{products[3][titleKey]}</span>
               </a>
             </Link>
           </li>
           <li className={name === 'information' ? 'active' : ''}>
             <Link href={`/${language}/product-information`}>
               <a>
-                <span className='product-icon information'></span>
-                <span className='name'>Information</span>
+                <img 
+                  className='product-icon'
+                  src={products[4].icon}
+                  alt={products[4][titleKey]}
+                />
+                <span className='name'>{products[4][titleKey]}</span>
               </a>
             </Link>
           </li>
@@ -142,14 +163,9 @@ export default class BackOffice extends PureComponent {
     });
   };
 
-  _renderProductBodyFeature = (featureList) => (
-    <div className='product-body-feature'>
-      <h2>Features:</h2>
-      <ul>
-        {featureList.map(item => (
-          <li key={item}>{ReactHtmlParser(item)}</li>
-        ))}
-      </ul>
+  _renderProductBodyFeature = (content) => (
+    <div className='product-body-feature editor-content'>
+      <div>{ReactHtmlParser(content)}</div>
     </div>
   );
 

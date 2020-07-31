@@ -5,9 +5,9 @@
 
 import { PureComponent, Fragment } from 'react';
 import axios from 'axios';
+import { Editor } from '@tinymce/tinymce-react'; 
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
-import { Editor } from '@tinymce/tinymce-react'; 
 
 // Component
 import BreadCrumb from '@components/component.BreadCrumb';
@@ -101,7 +101,6 @@ export default class CmsEditTestimonialDetailForm extends PureComponent {
           initialValue={this.state.formData[inputLabel]}
           init={{
             height: 500,
-            menubar: false,
             plugins: [
               'advlist autolink lists link image', 
               'charmap print preview anchor help',
@@ -111,7 +110,8 @@ export default class CmsEditTestimonialDetailForm extends PureComponent {
             toolbar:
               'undo redo | formatselect | bold italic | \
               alignleft aligncenter alignright | \
-              bullist numlist outdent indent | help'
+              bullist numlist outdent indent | help',
+            menubar: "tools"
           }}
           onChange={event => this.handleEditorChange(event, inputLabel)}
         />
@@ -213,7 +213,8 @@ export default class CmsEditTestimonialDetailForm extends PureComponent {
     event.preventDefault();
 
     this.setState({
-      isLoading: true
+      isLoading: true,
+      isError: false
     }, this.fetchUpdateDetail)
   };
 

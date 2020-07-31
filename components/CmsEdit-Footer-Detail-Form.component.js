@@ -147,7 +147,8 @@ export default class CmsEditFooterDetailForm extends PureComponent {
     event.preventDefault();
 
     this.setState({
-      isLoading: true
+      isLoading: true,
+      isError: false
     }, this.fetchUpdateDetail)
   };
 

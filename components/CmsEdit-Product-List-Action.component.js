@@ -162,6 +162,9 @@ export default class CmsEditProductListAction extends PureComponent {
 
     return (
       <div className='cmsList__action'>
+        <Link href={`/cms-edit-product/${id}`}>
+          <a className='btn btn-info'>Edit Product</a>
+        </Link>
         <Link href={`${linkActionList}?productId=${id}`}>
           <a className='btn btn-warning'>Edit Product Item</a>
         </Link>

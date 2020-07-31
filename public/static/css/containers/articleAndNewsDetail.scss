@@ -5,8 +5,10 @@
   background-position-y: -52px;
   background-position-x: center;
   padding: 45px 0;
+
   @include breakpoint(underLaptop) {
     background-size: auto;
+    padding: 30px 0;
   }
 
   h1 {
@@ -15,11 +17,16 @@
     color: #444444;
     text-transform: capitalize;
     margin: 0;
+    
+    @include breakpoint(underLaptop) {
+      font-size: 26px;
+    }
   }
 
   .articleHeader {
     display: flex;
     margin: 20px -10px;
+    overflow: scroll;
 
     > li {
       align-items: center;
@@ -36,15 +43,9 @@
   }
 
   .articleBody {
-    font-family: 'OpenSans';
-    
     img.mainImage {
       width: 100%;
       margin-bottom: 20px;
-    }
-
-    img {
-      width: auto;
     }
   }
 }
