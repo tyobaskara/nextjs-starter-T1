@@ -47,10 +47,10 @@ const editPagesListRoute = [
     route: '/cms-edit-pages-home/clients',
     name: 'Clients'
   },
-  // {
-  //   route: '/cms-edit-pages-home/coverage-of-clients',
-  //   name: 'Coverage Of Clients'
-  // }
+  {
+    route: '/cms-edit-pages-home/coverage',
+    name: 'Coverage Of Clients'
+  }
 ];
 
 function CmsEditPagesHomePage() {

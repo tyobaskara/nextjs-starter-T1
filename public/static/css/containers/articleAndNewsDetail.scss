@@ -101,15 +101,15 @@
 
   textarea, input {
     border-radius: 2.2px;
-    border: solid 0.6px rgba(208, 208, 208, 0.5);
-    background-color: #d3d6d8;
+    border: solid 0.6px #f1f1f1;
+    background-color: white;
     color: #444444;
     font-family: 'OpenSans';
     font-size: 16px;
 
     &:focus {
-      background-color: #d3d6d8;
-      border: solid 0.6px rgba(208, 208, 208, 0.5);
+      background-color: white;
+      border: solid 0.6px #f1f1f1;
       box-shadow: none;
     }
 

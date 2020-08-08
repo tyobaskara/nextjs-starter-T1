@@ -12,7 +12,7 @@ import AboutImplementation from '@components/component.AboutImplementation';
 const isServer = typeof window === 'undefined';
 const WOW = !isServer ? require('wow.js') : null;
 
-export default class About extends PureComponent {
+class About extends PureComponent {
   componentDidMount() {
     new WOW().init();
   }
@@ -65,3 +65,5 @@ export default class About extends PureComponent {
     )
   }
 }
+
+export default About;

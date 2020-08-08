@@ -70,9 +70,9 @@
   &__input {
     margin-bottom: 10px;
     padding: 10px 20px;
-    background-color: #d3d6d8;
+    border: 1px solid #f1f1f1;
+    background-color: white;
     box-sizing: border-box;
-    border: none;
   }
 
   /* Change the white to any color ;) */
@@ -80,7 +80,7 @@
   input:-webkit-autofill:hover, 
   input:-webkit-autofill:focus, 
   input:-webkit-autofill:active  {
-    -webkit-box-shadow: 0 0 0 30px #d3d6d8 inset !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
   }
 
   &__input:first-child {
@@ -90,9 +90,9 @@
   &__note {
     width: 100%;
     padding: 10px 20px;
-    background-color: #d3d6d8;
+    background-color: white;
+    border: 1px solid #f1f1f1;
     box-sizing: border-box;
-    border: none;
     resize: none;
   }
 

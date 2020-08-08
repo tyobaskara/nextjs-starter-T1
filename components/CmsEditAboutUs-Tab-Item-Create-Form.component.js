@@ -155,7 +155,7 @@ export default class CmsEditAboutUsTabItemCreateForm extends PureComponent {
   };
 
   fetchCreate = async () => {
-    const { apiCreateUrl, contentType, tabId } = this.props;
+    const { apiCreateUrl, contentType, tabId, defaultFormData } = this.props;
     const { formData } = this.state;
     const url = apiCreateUrl.replace('[tabId]', tabId);
 
@@ -194,7 +194,8 @@ export default class CmsEditAboutUsTabItemCreateForm extends PureComponent {
       this.setState({ 
         isLoading: false, 
         isSuccess: true, 
-        successMessage
+        successMessage,
+        formData: defaultFormData
       });
     } catch (error) {
       const errorMessage = getErrorMessage(error);

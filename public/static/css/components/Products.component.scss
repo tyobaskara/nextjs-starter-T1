@@ -29,15 +29,13 @@
 
       h3 {
         line-height: 1;
-        margin-bottom: 5px;
-        
-        @include breakpoint(underLaptop) {
-          margin-bottom: 20px;
-        }
+        margin-bottom: 15px;
       }
       p {
-        margin: 0;
         line-height: 1.63;
+        margin: 0;
+        max-height: 265px;
+        overflow: hidden;
       }
     }
 

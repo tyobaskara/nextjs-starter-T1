@@ -33,7 +33,11 @@ function CmsEditTestimonialItemDetailPage() {
     apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial?id=[id]',
     breadCrumbList,
     drawerActiveMenu: editPages,
-    inputFileList: ['photo']
+    inputFileList: ['photo'],
+    renameList: {
+      quotationEn: 'QuoteEn',
+      quotationId: 'QuoteId'
+    }
   });
 
   return (

@@ -225,18 +225,8 @@ class ArticleAndNewsDetail extends PureComponent {
   _renderCommentForm = () => (
     <form onSubmit={this._submitForm}>
       <p><b>{this.props.t('leave-a-reply')}</b></p>
-      <p>{this.props.t('reply-disclaimer')}</p>
+      {/* <p>{this.props.t('reply-disclaimer')}</p> */}
 
-      <div className="form-group">
-        <textarea 
-          placeholder={this.props.t('comment')}
-          className="form-control" 
-          id="inputComment" 
-          onChange={event => this.onInputChange(event, 'inputComment')} 
-          value={this.state.inputComment}
-          required
-        ></textarea>
-      </div>
       <div className="form-group">
         <input 
           placeholder={this.props.t('name')}
@@ -247,6 +237,16 @@ class ArticleAndNewsDetail extends PureComponent {
           value={this.state.inputName}
           required  
         />
+      </div>
+      <div className="form-group">
+        <textarea 
+          placeholder={this.props.t('comment')}
+          className="form-control" 
+          id="inputComment" 
+          onChange={event => this.onInputChange(event, 'inputComment')} 
+          value={this.state.inputComment}
+          required
+        ></textarea>
       </div>
       {this._renderErrorMessage()}
       <button type="submit" className="btn-blue">Post Comment</button>
@@ -376,7 +376,7 @@ class ArticleAndNewsDetail extends PureComponent {
         <meta property="og:image" content={content.image} />
         <meta property="og:image:width" content="200" />
         <meta property="og:image:height" content="200" />
-        {/* <meta property="og:url" content={shareUrl} /> */}
+        <meta property="og:url" content={shareUrl} />
         <meta property="og:type" content={content.label.toLowerCase()} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="fb:app_id" content="413363352613693" />

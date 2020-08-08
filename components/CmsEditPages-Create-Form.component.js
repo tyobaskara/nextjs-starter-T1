@@ -118,9 +118,14 @@ export default class CmsEditPagesCreateForm extends PureComponent {
   };
 
   _renderFormGroup = (inputLabel, topLevelLabelName) => {
-    const { inputFileList = [], selectOptionList = [], editorList = [] } = this.props;
+    const { inputFileList = [], selectOptionList = [], editorList = [],
+      nestedStateKey = [] } = this.props;
+    
     const conditionalLabelName = inputLabel === 'id' ? 'Idn' : capitalizeFirstLetter(inputLabel);
-    const stateKey = topLevelLabelName ? `${topLevelLabelName}${conditionalLabelName}` : inputLabel;
+    let stateKey = topLevelLabelName ? `${topLevelLabelName}${conditionalLabelName}` : inputLabel;
+    if (nestedStateKey.indexOf(inputLabel) > -1) {
+      stateKey = inputLabel;
+    }
 
     const getSelectOption = selectOptionList.find(list => list.selectKey == inputLabel);
     if (!isEmpty(getSelectOption)) {
@@ -270,7 +275,7 @@ export default class CmsEditPagesCreateForm extends PureComponent {
   };
 
   fetchCreate = async () => {
-    const { apiCreateUrl, contentType } = this.props;
+    const { apiCreateUrl, contentType, defaultFormData } = this.props;
     const { formData } = this.state;
 
     let fetchFormData = new FormData();
@@ -304,7 +309,8 @@ export default class CmsEditPagesCreateForm extends PureComponent {
       this.setState({ 
         isLoading: false, 
         isSuccess: true, 
-        successMessage
+        successMessage,
+        formData: defaultFormData
       });
     } catch (error) {
       const errorMessage = getErrorMessage(error);

@@ -34,14 +34,14 @@ class Header extends PureComponent {
   );
 
   _renderHeader = () => (
-    <header className='dhealthNav wow fadeInDown'>
+    <header className='dhealthNav'>
       {this._renderHeaderMobile()}
       {this._renderNavContainer()}
     </header>
   );
 
   _renderHeaderMobile = () => (
-    <div className='dhealthNav-headerMobile wow fadeInDown'>
+    <div className='dhealthNav-headerMobile'>
       {this._renderLogo()}
       {this._renderHamburgerBtn()}
     </div>

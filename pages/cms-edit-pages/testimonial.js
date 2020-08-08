@@ -32,7 +32,7 @@ function CmsEditPagesTestimonialPage() {
     drawerActiveMenu: editPages,
     listTitle: 'Testimonial',
     apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial',
-    apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial?id=[id]',
+    apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial/[id]',
     linkActionList:  '/cms-edit-testimonial-item'
   });
 

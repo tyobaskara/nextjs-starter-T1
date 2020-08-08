@@ -1,12 +1,10 @@
 import { PureComponent } from 'react';
 import Slider from "react-slick";
 import isEmpty from 'lodash/isEmpty';
-import { withTranslation } from '../i18n';
 
 // Components
 import Image from '@components/component.Image';
 import ButtonLink from '@components/component.ButtonLink';
-import FormFreeDemo from '@components/component.FormFreeDemo';
 
 // Utils
 import ReactHtmlParser from 'react-html-parser';
@@ -33,9 +31,6 @@ const settings = {
 };
 
 class HeroBanner extends PureComponent {
-  state = {
-    isShowFreeDemoModal: false
-  }
 
   _renderSliderItems = () => {
     const { content = [], language } = this.props;
@@ -89,7 +84,7 @@ class HeroBanner extends PureComponent {
   _renderButtonLink = (link, title) => {
     const { language } = this.props;
 
-    if (link == 'freeDemo') {
+    if (link.toLowerCase() == 'freedemo') {
       return this._renderFreeDemoBtn(title);
     }
 
@@ -106,35 +101,11 @@ class HeroBanner extends PureComponent {
     return (
       <button 
         className='btn-blue' 
-        onClick={this.onFreeDemoClick}
+        onClick={this.props.onFreeDemoOpen}
       >
         {title}
       </button>
     );
-  };
-
-  onFreeDemoClick = () => {
-    this.setState({
-      isShowFreeDemoModal: true
-    })
-  };
-
-  onFreeDemoClose = () => {
-    this.setState({
-      isShowFreeDemoModal: false
-    })
-  };
-
-  _renderModalFreeDemo = () => {
-    return this.state.isShowFreeDemoModal ? (
-      <div className='modal-1 wow fadeIn'>
-        <div className='wrapper wow fadeInDown'>
-          <p className='main-title'>Request Free Demo</p>
-          <FormFreeDemo t={this.props.t} parentCallback={this.onFreeDemoClose} type='DEMO'/>
-        </div>
-        <div className='overlay' onClick={this.onFreeDemoClose}></div>
-      </div>
-    ) : null;
   };
 
   render() {
@@ -143,11 +114,9 @@ class HeroBanner extends PureComponent {
         <Slider {...settings}>
           {this._renderSliderItems()}
         </Slider>
-
-        {this._renderModalFreeDemo()}
       </section>
     );
   }
 }
 
-export default withTranslation('pages')(HeroBanner);
+export default HeroBanner;

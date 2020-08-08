@@ -183,9 +183,11 @@ export default class CmsEditTestimonialDetailForm extends PureComponent {
   };
 
   _renderInputText = (inputLabel) => {
+    const labelName = this.getLabelName(inputLabel);
+
     return (
       <div className="form-group" key={inputLabel}>
-        <label htmlFor={inputLabel}>{capitalizeFirstLetter(inputLabel)}</label>
+        <label htmlFor={inputLabel}>{capitalizeFirstLetter(labelName)}</label>
         <input 
           type="text" 
           className="form-control" 
@@ -195,6 +197,15 @@ export default class CmsEditTestimonialDetailForm extends PureComponent {
         />
       </div>
     );
+  }
+
+  getLabelName = (inputLabel) => {
+    const { renameList = {} } = this.props;
+    const list = Object.keys(renameList);
+
+    const keyName = list.find(item => item === inputLabel);
+
+    return keyName ? renameList[keyName] : inputLabel;
   }
 
   onInputChange = (event, stateKey) => {

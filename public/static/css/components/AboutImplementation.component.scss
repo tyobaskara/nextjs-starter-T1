@@ -101,6 +101,10 @@
     flex-wrap: wrap;
     justify-content: center;
 
+    &.active {
+      animation: fadeIn 1s;
+    }
+
     &-item {
       width: 22%;
       margin: 10px;
@@ -131,4 +135,25 @@
     }
   }
 
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@-moz-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@-ms-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@-o-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }

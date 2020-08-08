@@ -1,4 +1,5 @@
 .Testimonial {
+  padding-bottom: 20px;
   @include breakpoint(underLaptop) {
     padding-bottom: 40px;
   }
@@ -29,7 +30,7 @@
       position: relative;
       padding-left: 110px;
       margin-bottom: 10px;
-      min-height: 90px;
+      min-height: 115px;
 
       img {
         position: absolute;
@@ -43,9 +44,10 @@
       h3 {
         font-family: 'OpenSans-Bold';
         font-size: 18px;
-        line-height: 1.67;
+        line-height: 1.25;
         color: $black3;
         margin: 0;
+        margin-bottom: 5px;
         padding-top: 10px;
       }
 
@@ -53,7 +55,7 @@
         opacity: 0.8;
         font-family: 'OpenSans';
         font-size: 14px;
-        line-height: 2.14;
+        line-height: 1.25;
         color: $blue2;
         margin: 0;
       }
@@ -73,8 +75,8 @@
         line-height: 1.88;
         letter-spacing: normal;
         color: $black3;
-        margin: 0;
-        word-break: break-all;
+        margin: 0;    
+        word-break: initial;
       }
 
       .ellipsis {

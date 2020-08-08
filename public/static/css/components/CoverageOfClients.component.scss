@@ -2,7 +2,12 @@
   padding-bottom: 45px;
   
   &__maps {
-    padding: 40px;
+    height: 600px;
+    margin-bottom: 45px;
+    position: relative;
+    @include breakpoint(underLaptop) {
+      height: 500px;
+    }
 
     img {
       width: 100%;

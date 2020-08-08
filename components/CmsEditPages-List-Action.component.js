@@ -25,7 +25,8 @@ export default class CmsEditPagesListAction extends PureComponent {
     isFetchDataError: false,
     errorMessage: '',
     listData: [],
-    pageNumber: 1
+    pageNumber: 1,
+    searchKey: ''
   }
 
   componentDidMount() {
@@ -34,9 +35,13 @@ export default class CmsEditPagesListAction extends PureComponent {
   }
 
   fetchListData = async () => {
-    const { pageNumber } = this.state;
-    const { apiGetListUrl, showPagination } = this.props;
-    const url = showPagination ? `${apiGetListUrl}?page=${pageNumber}` : apiGetListUrl;
+    const { pageNumber, searchKey } = this.state;
+    const { apiGetListUrl, showPagination, searchFormKey } = this.props;
+    
+    let url = showPagination ? `${apiGetListUrl}?page=${pageNumber}` : apiGetListUrl;
+    if (searchFormKey) {
+      url = `${apiGetListUrl}?page=${pageNumber}&${searchFormKey}=${searchKey}`
+    }
 
     try {
       const { data: response } = await axios({
@@ -93,15 +98,16 @@ export default class CmsEditPagesListAction extends PureComponent {
   };
 
   _renderListItem = (item, index) => {
-    const { title } = this.props;
+    const { title, titleKey } = this.props;
     const { pageNumber } = this.state;
     const limit = 10; // default limit from api
     const slideNumber = (index + 1) + ((pageNumber * limit) - limit);
     const listId = item.id;
+    const listName = title ? `${title}-${slideNumber}` : item[titleKey];
 
     return (
       <li className='cmsList__item' key={listId}>
-        <p>{title}-{slideNumber}</p>
+        <p>{listName}</p>
         {this._renderListAction(listId, slideNumber)}
       </li>
     );
@@ -256,10 +262,50 @@ export default class CmsEditPagesListAction extends PureComponent {
     ) : null;
   };
 
+  _renderSearchForm = () => {
+    const { searchFormKey } = this.props;
+    return searchFormKey && (
+      <form
+        className='mb-4'
+        onSubmit={this._submitForm}
+      >
+        <div className='form-group'>
+          <input 
+            className='form-control' 
+            placeholder='search' 
+            type='text'
+            onChange={event => this.onInputChange(event, 'searchKey')} 
+            value={this.state.searchKey}
+          />
+        </div>
+        <button type='submit' className='btn btn-primary'>Search</button>
+      </form>
+    );
+  };
+
+  _submitForm = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      isLoading: true,
+      isError: false
+    }, this.fetchListData)
+  };
+
+  onInputChange = (event, stateName) => {
+    const { value } = event.target;
+
+    this.setState({
+      [stateName]: value,
+      isError: false
+    });
+  };
+
   render() {
     return (
       <Fragment>
         {this._renderBreadCrumb()}
+        {this._renderSearchForm()}
         {this._renderListAndPagination()}
         {this._renderLinkBtnVideoConfig()}
         {this.state.isLoading ? <Loader /> : null}

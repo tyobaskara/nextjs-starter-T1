@@ -117,9 +117,13 @@ export default class CmsEditPagesDetailForm extends PureComponent {
   };
 
   _renderFormGroup = (inputLabel, topLevelLabelName) => {
-    const { inputFileList = [] } = this.props;
+    const { inputFileList = [], nestedStateKey = [] } = this.props;
     const conditionalLabelName = inputLabel === 'id' ? 'Idn' : capitalizeFirstLetter(inputLabel);
-    const stateKey = topLevelLabelName ? `${topLevelLabelName}${conditionalLabelName}` : inputLabel;
+    
+    let stateKey = topLevelLabelName ? `${topLevelLabelName}${conditionalLabelName}` : inputLabel;
+    if (nestedStateKey.indexOf(inputLabel) > -1) {
+      stateKey = inputLabel;
+    }
     
     if (inputFileList.indexOf(topLevelLabelName) > -1 || inputFileList.indexOf(inputLabel) > -1) {
       return this._renderInputFile(stateKey, inputLabel);

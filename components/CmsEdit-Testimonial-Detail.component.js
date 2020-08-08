@@ -75,7 +75,8 @@ export default class CmsEditTestimonialDetail extends PureComponent {
   };
 
   _renderCmsEditTestimonialDetailForm = () => {
-    const { breadCrumbList, apiUpdateUrl, testimonialId, inputFileList, contentType = '' } = this.props;
+    const { breadCrumbList, apiUpdateUrl, testimonialId, 
+      inputFileList, contentType = '', renameList } = this.props;
     const { detailData, formData } = this.state;
     const detailBreadCrumbList = [
       ...breadCrumbList,
@@ -94,6 +95,7 @@ export default class CmsEditTestimonialDetail extends PureComponent {
         defaultFormData={formData}
         apiUpdateUrl={updateUrl}
         inputFileList={inputFileList}
+        renameList={renameList}
       />
     )
   }

@@ -47,29 +47,44 @@ class AboutImplementation extends PureComponent {
   renderTabsContent = () => {
     const { content, language } = this.props;
     const { activeTabs } = this.state;
-    const implementations = content[activeTabs].implementations;
 
     return (
-      <div className='aboutImplementation__tabs-content'>
-        {implementations.map((item, index) => {
-          const titleKey = 'title' + capitalizeFirstLetter(language);
-          const desktopImageKey = 'desktopImage' + capitalizeFirstLetter(language);
+      <div className='fadeIn'>
+        {
+          content.map((tab, index) => {
+            const tabClass = index === activeTabs ? 'aboutImplementation__tabs-content active' : 'aboutImplementation__tabs-content d-none';
 
-          return (
-            <div 
-              className='aboutImplementation__tabs-content-item'
-              key={item[titleKey] + index}
-            >
-              <div className='wrapper'>
-                <Image 
-                  src={item[desktopImageKey]}
-                  alt={item[titleKey]}
-                />
+            return (
+              <div 
+                id={`tab_${index}`}
+                className={tabClass}
+                key={`tab_${index}`}
+              >
+                {
+                  tab.implementations.map((item, index) => {
+                    const titleKey = 'title' + capitalizeFirstLetter(language);
+                    const desktopImageKey = 'desktopImage' + capitalizeFirstLetter(language);
+
+                    return (
+                      <div 
+                        className='aboutImplementation__tabs-content-item'
+                        key={item[titleKey] + index}
+                      >
+                        <div className='wrapper'>
+                          <Image 
+                            src={item[desktopImageKey]}
+                            alt={item[titleKey]}
+                          />
+                        </div>
+                        <p>{item[titleKey]}</p>
+                      </div>
+                    )
+                  })
+                }
               </div>
-              <p>{item[titleKey]}</p>
-            </div>
-          )
-        })}
+            )
+          })
+        }
       </div>
     );
   };

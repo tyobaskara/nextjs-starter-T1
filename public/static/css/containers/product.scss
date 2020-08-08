@@ -104,6 +104,11 @@
 
   &-body {
     padding: 40px 0;
+    
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent; /* make scrollbar transparent */
+    }
 
     @include breakpoint(underLaptop) {
       padding: 30px 0;
@@ -135,7 +140,6 @@
         font-size: 18px;
         line-height: 1.71;
         list-style-type: disc;
-        list-style-position: inside;
         @include breakpoint(underLaptop) {
           font-size: 17px;
         }
