@@ -1,7 +1,7 @@
 # D'health Web Development
 
 Frontend Development and CMS using Next.js Framework,
-Every Frontend Development starts from pages folder.
+Every Frontend Development starts from ./pages folder.
 
 ## Run Local Development
 
@@ -10,28 +10,16 @@ Every Frontend Development starts from pages folder.
 > or
 > $ npm run dev
 
-## Step to Create New Page
-
-- /pages/cms/user-setting.js
-- /containers/cmsUserSetting/cmsUserSetting.container.js
-- /containers/cmsUserSetting/cmsUserSetting.component.js
-
-### CMS layout
-
-- /components/_layouts/cms.layout.js
-- /public/static/css/components/_layouts/cms.layout.scss
-
 ## Redux
 
 > Redux Setup:
 
-- /redux/actions/cmsDrawerActions.js
-- /redux/reducers/cmsDrawerReducer.js
-- /redux/reducers/rootReducer.js
+- /redux/actions/*.js
+- /redux/reducers/*.js
 - /redux/store.js
 - /pages/_app.js
 
-### Pages Using Redux:
+### Pages Using Redux
 
 > CMS Dashboard Layout for Drawer Hamburger to Toggle On/Off onClick Event (connect Redux on withToken HOC)
 
