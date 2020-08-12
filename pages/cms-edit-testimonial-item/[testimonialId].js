@@ -7,6 +7,9 @@ import CmsEditTestimonialDetail from '@components/CmsEdit-Testimonial-Detail.con
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -27,10 +30,11 @@ const breadCrumbList = [
 ];
 
 function CmsEditTestimonialItemDetailPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     contentType: 'multipart/form-data',
-    apiGetDataUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial',
-    apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial?id=[id]',
+    apiGetDataUrl: `${apiUrl}/testimonial`,
+    apiUpdateUrl: `${apiUrl}/testimonial?id=[id]`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     inputFileList: ['photo'],

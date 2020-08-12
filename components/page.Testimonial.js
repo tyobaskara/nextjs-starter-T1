@@ -9,6 +9,9 @@ import Loader from '@components/component.Loader';
 // Utils
 import { capitalizeFirstLetter } from '@utils/string.utils';
 
+// Config
+import Config from '@config/api';
+
 const isServer = typeof window === 'undefined';
 const WOW = !isServer ? require('wow.js') : null;
 
@@ -113,10 +116,11 @@ class Testimonial extends PureComponent {
   };
 
   _fetchLoadMore = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { pageNumber, pageSize, content } = this.state;
     
     try {
-      const url = `http://nonprod.dhealth.arinanda.com/api/v1/testimonial?pageNumber=${pageNumber}&pageSize=${pageSize}`;
+      const url = `${apiUrl}/testimonial?pageNumber=${pageNumber}&pageSize=${pageSize}`;
       const { data: { data } } = await axios.get(url);
       const isNoMoreList = data.length > 0 ? false : true;
       const newContent = [...content].concat(data);

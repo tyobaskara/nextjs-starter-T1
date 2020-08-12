@@ -26,6 +26,9 @@ import moment from 'moment';
 import ReactHtmlParser from 'react-html-parser';
 import { navigateTo } from '@utils/navigation.utils';
 
+// Config
+import Config from '@config/api';
+
 const isServer = typeof window === 'undefined';
 const WOW = !isServer ? require('wow.js') : null;
 
@@ -183,10 +186,11 @@ class ArticleAndNewsDetail extends PureComponent {
   };
 
   onShareWindowClose = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { articleId } = this.props;
     
     try {
-      const url = `http://nonprod.dhealth.arinanda.com/api/v1/article/${articleId}/_share`;
+      const url = `${apiUrl}/article/${articleId}/_share`;
       await axios.post(url);
     } catch(e) {
       console.log(e);
@@ -278,9 +282,10 @@ class ArticleAndNewsDetail extends PureComponent {
   };
 
   fetchComment = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { inputComment, inputName } = this.state;
     const { articleId } = this.props;
-    const url = `http://nonprod.dhealth.arinanda.com/api/v1/article/${articleId}/comment`;
+    const url = `${apiUrl}/article/${articleId}/comment`;
 
     let fetchFormData = new FormData();
     fetchFormData.append('name', inputName);

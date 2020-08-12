@@ -19,6 +19,9 @@ import { getErrorMessage } from '@utils/fetch.utils';
 
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -112,10 +115,11 @@ export default class CmsChangePassword extends PureComponent {
   };
 
   fetchChangePassword = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { inputnewPassword, inputConfirmPassword } = this.state;
 
     try {
-      const response = await axios.put('http://nonprod.dhealth.arinanda.com/api/v1/users/_change-password', {
+      const response = await axios.put(`${apiUrl}/users/_change-password`, {
         newPassword: inputnewPassword,
         confirmNewPassword: inputConfirmPassword
       });

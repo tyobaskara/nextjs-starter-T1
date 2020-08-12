@@ -42,6 +42,9 @@ const breadCrumbList = [
   }
 ];
 
+// Config
+import Config from '@config/api';
+
 export default class CmsUserList extends PureComponent {
   state = {
     isLoading: true,
@@ -62,8 +65,9 @@ export default class CmsUserList extends PureComponent {
   }
 
   fetchUserList = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { pageNumber } = this.state;
-    const url = `http://nonprod.dhealth.arinanda.com/api/v1/users?pageNumber=${pageNumber}`;
+    const url = `${apiUrl}/users?pageNumber=${pageNumber}`;
 
     try {
       const { data: response } = await axios.get(url);
@@ -147,8 +151,9 @@ export default class CmsUserList extends PureComponent {
   };
 
   fetchResetPassword = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { userId, inputResetPassword } = this.state;
-    const url = `http://nonprod.dhealth.arinanda.com/api/v1/users/${userId}/_reset-password`;
+    const url = `${apiUrl}/users/${userId}/_reset-password`;
 
     try {
       await axios.put(url, {
@@ -226,7 +231,8 @@ export default class CmsUserList extends PureComponent {
   };
 
   fetchRemoveUser = async (userId) => {
-    const url = `http://nonprod.dhealth.arinanda.com/api/v1/users/${userId}`;
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
+    const url = `${apiUrl}/users/${userId}`;
 
     try {
       await axios.delete(url);

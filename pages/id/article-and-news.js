@@ -12,6 +12,9 @@ import ArticleAndNews from '@components/page.ArticleAndNews';
 // Redux Actions
 import { setFooterData } from '@redux/actions/footerActions';
 
+// Config
+import Config from '@config/api';
+
 function ArticleAndNewsPage(props) {
   const language = 'id';
   i18n.changeLanguage(language);
@@ -36,14 +39,17 @@ function ArticleAndNewsPage(props) {
 }
 
 ArticleAndNewsPage.getInitialProps = async ({ store }) => {
+  const env = process.env.NODE_ENV;
+  const apiUrl = Config.apiUrl[env];
+
   const { footer } = store.getState();
   let footerData = footer.data;
 
-  const res = await fetch(`http://nonprod.dhealth.arinanda.com/api/v1/article?language=en&pageNumber=1&pageSize=9`);
+  const res = await fetch(`${apiUrl}/article?language=en&pageNumber=1&pageSize=9`);
   const { data: content } = await res.json();
 
   if (isEmpty(footerData)) {
-    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const footerRes = await fetch(`${apiUrl}/footer`);
     const { data } = await footerRes.json();
     await store.dispatch(setFooterData(data));
     

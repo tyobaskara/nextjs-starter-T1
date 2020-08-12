@@ -12,6 +12,9 @@ import Service2 from '@components/page.product.Service2';
 // Redux Actions
 import { setFooterData } from '@redux/actions/footerActions';
 
+// Config
+import Config from '@config/api';
+
 function Service2Page(props) {
   const language = 'en';
   i18n.changeLanguage(language);
@@ -37,15 +40,18 @@ function Service2Page(props) {
 }
 
 Service2Page.getInitialProps = async ({ store }) => {
+  const env = process.env.NODE_ENV;
+  const apiUrl = Config.apiUrl[env];
+
   const { footer } = store.getState();
   let footerData = footer.data;
   
-  const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/products');
+  const res = await fetch(`${apiUrl}/products`);
   const { data: products } = await res.json();
   const service2Data = products[3];
 
   if (isEmpty(footerData)) {
-    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const footerRes = await fetch(`${apiUrl}/footer`);
     const { data } = await footerRes.json();
     await store.dispatch(setFooterData(data));
     

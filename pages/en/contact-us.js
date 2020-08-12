@@ -12,6 +12,9 @@ import ContactUs from '@components/page.ContactUs';
 // Redux Actions
 import { setFooterData } from '@redux/actions/footerActions';
 
+// Config
+import Config from '@config/api';
+
 function ContactUsPage(props) {
   const language = 'en';
   i18n.changeLanguage(language);
@@ -36,11 +39,14 @@ function ContactUsPage(props) {
 }
 
 ContactUsPage.getInitialProps = async ({ store }) => {
+  const env = process.env.NODE_ENV;
+  const apiUrl = Config.apiUrl[env];
+  
   const { footer } = store.getState();
   let footerData = footer.data;
 
   if (isEmpty(footerData)) {
-    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const footerRes = await fetch(`${apiUrl}/footer`);
     const { data } = await footerRes.json();
     await store.dispatch(setFooterData(data));
     

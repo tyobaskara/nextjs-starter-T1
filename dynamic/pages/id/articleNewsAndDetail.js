@@ -11,6 +11,9 @@ import ArticleAndNewsDetail from '@components/page.ArticleAndNewsDetail';
 // Redux Actions
 import { setFooterData } from '@redux/actions/footerActions';
 
+// Config
+import Config from '@config/api';
+
 const ArticleNewsDetailPage = (props) => {
   const language = 'id';
   i18n.changeLanguage(language);
@@ -30,6 +33,9 @@ const ArticleNewsDetailPage = (props) => {
 };
 
 export const getArticleAndNewsDetailInitialProps = async ({ query, store }) => {
+  const env = process.env.NODE_ENV;
+  const apiUrl = Config.apiUrl[env];
+  
   const { footer } = store.getState();
   let footerData = footer.data;
 
@@ -37,17 +43,17 @@ export const getArticleAndNewsDetailInitialProps = async ({ query, store }) => {
   const pageType = dynamic[0];
   const id = dynamic[1];
   const title = dynamic[2];
-  const res = await fetch(`http://nonprod.dhealth.arinanda.com/api/v1/article/${id}?language=id`);
+  const res = await fetch(`${apiUrl}/article/${id}?language=id`);
   const { data } = await res.json();
 
-  const commentRes = await fetch(`http://nonprod.dhealth.arinanda.com/api/v1/article/${id}/comment`);
+  const commentRes = await fetch(`${apiUrl}/article/${id}/comment`);
   const { data: commentData } = await commentRes.json();
 
-  const recentPosRes = await fetch(`http://nonprod.dhealth.arinanda.com/api/v1/article?language=id&pageNumber=1&pageSize=4`);
+  const recentPosRes = await fetch(`${apiUrl}/article?language=id&pageNumber=1&pageSize=4`);
   const { data: recentPosData } = await recentPosRes.json();
 
   if (isEmpty(footerData)) {
-    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const footerRes = await fetch(`${apiUrl}/footer`);
     const { data } = await footerRes.json();
     await store.dispatch(setFooterData(data));
     

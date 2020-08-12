@@ -14,6 +14,9 @@ const {
   }
 } = Constants;
 
+// Config
+import Config from '@config/api';
+
 export default class LayoutCms extends PureComponent {
   constructor(props) {
     super(props);
@@ -42,12 +45,13 @@ export default class LayoutCms extends PureComponent {
   };
 
   fetchLogout = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { token } = this.state;
     const { toggleCmsDrawer , onLogOut } = this.props;
 
     try {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      await axios.post('http://nonprod.dhealth.arinanda.com/api/v1/users/logout');
+      await axios.post(`${apiUrl}/users/logout`);
       
       onLogOut();
       toggleCmsDrawer(false);

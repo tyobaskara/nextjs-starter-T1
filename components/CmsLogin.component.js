@@ -10,6 +10,9 @@ import Loader from '@components/component.Loader';
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';
 
+// Config
+import Config from '@config/api';
+
 export default class cmsLoginComponent extends PureComponent {
   state = {
     user: '',
@@ -53,13 +56,14 @@ export default class cmsLoginComponent extends PureComponent {
   };
 
   fetchLogin = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { onLogin } = this.props;
     const { user, password } = this.state;
     
     this.setUserAndPasswordCookie();
 
     try {
-      const { data: { data: { token } } } = await axios.post('http://nonprod.dhealth.arinanda.com/api/v1/users/login', {
+      const { data: { data: { token } } } = await axios.post(`${apiUrl}/users/login`, {
         email: user,
         password
       });

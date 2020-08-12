@@ -4,6 +4,9 @@ import LayoutMainCms from '@components/layout.LayoutMainCms';
 // Container
 import CmsEditFooterSocialMediaList from '@components/CmsEdit-Footer-SocialMedia-List.container';
 
+// Config
+import Config from '@config/api';
+
 // Constants
 import Constants from '@constants/constants';
 
@@ -31,11 +34,12 @@ const breadCrumbList = [
 ];
 
 function CmsEditFooterSocialMediaPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
     listTitle: 'Social Media',
-    apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/footer',
+    apiGetListUrl: `${apiUrl}/footer`,
     apiRemoveListUrl: '',
     linkActionList:  '/cms-edit-footer-social-media',
     btnAddList: false,

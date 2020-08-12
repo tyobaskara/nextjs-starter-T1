@@ -76,19 +76,19 @@
 
   .avatar {
     margin-bottom: 20px;
+    position: relative;
 
     &-image {
-      display: inline-block;
-      vertical-align: top;
+      position: absolute;
+      top: 0;
+      left: 0;
       height: 80px;
       width: 80px;
       @include object-fit(contain);
     }
 
     &-desc {
-      display: inline-block;
-      vertical-align: top;
-      padding-left: 20px;
+      padding-left: 80px + 20px;
       padding-top: 15px;
 
       p {

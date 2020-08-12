@@ -4,6 +4,9 @@ import LayoutMainCms from '@components/layout.LayoutMainCms';
 // Container
 import CmsEditAboutUsDetail from '@components/CmsEditAboutUs-Detail.container';
 
+// Config
+import Config from '@config/api';
+
 // Constants
 import Constants from '@constants/constants';
 
@@ -27,14 +30,15 @@ const breadCrumbList = [
 ];
 
 function CmsEditPagesAboutUsSection2Page() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const breadCrumbListActive = {
     name: `Section`
   }
 
   const getProps = () => ({
     contentType: 'multipart/form-data',
-    apiGetDataUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/about-us?section=2',
-    apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/about-us/section-2',
+    apiGetDataUrl: `${apiUrl}/about-us?section=2`,
+    apiUpdateUrl: `${apiUrl}/about-us/section-2`,
     breadCrumbList,
     breadCrumbListActive,
     drawerActiveMenu: editPages,

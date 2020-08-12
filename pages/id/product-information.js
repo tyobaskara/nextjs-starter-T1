@@ -12,6 +12,9 @@ import Information from '@components/page.product.Information';
 // Redux Actions
 import { setFooterData } from '@redux/actions/footerActions';
 
+// Config
+import Config from '@config/api';
+
 function InformationPage(props) {
   const language = 'id';
   i18n.changeLanguage(language);
@@ -37,15 +40,18 @@ function InformationPage(props) {
 }
 
 InformationPage.getInitialProps = async ({ store }) => {
+  const env = process.env.NODE_ENV;
+  const apiUrl = Config.apiUrl[env];
+
   const { footer } = store.getState();
   let footerData = footer.data;
 
-  const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/products');
+  const res = await fetch(`${apiUrl}/products`);
   const { data: products } = await res.json();
   const informationData = products[4];
 
   if (isEmpty(footerData)) {
-    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const footerRes = await fetch(`${apiUrl}/footer`);
     const { data } = await footerRes.json();
     await store.dispatch(setFooterData(data));
     

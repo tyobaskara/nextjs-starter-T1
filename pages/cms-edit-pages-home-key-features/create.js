@@ -8,6 +8,9 @@ import CmsEditPagesCreate from '@components/CmsEditPages-Create.container';
 import Constants from '@constants/constants';
 import dataFixture from '@constants/fixtures.keyFeatures';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -42,8 +45,9 @@ const defaultFormData = {
 };
 
 function CmsEditPagesKeyFeaturesCreatePage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
-    apiCreateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/key-features',
+    apiCreateUrl: `${apiUrl}/key-features`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     dataFixture,

@@ -8,6 +8,9 @@ import CmsEditPagesCreate from '@components/CmsEditPages-Create.container';
 import Constants from '@constants/constants';
 import dataFixture from '@constants/fixtures.productExellences';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -44,8 +47,9 @@ const defaultFormData = {
 };
 
 function CmsEditPagesProductExellencesCreatePage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
-    apiCreateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/product-exellences',
+    apiCreateUrl: `${apiUrl}/product-exellences`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     dataFixture,

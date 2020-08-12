@@ -7,6 +7,9 @@ import CmsEditPagesDetail from '@components/CmsEditPages-Detail.container';
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -31,14 +34,15 @@ const breadCrumbList = [
 ];
 
 function CmsEditPagesProductExellencesDetailPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const breadCrumbListActive = {
     route: '/cms-edit-pages-home/product-exellences',
     name: 'Product Exellences'
   }
 
   const getProps = () => ({
-    apiGetDataUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/product-exellences',
-    apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/product-exellences/update',
+    apiGetDataUrl: `${apiUrl}/product-exellences`,
+    apiUpdateUrl: `${apiUrl}/product-exellences/update`,
     breadCrumbList,
     breadCrumbListActive,
     drawerActiveMenu: editPages,

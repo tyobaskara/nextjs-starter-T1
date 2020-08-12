@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "dev": "nodemon server/app.js --watch server",
+    "dev": "NODE_ENV=development nodemon server/app.js --watch server",
     "build": "next build",
     "nextstart": "next start",
     "start": "NODE_ENV=production node server/app.js"

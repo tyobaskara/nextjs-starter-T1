@@ -12,6 +12,9 @@ import Testimonial from '@components/page.Testimonial';
 // Redux Actions
 import { setFooterData } from '@redux/actions/footerActions';
 
+// Config
+import Config from '@config/api';
+
 function TestimonialPage(props) {
   const language = 'en';
   i18n.changeLanguage(language);
@@ -36,14 +39,17 @@ function TestimonialPage(props) {
 }
 
 TestimonialPage.getInitialProps = async ({ store }) => {
+  const env = process.env.NODE_ENV;
+  const apiUrl = Config.apiUrl[env];
+
   const { footer } = store.getState();
   let footerData = footer.data;
 
-  const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/testimonial?pageNumber=1&pageSize=3');
+  const res = await fetch(`${apiUrl}/testimonial?pageNumber=1&pageSize=3`);
   const { data } = await res.json();
 
   if (isEmpty(footerData)) {
-    const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+    const footerRes = await fetch(`${apiUrl}/footer`);
     const { data } = await footerRes.json();
     await store.dispatch(setFooterData(data));
     

@@ -38,6 +38,9 @@ const breadCrumbList = [
   }
 ];
 
+// Config
+import Config from '@config/api';
+
 export default class CmsCreateUser extends PureComponent {
   state = {
     email: '',
@@ -109,10 +112,11 @@ export default class CmsCreateUser extends PureComponent {
   };
 
   fetchCreateUser = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { email, password } = this.state;
 
     try {
-      const response = await axios.post('http://nonprod.dhealth.arinanda.com/api/v1/users', {
+      const response = await axios.post(`${apiUrl}/users`, {
         email,
         defaultPassword: password
       });

@@ -6,6 +6,9 @@ import axios from 'axios';
 import ArticleCard from '@components/component.ArticleCard';
 import Loader from '@components/component.Loader';
 
+// Config
+import Config from '@config/api';
+
 const isServer = typeof window === 'undefined';
 const WOW = !isServer ? require('wow.js') : null;
 
@@ -64,11 +67,12 @@ class ArticleAndNews extends PureComponent {
   };
 
   fetchSearch = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { inputSearch } = this.state;
     const { language } = this.props;
 
     try {
-      const url = `http://nonprod.dhealth.arinanda.com/api/v1/article?language=${language}&searchKey=${inputSearch}&pageNumber=1&pageSize=9`;
+      const url = `${apiUrl}/article?language=${language}&searchKey=${inputSearch}&pageNumber=1&pageSize=9`;
       const { data: { data } } = await axios.get(url);
 
       this.setState({
@@ -127,11 +131,12 @@ class ArticleAndNews extends PureComponent {
   };
 
   _fetchLoadMore = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { pageNumber, pageSize, content } = this.state;
     const { language } = this.props;
     
     try {
-      const url = `http://nonprod.dhealth.arinanda.com/api/v1/article?language=${language}&searchKey=${inputSearch}&pageNumber=${pageNumber}&pageSize=${pageSize}`;
+      const url = `${apiUrl}/article?language=${language}&searchKey=${inputSearch}&pageNumber=${pageNumber}&pageSize=${pageSize}`;
       const { data: { data } } = await axios.get(url);
       const isNoMoreList = data.length > 0 ? false : true;
       const newContent = [...content].concat(data);

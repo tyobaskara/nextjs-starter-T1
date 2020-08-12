@@ -7,6 +7,9 @@ import CmsEditPagesList from '@components/CmsEditPages-List.container';
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -31,12 +34,13 @@ const breadCrumbList = [
 ];
 
 function CmsEditPagesHomeKeyFeaturesPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
     listTitle: 'Key Features',
-    apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/key-features',
-    apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/key-features/delete',
+    apiGetListUrl: `${apiUrl}/key-features`,
+    apiRemoveListUrl: `${apiUrl}/key-features/delete`,
     linkActionList:  '/cms-edit-pages-home-key-features',
     showPagination: true
   });

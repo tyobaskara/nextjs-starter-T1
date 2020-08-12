@@ -7,6 +7,9 @@ import CmsEditAboutUsTabItemCreate from '@components/CmsEditAboutUs-Tab-Item-Cre
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -40,9 +43,10 @@ const defaultFormData = {
 };
 
 function CmsEditPagesAboutUsSection6TabItemCreatePage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     contentType: 'multipart/form-data',
-    apiCreateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/about-us/section-6/[tabId]/item',
+    apiCreateUrl: `${apiUrl}/about-us/section-6/[tabId]/item`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     dataFixture: defaultFormData,

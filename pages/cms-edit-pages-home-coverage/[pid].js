@@ -7,6 +7,9 @@ import CmsEditPagesDetail from '@components/CmsEditPages-Detail.container';
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -31,10 +34,11 @@ const breadCrumbList = [
 ];
 
 function CmsEditPagesHomeCoverageDetailPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
-    apiGetDataUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/client-coverage/[id]/details',
+    apiGetDataUrl: `${apiUrl}/client-coverage/[id]/details`,
     apiGetDataUrlKey: '[id]',
-    apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/client-coverage?id=[id]',
+    apiUpdateUrl: `${apiUrl}/client-coverage?id=[id]`,
     apiUpdateUrlKey: '[id]',
     breadCrumbList,
     activeKey: 'name',

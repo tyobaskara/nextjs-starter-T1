@@ -4,6 +4,9 @@ import LayoutMainCms from '@components/layout.LayoutMainCms';
 // Container
 import CmsEditPagesCreate from '@components/CmsEditPages-Create.container';
 
+// Config
+import Config from '@config/api';
+
 // Constants
 import Constants from '@constants/constants';
 
@@ -40,8 +43,9 @@ const defaultFormData = {
 };
 
 function CmsEditPagesAboutUsSection6CreatePage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
-    apiCreateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/about-us/section-6',
+    apiCreateUrl: `${apiUrl}/about-us/section-6`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     dataFixture: defaultFormData,

@@ -7,6 +7,9 @@ import CmsEditAboutUsTabList from '@components/CmsEditAboutUs-Tab-List.container
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -31,12 +34,13 @@ const breadCrumbList = [
 ];
 
 function CmsEditPagesAboutUsSection6TabItem() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
     titleKey: 'titleEn',
     apiGetKey: 'implementations',
-    apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/about-us?section=6',
+    apiGetListUrl: `${apiUrl}/about-us?section=6`,
     linkActionList:  '/cms-edit-pages-about-us-section-6-tab-item'
   });
 

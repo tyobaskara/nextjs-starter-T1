@@ -7,6 +7,9 @@ import CmsEditPagesCreate from '@components/CmsEditPages-Create.container';
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -44,8 +47,9 @@ const defaultFormData = {
 };
 
 function CmsEditPagesAboutUsSection2ItemCreatePage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
-    apiCreateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial',
+    apiCreateUrl: `${apiUrl}/testimonial`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     dataFixture: defaultFormData,

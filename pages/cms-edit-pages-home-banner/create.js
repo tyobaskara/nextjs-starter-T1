@@ -8,6 +8,9 @@ import CmsEditPagesCreate from '@components/CmsEditPages-Create.container';
 import Constants from '@constants/constants';
 import dataFixture from '@constants/fixtures.bannerData';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -50,8 +53,9 @@ const defaultFormData = {
 };
 
 function CmsEditPagesHomeBannerCreatePage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
-    apiCreateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/banners',
+    apiCreateUrl: `${apiUrl}/banners`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     dataFixture,

@@ -4,6 +4,9 @@ import LayoutMainCms from '@components/layout.LayoutMainCms';
 // Container
 import CmsEditTestimonialList from '@components/CmsEdit-Testimonial-List.container';
 
+// Config
+import Config from '@config/api';
+
 // Constants
 import Constants from '@constants/constants';
 
@@ -27,12 +30,13 @@ const breadCrumbList = [
 ];
 
 function CmsEditPagesTestimonialPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
     listTitle: 'Testimonial',
-    apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial',
-    apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/testimonial/[id]',
+    apiGetListUrl: `${apiUrl}/testimonial`,
+    apiRemoveListUrl: `${apiUrl}/testimonial/[id]`,
     linkActionList:  '/cms-edit-testimonial-item'
   });
 

@@ -8,6 +8,9 @@ import Loader from '@components/component.Loader';
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';
 
+// Config
+import Config from '@config/api';
+
 class FormFreeDemo extends PureComponent {
   constructor(props) {
     super(props);
@@ -43,6 +46,7 @@ class FormFreeDemo extends PureComponent {
   };
 
   sendFormData = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { type } = this.props;
     const {
       formName,
@@ -53,7 +57,7 @@ class FormFreeDemo extends PureComponent {
     } = this.state;
 
     try {
-      await axios.post('http://nonprod.dhealth.arinanda.com/api/v1/free-demo', {
+      await axios.post(`${apiUrl}/free-demo`, {
         companyName: formCompanyName,
         email: formEmail,
         message: formNotes,

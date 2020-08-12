@@ -23,6 +23,9 @@ const {
   }
 } = Constants;
 
+// Config
+import Config from '@config/api';
+
 export default class CmsDashboard extends PureComponent {
   state = {
     user: '',
@@ -34,9 +37,10 @@ export default class CmsDashboard extends PureComponent {
   }
 
   getUserDetail = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     axios.defaults.headers.common['Authorization'] = `Bearer ${this.props.token}`;
 
-    await axios.get('http://nonprod.dhealth.arinanda.com/api/v1/users/details')
+    await axios.get(`${apiUrl}/users/details`)
       .then(resp => resp.data)
       .then(result => {
         this.setState({

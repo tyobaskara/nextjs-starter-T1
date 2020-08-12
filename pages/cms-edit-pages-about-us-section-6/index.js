@@ -17,6 +17,9 @@ import Constants from '@constants/constants';
 // Utils
 import { getErrorMessage } from '@utils/fetch.utils';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -61,7 +64,8 @@ class CmsEditPagesAboutUsSection6Page extends PureComponent {
   }
 
   fetchTabsData = async () => {
-    const url = 'http://nonprod.dhealth.arinanda.com/api/v1/about-us?section=6';
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
+    const url = `${apiUrl}/about-us?section=6`;
 
     try {
       const { data: response } = await axios.get(url);
@@ -80,12 +84,13 @@ class CmsEditPagesAboutUsSection6Page extends PureComponent {
   };
 
   makeRouteList = (tabsData) => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const res = tabsData.map((tab, index) => ({
       editTabRoute: `/cms-edit-pages-about-us-section-6-tab/${index}?tabId=${tab.id}`,
       editTabListRoute: `/cms-edit-pages-about-us-section-6-tab-list/${index}?tabId=${tab.id}`,
       name: `Tab - ${tab.technologyEn}`,
       itemId: tab.id,
-      apiRemoveListUrl: `http://nonprod.dhealth.arinanda.com/api/v1/about-us/${tab.id}`
+      apiRemoveListUrl: `${apiUrl}/about-us/${tab.id}`
     }));
 
     return res;

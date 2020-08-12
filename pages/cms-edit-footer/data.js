@@ -4,6 +4,9 @@ import LayoutMainCms from '@components/layout.LayoutMainCms';
 // Container
 import CmsEditFooterDetail from '@components/CmsEdit-Footer-Detail.container';
 
+// Config
+import Config from '@config/api';
+
 // Constants
 import Constants from '@constants/constants';
 
@@ -31,10 +34,11 @@ const breadCrumbList = [
 ];
 
 function CmsEditFooterDataPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     contentType: 'application/json',
-    apiGetDataUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/footer',
-    apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/footer',
+    apiGetDataUrl: `${apiUrl}/footer`,
+    apiUpdateUrl: `${apiUrl}/footer`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     inputFileList: []

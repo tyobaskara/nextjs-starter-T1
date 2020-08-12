@@ -4,6 +4,9 @@ import LayoutMainCms from '@components/layout.LayoutMainCms';
 // Container
 import CmsEditArticleNewsList from '@components/CmsEdit-ArticleNews-List.container';
 
+// Config
+import Config from '@config/api';
+
 // Constants
 import Constants from '@constants/constants';
 
@@ -27,11 +30,12 @@ const breadCrumbList = [
 ];
 
 function CmsEditArticleNewsPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
-    apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/article?language=en&searchKey=[searchKey]&pageNumber=[pageNumber]&pageSize=[pageSize]',
-    apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/article/[id]',
+    apiGetListUrl: `${apiUrl}/article?language=en&searchKey=[searchKey]&pageNumber=[pageNumber]&pageSize=[pageSize]`,
+    apiRemoveListUrl: `${apiUrl}/article/[id]`,
     linkActionList:  '/cms-edit-article-news-item'
   });
 

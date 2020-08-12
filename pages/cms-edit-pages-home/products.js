@@ -7,6 +7,9 @@ import CmsEditProductList from '@components/CmsEdit-Product-List.container';
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -31,11 +34,12 @@ const breadCrumbList = [
 ];
 
 function CmsEditPagesHomeProductsPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
     listTitle: 'Product',
-    apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/products',
+    apiGetListUrl: `${apiUrl}/products`,
     linkActionList:  '/cms-edit-pages-home-products'
   });
 

@@ -26,11 +26,15 @@ const breadCrumbList = [
   }
 ];
 
+// Config
+import Config from '@config/api';
+
 function CmsEditArticleNewsItemPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     contentType: 'multipart/form-data',
-    apiGetDataUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/article/[itemId]?language=[lang]',
-    apiUpdateUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/article?id=[itemId]',
+    apiGetDataUrl: `${apiUrl}/article/[itemId]?language=[lang]`,
+    apiUpdateUrl: `${apiUrl}/article?id=[itemId]`,
     breadCrumbList,
     drawerActiveMenu: editPages,
     inputFileList: ['image'],

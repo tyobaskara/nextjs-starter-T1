@@ -7,6 +7,9 @@ import CmsEditPagesList from '@components/CmsEditPages-List.container';
 // Constants
 import Constants from '@constants/constants';
 
+// Config
+import Config from '@config/api';
+
 const {
   cms: {
     drawerActiveMenu: {
@@ -31,12 +34,13 @@ const breadCrumbList = [
 ];
 
 function CmsEditPagesHomeBannerPage() {
+  const apiUrl = Config.apiUrl[process.env.NODE_ENV];
   const getProps = () => ({
     breadCrumbList,
     drawerActiveMenu: editPages,
     listTitle: 'Banner',
-    apiGetListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/banners',
-    apiRemoveListUrl: 'http://nonprod.dhealth.arinanda.com/api/v1/banners/delete',
+    apiGetListUrl: `${apiUrl}/banners`,
+    apiRemoveListUrl: `${apiUrl}/banners/delete`,
     linkActionList:  '/cms-edit-pages-home-banner',
     showPagination: true
   });

@@ -38,6 +38,9 @@ const breadCrumbList = [
   }
 ];
 
+// Config
+import Config from '@config/api';
+
 export default class CmsMessageCenterFreeDemo extends PureComponent {
   state = {
     isLoading: true,
@@ -58,8 +61,9 @@ export default class CmsMessageCenterFreeDemo extends PureComponent {
   );
 
   fetchMessage = async () => {
+    const apiUrl = Config.apiUrl[process.env.NODE_ENV];
     const { pageNumber } = this.state;
-    const url = `http://nonprod.dhealth.arinanda.com/api/v1/free-demo?pageNumber=${pageNumber}&type=DEMO`;
+    const url = `${apiUrl}/free-demo?pageNumber=${pageNumber}&type=DEMO`;
 
     try {
       const { data: response } = await axios.get(url);

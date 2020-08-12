@@ -11,6 +11,9 @@ import Home from '@components/page.Home';
 // Redux Actions
 import { setFooterData } from '@redux/actions/footerActions';
 
+// Config
+import Config from '@config/api';
+
 function HomePage(props) {
   const language = 'id';
   i18n.changeLanguage(language);
@@ -35,18 +38,21 @@ function HomePage(props) {
 }
 
 HomePage.getInitialProps = async ({ store }) => {
+  const env = process.env.NODE_ENV;
+  const apiUrl = Config.apiUrl[env];
+
   // const { footer: { data } } = store.getState();
 
-  const res = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/home');
+  const res = await fetch(`${apiUrl}/home`);
   const { data: content } = await res.json();
 
-  const testimonialRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/testimonial?pageNumber=1&pageSize=3');
+  const testimonialRes = await fetch(`${apiUrl}/testimonial?pageNumber=1&pageSize=3`);
   const { data: testimonialData } = await testimonialRes.json();
 
-  const articleAndNewsres = await fetch(`http://nonprod.dhealth.arinanda.com/api/v1/article?language=id&pageNumber=1&pageSize=3`);
+  const articleAndNewsres = await fetch(`${apiUrl}/article?language=id&pageNumber=1&pageSize=3`);
   const { data: articleAndNewsData } = await articleAndNewsres.json();
   
-  const footerRes = await fetch('http://nonprod.dhealth.arinanda.com/api/v1/footer');
+  const footerRes = await fetch(`${apiUrl}/footer`);
   const { data: footerData } = await footerRes.json();
   await store.dispatch(setFooterData(footerData));
   
