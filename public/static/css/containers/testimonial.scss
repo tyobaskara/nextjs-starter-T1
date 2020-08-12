@@ -75,7 +75,8 @@
   }
 
   .avatar {
-    margin-bottom: 20px;
+    margin-bottom: 20px;    
+    min-height: 80px;
     position: relative;
 
     &-image {
@@ -98,13 +99,13 @@
       &__name {
         font-family: 'OpenSans-Bold';
         font-size: 16px;
-        line-height: 1.67;
+        line-height: 1.25;
         color: #444444;
       }
       &__title {
         font-family: 'OpenSans';
         font-size: 14px;
-        line-height: 2.14;
+        line-height: 1.25;
         color: #285189;
       }
     }
