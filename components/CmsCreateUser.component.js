@@ -43,6 +43,7 @@ import Config from '@config/api';
 
 export default class CmsCreateUser extends PureComponent {
   state = {
+    name: '',
     email: '',
     password: '',
     errorMessage: '',
@@ -60,6 +61,17 @@ export default class CmsCreateUser extends PureComponent {
 
   _renderCreateUserForm = () => (
     <form onSubmit={this._submitForm}>
+      <div className="form-group">
+        <label htmlFor="inputName">Name</label>
+        <input 
+          type="name" 
+          className="form-control" 
+          id="inputName" 
+          onChange={event => this.onInputChange(event, 'name')} 
+          value={this.state.name}
+          required  
+        />
+      </div>
       <div className="form-group">
         <label htmlFor="inputEmail">Email</label>
         <input 
@@ -113,16 +125,17 @@ export default class CmsCreateUser extends PureComponent {
 
   fetchCreateUser = async () => {
     const apiUrl = Config.apiUrl[process.env.NODE_ENV];
-    const { email, password } = this.state;
+    const { name, email, password } = this.state;
 
     try {
       const response = await axios.post(`${apiUrl}/users`, {
+        name,
         email,
         defaultPassword: password
       });
       const successMessage = response.data.message;
       
-      this.setState({ isLoading: false, isSuccess: true, successMessage, email: '', password: '' });
+      this.setState({ isLoading: false, isSuccess: true, successMessage, name: '', email: '', password: '' });
     } catch (error) {
       const errorMessage = getErrorMessage(error);
 
