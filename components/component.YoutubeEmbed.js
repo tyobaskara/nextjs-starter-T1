@@ -17,7 +17,7 @@ export default class YoutubeEmbed extends PureComponent {
   _renderBtn = () => {
     const { isShow } = this.state;
     const { youtubeId } = this.props;
-    const src = `http://i3.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
+    const src = `https://i3.ytimg.com/vi/${youtubeId}/maxresdefault.jpg`;
 
     return !isShow ? (
       <button onClick={this.onBtnClick}>

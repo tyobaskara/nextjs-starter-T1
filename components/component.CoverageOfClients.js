@@ -2,6 +2,7 @@ import compose from 'recompose/compose';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { withTranslation } from '../i18n';
 import { PureComponent } from 'react';
+import Config from '@config/api';
 
 const mapStyles = {
   width: '100%',
@@ -112,7 +113,7 @@ class CoverageOfClients extends PureComponent {
 
 const CoverageOfClientsHOC = compose(
   GoogleApiWrapper({
-    apiKey: 'AIzaSyA1rpG5zsMcmVL-DD0QxWuiFLPPzGQkaWc'
+    apiKey: Config.googleApiKey
   }),
   withTranslation('common')
 );
